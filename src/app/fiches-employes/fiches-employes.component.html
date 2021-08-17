@@ -1,0 +1,19 @@
+<div class="fiches-employes-area">
+
+    <div class="introduction-area p-d-flex p-jc-between">
+        <h1 class="big-title">
+            {{title}}
+        </h1>
+        <div class="btns-group two-btns">
+
+            <button class="btn btn-blue" pButton pRipple label="Ajouter" (click)="sendFilter()" icon="pi pi-plus"></button>
+        </div>
+        <!--.btns-group-->
+    </div>
+    <!--.introduction-area-->
+
+    <router-outlet></router-outlet>
+
+
+</div>
+<!--.fiches-employes-area-->

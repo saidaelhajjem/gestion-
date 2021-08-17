@@ -1,0 +1,357 @@
+/* # Modals ::
+------------------------------------*/
+
+::ng-deep {
+    .modal {
+        .p-dialog {
+            .p-dialog-header {
+                border-bottom: 1px solid $color-mercury;
+                .p-dialog-title {
+                    color: rgba(47, 69, 92, 0.6);
+                    font-size: 16px;
+                    line-height: 21px;
+                    font-family: 'Roboto-Bold', sans-serif;
+                    text-transform: uppercase;
+                }
+            }
+            .p-dialog-content {
+                padding: 1.5rem;
+                .form-area {
+                    width: 415px;
+                    margin: 0 auto;
+                }
+            }
+            .p-dialog-footer {
+                border-top: 1px solid $color-mercury;
+                .p-button-text {
+                    font-size: 14px;
+                    line-height: 14px;
+                    font-family: 'Roboto', sans-serif;
+                    color: $color-polo-blue;
+                    &.btn-havelock-blue {
+                        background-color: $color-havelock-blue;
+                        color: $color-white;
+                        font-size: 14px;
+                        line-height: 14px;
+                        border-radius: 2px;
+                        height: 35px;
+
+                        &.disabled {
+                            background-color: $color-perano-blue;
+                        }
+                    }
+                }
+            }
+        }
+        /* --- */
+        .import-area {
+            border: 1px dashed $color-tower-gray;
+            border-radius: 2px;
+            padding: 14px;
+        }
+        .dropzone-area {
+            margin: 0 0 18px;
+            ngx-dropzone {
+                height: auto;
+                border: 0;
+                justify-content: center;
+                ngx-dropzone-label {
+                    margin: 0;
+                    color: rgba(47, 69, 92, .5);
+                    font-size: 16px;
+                    line-height: 21px;
+                    padding: 60px 0 0;
+                    background-image: url('../../img/drag-icn.png');
+                    background-repeat: no-repeat;
+                    background-size: 70px auto;
+                    background-position: top center;
+                    font-family: 'Roboto-Medium', sans-serif;
+                }
+                ngx-dropzone-preview {
+                    background-image: none;
+                    border-radius: 0 !important;
+                    height: auto !important;
+                    min-height: auto !important;
+                    margin: 0 !important;
+                    max-width: initial !important;
+                    min-width: initial !important;
+                    padding: 0 !important;
+                    ngx-dropzone-label {
+                        background-image: url('../../img/svg/check-success.svg');
+                        background-size: 50px auto;
+                        color: $color-bluewood;
+                        font-size: 14px;
+                        line-height: 19px;
+                        font-family: 'Roboto', sans-serif;
+                    }
+                }
+            }
+        }
+        .import-area-desc {
+            display: block;
+            color: rgba(47, 69, 92, .5);
+            font-size: 14px;
+            line-height: 19px;
+            font-family: 'Roboto-Medium', sans-serif;
+            margin: 0 0 16px;
+            text-align: center;
+            &.style-2 {
+                font-size: 12px;
+                line-height: 16px;
+                color: rgba(47, 69, 92, .6);
+            }
+        }
+        .browse-files-area {
+            width: 200px;
+            margin: 0 auto 18px;
+            .btn-importer {
+                margin: 0;
+                .label {
+                    padding: 5px 15px;
+                    background-image: none;
+                    background-color: transparent;
+                    border: 1px solid $color-havelock-blue;
+                    color: $color-havelock-blue;
+                    font-size: 14px;
+                    line-height: 14px;
+                    font-family: 'Montserrat-Medium', sans-serif;
+                }
+            }
+        }
+        /* --- */
+        .modal-description {
+            &.mb-1 {
+                margin: 0 0 40px;
+            }
+            p {
+                color: rgba(47, 69, 92, 0.6);
+                font-size: 14px;
+                line-height: 19px;
+                font-family: 'Roboto', sans-serif;
+                margin: 0;
+            }
+        }
+        .three-state-switch {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            p {
+                color: rgba(47, 69, 92, 0.6);
+                font-family: 'Roboto-Medium', sans-serif;
+                font-size: 14px;
+                line-height: 19px;
+                margin: 0 44px 0 0;
+            }
+        }
+        .detect-references-content {
+            .three-state-switch {
+                &:nth-child(2) {
+                    margin: 0 0 14px;
+                }
+                &:nth-child(4) {
+                    margin: 0 0 50px;
+                }
+            }
+            .import-area-desc {
+                text-align: left;
+            }
+        }
+        /* -- Associate Unidentified -- */
+        .associate-unidentified-content {
+            .associate-unidentified_header {
+                margin: 0 0 14px;
+                .associate-unidentified_header-title {
+                    color: $color-polo-blue;
+                    font-size: 14px;
+                    line-height: 14px;
+                    font-family: 'Roboto-Medium', sans-serif;
+                }
+            }
+            .associate-unidentified_body {
+                .grid {
+                    &:not(:last-child) {
+                        margin: 0 0 8px;
+                    }
+                }
+                .associate-unidentified_body-desc {
+                    color: $color-bluewood;
+                    font-size: 14px;
+                    line-height: 14px;
+                    font-family: 'Roboto', sans-serif;
+                    margin: 6px 0 0;
+                }
+                .create-new-reference-link {
+                    color: $color-havelock-blue;
+                    font-size: 14px;
+                    line-height: 14px;
+                    font-family: 'Roboto', sans-serif;
+                    margin: 6px 0 0;
+                    display: inline-block;
+                    cursor: pointer;
+                    &:hover {
+                        text-decoration: underline;
+                    }
+                }
+            }
+        }
+        .autoComplete-item {
+            .p-autocomplete {
+                input {
+                    width: 100%;
+                    height: 24px;
+                    border: 1px solid $color-polo-blue;
+                    color: $color-bluewood;
+                    font-size: 14px;
+                    line-height: 14px;
+                    font-family: 'Roboto', sans-serif;
+                    padding: 2px 8px;
+                    &::-webkit-input-placeholder {
+                        color: $color-bluewood;
+                    }
+                    &::-moz-placeholder {
+                        color: $color-bluewood;
+                    }
+                    &:-ms-input-placeholder {
+                        color: $color-bluewood;
+                    }
+                    &:-moz-placeholder {
+                        color: $color-bluewood;
+                    }
+                }
+                .p-autocomplete-loader {
+                    font-size: .8rem;
+                    right: .5rem;
+                    margin-top: -.4rem;
+                }
+            }
+        }
+        /* -- Modal Create Note -- */
+        .create-note-content {
+            .form-area {
+                width: 100% !important;
+                .form-style {
+                    &:nth-child(1) {
+                        margin: 0 0 20px;
+                    }
+                    label {
+                        color: $color-bluewood;
+                        font-size: 14px;
+                        line-height: 14px;
+                        font-family: "Roboto", sans-serif;
+                        margin: 0 0 10px;
+                    }
+                }
+            }
+        }
+        /* -- Modal Create New File -- */
+        .create-new-file-content {
+            .form-area {
+                width: 100% !important;
+                .grid {
+                    &:nth-child(1) {
+                        margin: 0 0 25px;
+                    }
+                }
+            }
+        }
+        /* -- Modal Document Generation -- */
+        &.document-generation-modal {
+            .p-dialog-header {
+                justify-content: flex-end;
+            }
+            .document-generation-content {
+                padding: 30px 0 30px;
+                .document-generated {
+                    background-position: top center;
+                    background-size: 61px auto;
+                    background-repeat: no-repeat;
+                    padding: 83px 0 0;
+                    p {
+                        color: rgba(47, 69, 92, 0.5);
+                        margin: 0;
+                        font-size: 16px;
+                        line-height: 21px;
+                        font-family: 'Roboto', sans-serif;
+                        text-align: center;
+                    }
+                    &.document-generated-being {
+                        background-image: url('../../img/document-generated-being.png');
+                    }
+                    &.document-generated-ok {
+                        background-image: url('../../img/svg/check-success.svg');
+                    }
+                }
+            }
+        }
+    }
+
+    .modal-add-references {
+        .p-dialog-content {
+            overflow-y: initial;
+
+            .p-autocomplete {
+                .p-autocomplete-panel {
+                    &::-webkit-scrollbar-track {
+                        -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+                        border-radius: 10px;
+                        background-color: #F5F5F5;
+                    }
+                    &::-webkit-scrollbar {
+                        width: 6px;
+                        background-color: #F5F5F5;
+                    }
+                    &::-webkit-scrollbar-thumb {
+                        border-radius: 10px;
+                        -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+                        background-color: $color-mystic;
+                    }
+                }
+            }
+        }
+    }
+    
+}
+
+
+/* # $Mobile ::
+------------------------------------*/
+
+@media (max-width: 767px) {
+    ::ng-deep {
+        .modal-add-references {
+            .form-style {
+                .p-input-icon-left {
+                    width: 100%;
+                    .autoComplete-blc {
+                        width: 100%;
+                        .p-autocomplete {
+                            width: 100%;
+                            .p-inputtext {
+                                width: 100%;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+@media (max-width: 600px) {
+    ::ng-deep {
+        .modal {
+            .create-new-file-content {
+                .form-area {
+                    .grid {
+                        &.gcg-3 {
+                            grid-template-columns: repeat(1, 1fr);
+                            grid-gap: 10px;
+                        }
+                        &:nth-child(1) {
+                            margin: 0 0 10px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

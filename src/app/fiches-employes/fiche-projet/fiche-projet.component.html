@@ -1,0 +1,163 @@
+<div class="fiche-projet-area">
+
+    <div class="information-grid-area">
+        <div class="grid info-gct-1 info-gcg-1">
+            <div class="grid-blc">
+                <div class="information-title">
+                    Type de contrat
+                </div>
+                <!--.information-title-->
+                <div class="information-desc">
+                    {{projectInfo?.modele_nom}}
+                </div>
+                <!--.information-desc-->
+            </div>
+            <div class="grid-blc">
+                <div class="information-title">
+                    Employeur
+                </div>
+                <!--.information-title-->
+                <div class="information-desc">
+                    {{projectInfo?.employeur_raison_sociale}}
+                </div>
+                <!--.information-desc-->
+            </div>
+            <div class="grid-blc">
+                <div class="information-title">
+                    Nom et prénom de l’eMPLoyé
+                </div>
+                <!--.information-title-->
+                <div class="information-desc">
+                    {{projectInfo?.employe_prenom}} {{projectInfo?.employe_nom}}
+                </div>
+                <!--.information-desc-->
+            </div>
+            <div class="grid-blc">
+                <div class="information-title">
+                    Date de signature
+                </div>
+                <!--.information-title-->
+                <div class="information-desc">
+                    {{projectInfo?.updatedat | date:'MM/dd/yyyy'}}
+                </div>
+                <!--.information-desc-->
+            </div>
+        </div>
+        <!--.grid-->
+    </div>
+    <!--.information-grid-area-->
+
+    <div class="table-area">
+        <p-table #dt [value]="listDocument" [paginator]="true" [rows]="3" [showCurrentPageReport]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [globalFilterFields]="['type_document_libelle','is_actif','status']" [rowsPerPageOptions]="[10,25,50]"
+            styleClass="p-datatable-responsive-demo">
+            <ng-template pTemplate="caption">
+                <h2 class="mb-1">LIste des documents</h2>
+                <div class="p-d-flex p-jc-between p-ai-center">
+                    <div class="p-input-icon-left">
+                        <em class="pi search-icon"></em>
+                        <div class="input-blc style-2">
+                            <input type="text" (input)="dt.filterGlobal($event.target.value, 'contains')" pInputText placeholder="Recherche…" />
+                        </div>
+                    </div>
+                    <a class="link-action"></a>
+                </div>
+            </ng-template>
+            <ng-template pTemplate="header">
+                <tr>
+                    <th id="Type de document" pSortableColumn="Type de document">Type de document</th>
+                    <th id="Statut" pSortableColumn="Statut">
+                        <div class="p-text-center">
+                            Statut
+                        </div>
+                    </th>
+                    <th id="Date" pSortableColumn="Date">
+                        <div class="p-text-center">
+                            Date
+                        </div>
+                    </th>
+                    <th id="actions" pSortableColumn="Actions">Actions</th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-document>
+                <tr>
+                    <td>
+                        {{document.type_document_libelle}}
+                    </td>
+                    <td>
+                        <div class="p-text-center">
+                            <!-- [class]="'style-3 btn-statut ' + document.className" -->
+                            <button [class]="'style-3 btn-statut ' + document.className">
+                                {{document.status}}
+                            </button>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="p-text-center">
+                            <input type="text" onfocus="(this.type='date')" [class]="'style-4 btn-statut ' + document.className" placeholder="{{document.createdat|date:'MM/dd/yyyy'}}" />
+                        </div>
+                    </td>
+                    <td>
+                        <div class="more-link">
+                            <button pButton class="p-panel-header-icon p-link" icon="pi pi-ellipsis-h" (click)="menu.toggle($event)">
+                            </button>
+                            <p-menu #menu id="config_menu" [model]="items" [popup]="true"></p-menu>
+                        </div>
+                        <!--.more-link-->
+                    </td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+    <!--.table-area-->
+
+
+    <div class="table-area">
+        <p-table [value]="documents" [paginator]="true" [rows]="3" [showCurrentPageReport]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [rowsPerPageOptions]="[10,25,50]" styleClass="p-datatable-responsive-demo">
+            <ng-template pTemplate="caption">
+                <h2 class="mb-1">Historique des événements</h2>
+                <div class="p-d-flex p-jc-between p-ai-center">
+                    <div class="p-input-icon-left">
+                        <em class="pi search-icon"></em>
+                        <div class="input-blc style-2">
+                            <input type="text" pInputText placeholder="Recherche…" />
+                        </div>
+                    </div>
+                    <a class="link-action"></a>
+                </div>
+            </ng-template>
+            <ng-template pTemplate="header">
+                <tr>
+                    <th id="evenement" pSortableColumn="Évènement">Évènement</th>
+                    <th id="Date" pSortableColumn="Date">
+                        Date
+                    </th>
+                    <th id="actions" pSortableColumn="Actions">Actions</th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-document>
+                <tr>
+                    <td>
+                        {{document.id}}
+                    </td>
+                    <td>
+                        {{document.dateCreation}}
+                    </td>
+                    <td>
+                        <div class="more-link">
+                            <button pButton class="p-panel-header-icon p-link" icon="pi pi-ellipsis-h" (click)="menu.toggle($event)">
+                            </button>
+                            <p-menu #menu id="config_menu" [model]="items" [popup]="true"></p-menu>
+                        </div>
+                        <!--.more-link-->
+                    </td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+    <!--.table-area-->
+
+
+
+
+</div>
+<!--.fiche-projet-->

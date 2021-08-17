@@ -1,0 +1,13 @@
+<app-header></app-header>
+
+<div class="app-wrapper">
+  <div class="app-sidebar-wrapper">
+    <app-sidebar></app-sidebar>
+  </div>
+  <!--.app-sidebar-wrapper-->
+
+  <main [ngClass]="mainStatus ? 'active' : ''">
+    <router-outlet></router-outlet>
+  </main>
+</div>
+<!--.app-wrapper-->

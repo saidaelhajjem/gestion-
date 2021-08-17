@@ -1,0 +1,207 @@
+<div class="modal">
+    <!--  -->
+    <p-dialog header="{{Title}} " [(visible)]="openEtablissement" [modal]="true" [style]="{width: '636px'}" [baseZIndex]="10000" [draggable]="false" [resizable]="true" (onHide)="cancel()">
+        <div class="create-new-file-content">
+            <div class="form-area">
+                <form [formGroup]="etablissementForm">
+                    <div class="grid gtc-2 gcg-3">
+                        <div class="grid-blc">
+                            <div class="has-float-label" [ngClass]="{ 'is-invalid': f.raison_sociale.invalid && f.raison_sociale.touched  || NewFileSubmitted && f.raison_sociale.errors?.required}">
+                                <input id="nom_File" type="text" placeholder="Nom" required formControlName="raison_sociale" />
+                                <label for="nom_File">raison_sociale</label>
+                            </div>
+                            <span class="error" *ngIf="f.raison_sociale.invalid && f.raison_sociale.touched">raison sociale n'est pas valide </span>
+                            <span class="error" *ngIf="NewFileSubmitted && f.raison_sociale.errors?.required"> raison sociale est obligatoire </span>
+                        </div>
+                        <div class="grid-blc">
+                            <div class="has-float-label" [ngClass]="{ 'is-invalid': f.type_etablissement.invalid && f.type_etablissement.touched || NewFileSubmitted && f.type_etablissement.errors?.required }">
+                                <input id="prenom_File" type="text" placeholder="Prénom" formControlName="type_etablissement" required />
+                                <label for="prenom_File">Type etablissement </label>
+                                <span class="error" *ngIf="f.type_etablissement.invalid && f.type_etablissement.touched">
+                                    Type etablissement n'est pas valide </span>
+                                <span class="error" *ngIf="NewFileSubmitted && f.type_etablissement.errors?.required">
+                                    Type etablissement est obligatoire </span>
+                            </div>
+                        </div>
+                    </div>
+                    <!--.grid-->
+                    <div class="grid gtc-3 gcg-3 gg-1">
+                        <div class="grid-blc">
+                            <div class="has-float-label" [ngClass]="{ 'is-invalid': f.siren.invalid && f.siren.touched  || NewFileSubmitted && f.siren.errors?.required}">
+                                <input id="num_siren" type="text" min="0" placeholder="Numéro de siren" formControlName="siren" required />
+                                <label for="num_siren">Numéro de siren</label>
+                                <span class="error" *ngIf="f.siren.invalid && f.siren.touched"> Numéro de siren n'est
+                                    pas valide </span>
+                                <span class="error" *ngIf="NewFileSubmitted && f.siren.errors?.required"> Numéro de
+                                    siren est obligatoire </span>
+                            </div>
+                        </div>
+                        <div class="grid-blc">
+                            <div class="has-float-label" [ngClass]="{ 'is-invalid': f.siret.invalid && f.siret.touched  || NewFileSubmitted && f.siret.errors?.required}">
+                                <input id="num_siret" type="text" min="0" placeholder="Numéro de siret" formControlName="siret" required />
+                                <label for="num_siret">Numéro de siret</label>
+                                <span class="error" *ngIf="f.siret.invalid && f.siret.touched"> Numéro de siret n'est
+                                    pas valide </span>
+                                <span class="error" *ngIf="NewFileSubmitted && f.siret.errors?.required"> Numéro de
+                                    siret est obligatoire </span>
+                            </div>
+                        </div>
+                        <div class="grid-blc">
+                            <div class="has-float-label" [ngClass]="{ 'is-invalid': f.adresse_num_voie.invalid && f.adresse_num_voie.touched || NewFileSubmitted && f.adresse_num_voie.errors?.required }">
+                                <input id="adresse_num_voie" type="text" min="0" placeholder="N° de voie" formControlName="adresse_num_voie" required />
+                                <label for="adresse_num_voie">N° de voie</label>
+                                <span class="error" *ngIf="f.adresse_num_voie.invalid && f.adresse_num_voie.touched"> N°
+                                    de voie n'est pas valide </span>
+                                <span class="error" *ngIf="NewFileSubmitted && f.adresse_num_voie.errors?.required"> N°
+                                    de voie est obligatoire </span>
+                            </div>
+                        </div>
+                        <div class="grid-blc">
+                            <div class="has-float-label" [ngClass]="{ 'is-invalid': f.adresse_type_voie.invalid && f.adresse_type_voie.touched || NewFileSubmitted && f.adresse_type_voie.errors?.required }">
+                                <input id="adresse_type_voie" type="text" placeholder="Type de voie" formControlName="adresse_type_voie" required />
+                                <label for="adresse_type_voie">Type de voie</label>
+                                <span class="error" *ngIf="f.adresse_type_voie.invalid && f.adresse_type_voie.touched">
+                                    Type de voie n'est pas valide </span>
+                                <span class="error" *ngIf="NewFileSubmitted && f.adresse_type_voie.errors?.required">
+                                    Type de voie est obligatoire </span>
+                            </div>
+                        </div>
+                        <div class="grid-blc">
+                            <div class="has-float-label" [ngClass]="{ 'is-invalid': f.adresse_nom_voie.invalid && f.adresse_nom_voie.touched || NewFileSubmitted && f.adresse_nom_voie.errors?.required }">
+                                <input id="adresse_nom_voie" type="text" placeholder="Nom de la voie" formControlName="adresse_nom_voie" required />
+                                <label for="adresse_nom_voie">Nom de la voie</label>
+                                <span class="error" *ngIf="f.adresse_nom_voie.invalid && f.adresse_nom_voie.touched">
+                                    Nom de voie n'est pas valide </span>
+                                <span class="error" *ngIf="NewFileSubmitted && f.adresse_nom_voie.errors?.required"> Nom
+                                    de voie est obligatoire </span>
+                            </div>
+                        </div>
+                        <div class="grid-blc">
+                            <div class="has-float-label">
+                                <input id="adresse_complement" type="text" placeholder="Complément adresse" formControlName="adresse_complement" required />
+                                <label for="adresse_complement">Complément adresse</label>
+
+
+                            </div>
+                        </div>
+                        <div class="grid-blc">
+                            <div class="has-float-label" [ngClass]="{ 'is-invalid': f.adresse_code_postal.invalid && f.adresse_code_postal.touched || NewFileSubmitted && f.adresse_code_postal.errors?.required }">
+                                <input id="adresse_code_postal" type="text" min="0" placeholder="Code postal" formControlName="adresse_code_postal" required />
+                                <label for="adresse_code_postal">Code postal</label>
+                                <span class="error" *ngIf="f.adresse_code_postal.invalid && f.adresse_code_postal.touched"> Code postal
+                                    n'est pas valide </span>
+                                <span class="error" *ngIf="NewFileSubmitted && f.adresse_code_postal.errors?.required">
+                                    Code postal est obligatoire </span>
+                            </div>
+                        </div>
+                        <div class="grid-blc">
+                            <div class="has-float-label" [ngClass]="{ 'is-invalid': f.adresse_ville.invalid && f.adresse_ville.touched || NewFileSubmitted && f.adresse_ville.errors?.required}">
+                                <input id="adresse_ville" type="text" placeholder="adresse_ville" formControlName="adresse_ville" required />
+                                <label for="adresse_ville">Ville</label>
+                                <span class="error" *ngIf="f.adresse_ville.invalid && f.adresse_ville.touched"> Ville
+                                    n'est pas valide </span>
+                                <span class="error" *ngIf="NewFileSubmitted && f.adresse_ville.errors?.required"> Ville
+                                    est obligatoire </span>
+                            </div>
+                        </div>
+
+
+                        <div class="grid-blc">
+                            <div class="has-float-label" [ngClass]="{ 'is-invalid': f.nbre_salaries.invalid && f.nbre_salaries.touched || NewFileSubmitted && f.nbre_salaries.errors?.required}">
+                                <input id="nbre_slaries" type="number" placeholder="nbre salaries" formControlName="nbre_salaries" required />
+                                <label for="nbre_slaries">Nombre salaries</label>
+                                <span class="error" *ngIf="f.nbre_salaries.invalid && f.nbre_salaries.touched"> Nombre salarie
+                                    n'est pas valide </span>
+                                <span class="error" *ngIf="NewFileSubmitted && f.nbre_salaries.errors?.required"> Nombre salarie
+                                    est obligatoire </span>
+                            </div>
+                        </div>
+
+
+                        <div class="grid-blc">
+                            <div class="has-float-label" [ngClass]="{ 'is-invalid': f.ape_code.invalid && f.ape_code.touched || NewFileSubmitted && f.ape_code.errors?.required}">
+                                <input id="ape_code" type="text" placeholder="code" formControlName="ape_code" required />
+                                <label for="ape_code">Code</label>
+                                <span class="error" *ngIf="f.ape_code.invalid && f.ape_code.touched"> code
+                                    n'est pas valide </span>
+                                <span class="error" *ngIf="NewFileSubmitted && f.ape_code.errors?.required"> code
+                                    est obligatoire </span>
+                            </div>
+                        </div>
+
+                        <div class="grid-blc">
+                            <div class="has-float-label" [ngClass]="{ 'is-invalid': f.adresse_num_voie_etab.invalid && f.adresse_num_voie_etab.touched || NewFileSubmitted && f.adresse_num_voie_etab.errors?.required }">
+                                <input id="adresse_num_voie_etab" type="text" min="0" placeholder="N° de voie" formControlName="adresse_num_voie_etab" required />
+                                <label for="adresse_num_voie_etab">N° de voie Etab</label>
+                                <span class="error" *ngIf="f.adresse_num_voie_etab.invalid && f.adresse_num_voie_etab.touched"> N°
+                                    de voie n'est pas valide </span>
+                                <span class="error" *ngIf="NewFileSubmitted && f.adresse_num_voie_etab.errors?.required"> N°
+                                    de voie est obligatoire </span>
+                            </div>
+                        </div>
+                        <div class="grid-blc">
+                            <div class="has-float-label" [ngClass]="{ 'is-invalid': f.adresse_type_voie_etab.invalid && f.adresse_type_voie_etab.touched || NewFileSubmitted && f.adresse_type_voie_etab.errors?.required }">
+                                <input id="adresse_type_voie_etab" type="text" placeholder="Type de voie" formControlName="adresse_type_voie_etab" required />
+                                <label for="adresse_type_voie_etab">Type de voie Etab</label>
+                                <span class="error" *ngIf="f.adresse_type_voie_etab.invalid && f.adresse_type_voie_etab.touched">
+                                    Type de voie n'est pas valide </span>
+                                <span class="error" *ngIf="NewFileSubmitted && f.adresse_type_voie_etab.errors?.required">
+                                    Type de voie est obligatoire </span>
+                            </div>
+                        </div>
+                        <div class="grid-blc">
+                            <div class="has-float-label" [ngClass]="{ 'is-invalid': f.adresse_nom_voie_etab.invalid && f.adresse_nom_voie_etab.touched || NewFileSubmitted && f.adresse_nom_voie_etab.errors?.required }">
+                                <input id="adresse_nom_voie_etab" type="text" placeholder="Nom de la voie" formControlName="adresse_nom_voie_etab" required />
+                                <label for="adresse_nom_voie_etab">Nom de la voie Etab</label>
+                                <span class="error" *ngIf="f.adresse_nom_voie_etab.invalid && f.adresse_nom_voie_etab.touched">
+                                    Nom de voie n'est pas valide </span>
+                                <span class="error" *ngIf="NewFileSubmitted && f.adresse_nom_voie_etab.errors?.required"> Nom
+                                    de voie est obligatoire </span>
+                            </div>
+                        </div>
+                        <div class="grid-blc">
+                            <div class="has-float-label">
+                                <input id="adresse_complement_etab" type="text" placeholder="Complément adresse" formControlName="adresse_complement_etab" required/>
+                                <label for="adresse_complement_etab">Complément adresse Etab</label>
+
+
+                            </div>
+                        </div>
+                        <div class="grid-blc">
+                            <div class="has-float-label" [ngClass]="{ 'is-invalid': f.adresse_code_postal_etab.invalid && f.adresse_code_postal_etab.touched || NewFileSubmitted && f.adresse_code_postal_etab.errors?.required }">
+                                <input id="adresse_code_postal_etab" type="text" min="0" placeholder="Code postal" formControlName="adresse_code_postal_etab" required />
+                                <label for="adresse_code_postal_etab">Code postal Etab</label>
+                                <span class="error" *ngIf="f.adresse_code_postal_etab.invalid && f.adresse_code_postal_etab.touched"> Code postal
+                                    n'est pas valide </span>
+                                <span class="error" *ngIf="NewFileSubmitted && f.adresse_code_postal_etab.errors?.required">
+                                    Code postal est obligatoire </span>
+                            </div>
+                        </div>
+                        <div class="grid-blc">
+                            <div class="has-float-label" [ngClass]="{ 'is-invalid': f.adresse_ville_etab.invalid && f.adresse_ville_etab.touched || NewFileSubmitted && f.adresse_ville_etab.errors?.required}">
+                                <input id="adresse_ville_etab" type="text" placeholder="adresse_ville_etab" formControlName="adresse_ville_etab" required />
+                                <label for="adresse_ville_etab">Ville Etab</label>
+                                <span class="error" *ngIf="f.adresse_ville_etab.invalid && f.adresse_ville_etab.touched"> Ville
+                                    n'est pas valide </span>
+                                <span class="error" *ngIf="NewFileSubmitted && f.adresse_ville_etab.errors?.required"> Ville
+                                    est obligatoire </span>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <!--.grid-->
+                </form>
+            </div>
+            <!--.form-area-->
+        </div>
+        <span class="error" *ngIf="message">{{message}}</span>
+        <ng-template pTemplate="footer">
+            <p-button icon="pi" (click)="cancel()" label="Annuler" styleClass="p-button-text">
+            </p-button>
+            <p-button icon="pi" label="{{button}}" (click)="submit()" styleClass="p-button-text btn-havelock-blue" [ngClass]="getClass()">
+            </p-button>
+        </ng-template>
+    </p-dialog>
+</div>
+<!--.modal-->

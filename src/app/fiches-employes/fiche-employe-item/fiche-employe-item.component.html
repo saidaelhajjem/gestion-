@@ -1,0 +1,236 @@
+<div class="fiche-employe-item-area">
+
+    <div class="information-grid-area">
+        <div class="grid info-gct-1 info-gg-1">
+            <div class="grid-blc">
+                <div class="information-title">
+                    Nom
+                </div>
+                <!--.information-title-->
+                <div class="information-desc">
+                    {{employeInfo?.nom}}
+                </div>
+                <!--.information-desc-->
+            </div>
+            <div class="grid-blc">
+                <div class="information-title">
+                    Prénom
+                </div>
+                <!--.information-title-->
+                <div class="information-desc">
+                    {{employeInfo?.prenom}}
+                </div>
+                <!--.information-desc-->
+            </div>
+            <div class="grid-blc">
+                <div class="information-title">
+                    Date de naissance
+                </div>
+                <!--.information-title-->
+                <div class="information-desc">
+                    {{employeInfo?.date_naissance}}
+                </div>
+                <!--.information-desc-->
+            </div>
+            <div class="grid-blc">
+                <div class="information-title">
+                    Lieu de naissance
+                </div>
+                <!--.information-title-->
+                <div class="information-desc">
+                    {{employeInfo?.lieu_naissance}}
+                </div>
+                <!--.information-desc-->
+            </div>
+            <div class="grid-blc">
+                <div class="information-title">
+                    Nationalité
+                </div>
+                <!--.information-title-->
+                <div class="information-desc">
+                    Français
+                </div>
+                <!--.information-desc-->
+            </div>
+            <div class="grid-blc">
+                <div class="information-title">
+                    N° de voie
+                </div>
+                <!--.information-title-->
+                <div class="information-desc">
+                    {{employeInfo?.adresse_num_voie}}
+                </div>
+                <!--.information-desc-->
+            </div>
+            <div class="grid-blc">
+                <div class="information-title">
+                    Type de voie
+                </div>
+                <!--.information-title-->
+                <div class="information-desc">
+                    {{employeInfo?.adresse_type_voie}}
+                </div>
+                <!--.information-desc-->
+            </div>
+            <div class="grid-blc">
+                <div class="information-title">
+                    Nom de la voie
+                </div>
+                <!--.information-title-->
+                <div class="information-desc">
+                    {{employeInfo?.adresse_nom_voie}}
+                </div>
+                <!--.information-desc-->
+            </div>
+            <div class="grid-blc">
+                <div class="information-title">
+                    Code postal
+                </div>
+                <!--.information-title-->
+                <div class="information-desc">
+                    {{employeInfo?.adresse_nom_voie}}
+                </div>
+                <!--.information-desc-->
+            </div>
+            <div class="grid-blc">
+                <div class="information-title">
+                    Ville
+                </div>
+                <!--.information-title-->
+                <div class="information-desc">
+                    {{employeInfo?.adresse_ville}}
+                </div>
+                <!--.information-desc-->
+            </div>
+        </div>
+        <!--.grid-->
+        <div class="grid info-gct-5 info-gcg-1 info-mr-1">
+            <div class="grid-blc">
+                <div class="information-title">
+                    Poste
+                </div>
+                <!--.information-title-->
+                <div class="information-desc">
+                    {{employeInfo?.poste}}
+                </div>
+                <!--.information-desc-->
+            </div>
+            <div class="grid-blc">
+                <div class="information-title">
+                    Date d’embauche
+                </div>
+                <!--.information-title-->
+                <div class="information-desc">
+
+                </div>
+                <!--.information-desc-->
+            </div>
+            <div class="grid-blc">
+                <div class="information-title p-text-center">
+                    Compétence
+                </div>
+                <!--.information-title-->
+                <div class="information-desc">
+                    <span class="competence competence-two">4</span>
+                </div>
+                <!--.information-desc-->
+            </div>
+            <div class="grid-blc">
+                <div class="information-title">
+                    Numéro de sécurité sociale
+                </div>
+                <!--.information-title-->
+                <div class="information-desc">
+                    {{employeInfo?.num_securite_sociale}}
+                </div>
+                <!--.information-desc-->
+            </div>
+        </div>
+        <!--.grid-->
+    </div>
+    <div class="table-area">
+        <p-table #dt [value]="listEmployee" [paginator]="false" [rows]="10" [showCurrentPageReport]="true" [rowsPerPageOptions]="[10,25,50]" styleClass="p-datatable-responsive-demo" [globalFilterFields]="['nom','prenom','status','poste','auteur_firstname','auteur_lastname']">
+            <ng-template pTemplate="caption">
+                <div class="p-d-flex p-jc-between p-ai-center">
+                    <div class="p-input-icon-left">
+                        <em class="pi search-icon"></em>
+                        <div class="input-blc style-2">
+                            <input type="text" (input)="dt.filterGlobal($event.target.value, 'contains')" pInputText placeholder="Recherche…" />
+                        </div>
+                    </div>
+                    <a class="link-action"></a>
+                </div>
+            </ng-template>
+            <ng-template pTemplate="header">
+                <tr>
+                    <th id="nom" pSortableColumn="nom">Nom
+                        <p-sortIcon field="nom"></p-sortIcon>
+                    </th>
+                    <th id="type_document" pSortableColumn="prenom">Prénom
+                        <p-sortIcon field="prenom">
+                        </p-sortIcon>
+                    </th>
+                    <th id="date_creation" pSortableColumn="status">Statut
+                        <p-sortIcon field="status">
+                        </p-sortIcon>
+                    </th>
+                    <th id="date_modification" pSortableColumn="poste">Poste
+                        <p-sortIcon field="poste">
+                        </p-sortIcon>
+                    </th>
+                    <th id="auteur" pSortableColumn="avertissementString">Avertissement
+                        <p-sortIcon field="avertissementString">
+                        </p-sortIcon>
+                    </th>
+                    <th id="commentaire" pSortableColumn="created_at">Date de modification
+                        <p-sortIcon field="created_at"></p-sortIcon>
+                    </th>
+                    <th id="actions" pSortableColumn="auteur_firstname" pSortableColumn="auteur_lastname">Auteur
+                        <p-sortIcon field="auteur_firstname" field="auteur_lastname">
+                        </p-sortIcon>
+                    </th>
+                    <th id="actions" pSortableColumn="Actions">Actions
+                        <p-sortIcon field="Actions"></p-sortIcon>
+                    </th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-document>
+                <tr>
+                    <td> {{document.nom}} </td>
+                    <td>{{document.prenom}}</td>
+                    <td>
+                        <div class="p-text-center">
+                            <button [class]="'btn-statut ' + document.className"> {{document.status}} </button>
+                        </div>
+                    </td>
+                    <td> {{document.poste}} </td>
+                    <td>
+                        <span [class]="'avertissement ' + document.avertissementString">{{document.avertissementString}}</span>
+                    </td>
+                    <td>{{document.created_at |date:'MM/dd/yyyy'}} </td>
+                    <td>{{document.auteur_firstname}} {{document.auteur_lastname}}</td>
+                    <td>
+                        <div class="more-link">
+                            <button pButton class="p-panel-header-icon p-link" icon="pi pi-ellipsis-h" (click)="selectedItem = document;menu.toggle($event)">
+                            </button>
+                            <p-menu #menu id="config_menu" [model]="items" [popup]="true"></p-menu>
+                        </div>
+                        <!--.more-link-->
+                    </td>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="emptymessage" let-columns>
+                <tr>
+                    <td colspan="8">
+                        <div class="p-text-center">Aucun employee</div>
+                    </td>
+                </tr>
+            </ng-template>
+        </p-table>
+        <p-paginator [showCurrentPageReport]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [rows]="10" [totalRecords]="totalRecords" [alwaysShow]="true" (onPageChange)="paginate($event)" [rowsPerPageOptions]="[10,25,50]"></p-paginator>
+    </div>
+
+</div>
+<!--.fiche-employe-item-area-->
+
+<app-fiche *ngIf="createNewFileModal" [employee]="emploInfo" Title="{{title}}" button="{{button}}" (modalClosed)="close($event)" [openModal]="createNewFileModal"></app-fiche>

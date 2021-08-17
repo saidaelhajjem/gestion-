@@ -1,0 +1,173 @@
+<div class="etablissement-area-item">
+
+    <div class="information-grid-area">
+        <div class="grid info-gct-1 info-gcg-1">
+            <div class="grid-blc">
+                <div class="information-title">
+                    Raison sociale
+                </div>
+                <!--.information-title-->
+                <div class="information-desc">
+                    {{etablissementInfo?.raison_sociale}}
+                </div>
+                <!--.information-desc-->
+            </div>
+            <div class="grid-blc">
+                <div class="information-title">
+                    Statut
+                </div>
+                <!--.information-title-->
+                <div class="information-desc">
+                    SARL
+                </div>
+                <!--.information-desc-->
+            </div>
+            <div class="grid-blc">
+                <div class="information-title">
+                    Activité principale
+                </div>
+                <!--.information-title-->
+                <div class="information-desc">
+                    62.02A - Conseil en systèmes et logiciels informatiques
+                </div>
+                <!--.information-desc-->
+            </div>
+            <div class="grid-blc">
+                <div class="information-title">
+                    Adresse siège social
+                </div>
+                <!--.information-title-->
+                <div class="information-desc">
+                    {{etablissementInfo?.adresse_nom_voie}} - {{etablissementInfo?.adresse_code_postal}} {{etablissementInfo?.adresse_ville}}
+                </div>
+                <!--.information-desc-->
+            </div>
+        </div>
+        <!--.grid-->
+        <div class="grid info-gct-5 info-gcg-1 info-mr-1">
+            <div class="grid-blc">
+                <div class="information-title">
+                    SIRET
+                </div>
+                <!--.information-title-->
+                <div class="information-desc">
+                    {{etablissementInfo?.siret}}
+                </div>
+                <!--.information-desc-->
+            </div>
+            <div class="grid-blc">
+                <div class="information-title">
+                    nbr. salariés
+                </div>
+                <!--.information-title-->
+                <div class="information-desc">
+                    {{etablissementInfo?.nbre_salaries}}
+                </div>
+                <!--.information-desc-->
+            </div>
+            <div class="grid-blc">
+                <div class="information-title">
+                    Type établissement
+                </div>
+                <!--.information-title-->
+                <div class="information-desc">
+                    {{etablissementInfo?.type_etablissement}}
+                </div>
+                <!--.information-desc-->
+            </div>
+            <div class="grid-blc">
+                <div class="information-title">
+                    Adresse établissement
+                </div>
+                <!--.information-title-->
+                <div class="information-desc">
+                    {{etablissementInfo?.adresse_nom_voie_etab}} - {{etablissementInfo?.adresse_code_postal_etab}} {{etablissementInfo?.adresse_ville_etab}}
+                </div>
+                <!--.information-desc-->
+            </div>
+        </div>
+        <!--.grid-->
+    </div>
+    <!--.information-grid-area-->
+
+    <div class="table-area">
+        <p-table #dt1 [value]="listETablissement" [paginator]="false" [rows]="10" [showCurrentPageReport]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [rowsPerPageOptions]="[10,25,50]" styleClass="p-datatable-responsive-demo"
+            [globalFilterFields]="['prenom_dirigeant','nom_dirigeant','adresse_num_voie','adresse_type_voie','adresse_nom_voie','adresse_code_postal','adresse_ville','nombre_employes','poste_vacant','auteur_firstname','auteur_lastname']">
+            <ng-template pTemplate="caption">
+                <h2 class="mb-1">LIste des Établissements</h2>
+                <div class="p-d-flex p-jc-between p-ai-center">
+                    <div class="p-input-icon-left">
+                        <em class="pi search-icon"></em>
+                        <div class="input-blc style-2">
+                            <input type="text" (input)="dt1.filterGlobal($event.target.value, 'contains')" pInputText placeholder="Recherche…" />
+                        </div>
+                    </div>
+                    <a class="link-action"></a>
+                </div>
+            </ng-template>
+            <ng-template pTemplate="header">
+                <tr>
+                    <th id="nom" pSortableColumn="type_etablissement">Etablissement
+                        <p-sortIcon field="type_etablissement"></p-sortIcon>
+                    </th>
+                    <th id="type_document" pSortableColumn="raison_sociale">Raison Sociale
+                        <p-sortIcon field="raison_sociale">
+                        </p-sortIcon>
+                    </th>
+                    <th id="date_creation" pSortableColumn="siren">Siren
+                        <p-sortIcon field="siren">
+                        </p-sortIcon>
+                    </th>
+                    <th id="date_modification" pSortableColumn="nbre_salaries">Nombre Salaries
+                        <p-sortIcon field="nbre_salaries">
+                        </p-sortIcon>
+                    </th>
+                    <th id="auteur" pSortableColumn="updated_at">Date de modification
+                        <p-sortIcon field="updated_at">
+                        </p-sortIcon>
+                    </th>
+                    <th id="commentaire" pSortableColumn="Auteur">Auteur
+                        <p-sortIcon field="Auteur"></p-sortIcon>
+                    </th>
+                    <th id="actions" pSortableColumn="Actions">Actions
+                        <p-sortIcon field="Actions"></p-sortIcon>
+                    </th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-document>
+                <tr>
+                    <td> {{document.type_etablissement}} </td>
+                    <td>{{document.raison_sociale}}</td>
+                    <td>
+                        {{document.siren}}
+                    </td>
+                    <td>
+                        <span class="number-style center">{{document.nbre_salaries}}</span>
+                    </td>
+                    <td>{{document.updated_at |date:'MM/dd/yyyy'}}</td>
+                    <td>{{document.auteur_firstname}} {{document.auteur_lastname}}</td>
+                    <td>
+                        <div class="more-link">
+                            <button pButton class="p-panel-header-icon p-link" icon="pi pi-ellipsis-h" (click)="selectedItem = document;menu.toggle($event)">
+                            </button>
+                            <p-menu #menu id="config_menu" [model]="items" [popup]="true"></p-menu>
+                        </div>
+                        <!--.more-link-->
+                    </td>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="emptymessage" let-columns>
+                <tr>
+                    <td colspan="7">
+                        <div class="p-text-center">Aucun établissement</div>
+                    </td>
+                </tr>
+            </ng-template>
+        </p-table>
+        <p-paginator [showCurrentPageReport]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [rows]="10" [totalRecords]="totalRecords" [alwaysShow]="true" (onPageChange)="paginate($event)" [rowsPerPageOptions]="[10,25,50]"></p-paginator>
+    </div>
+
+</div>
+
+<app-modal-etablissement *ngIf="isCreateNewEtablissement" Title="{{title}}" button="{{button}}" [employeur]="EtablissementInfo" [openEtablissement]="isCreateNewEtablissement" (closeModalEtablissement)="closeEtablissement($event)"></app-modal-etablissement>
+<!--.etablissement-area-item-->

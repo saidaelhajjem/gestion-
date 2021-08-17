@@ -1,0 +1,21 @@
+<div class="tags-identified">
+    <h4 class="tags-identified_title"> {{allTitle}} </h4>
+    <a class="create-new-employer-link" (click)="createNewFileModalFct()">Créer une nouvelle fiche {{allTitle}}</a>
+    <div class="search-tags-area style-2">
+        <input type="search" [(ngModel)]="searchText" autocomplete="off" placeholder="Recherche…">
+    </div>
+    <div class="tags-identified_list" *ngIf="allTitle=='employeur'">
+        <div class="references-item mr-1 company-icon" *ngFor="let employeur of childEmployeur | filter:searchText">
+            <span class="references-item_txt" (click)="findByIdEmployer(employeur.id)">Société
+                {{employeur.raison_sociale}}</span>
+            <a class="references-item_link" (click)="findByIdEmployer(employeur.id)"></a>
+        </div>
+    </div>
+    <div class="tags-identified_list" *ngIf="allTitle=='employé'">
+        <div class="references-item mr-1 admin-icon" *ngFor="let employe of childEmployeur | filter:searchText">
+            <span class="references-item_txt" (click)="findByIdEmployee(employe.id)">{{employe.prenom}}
+                {{employe.nom}}</span>
+            <a class="references-item_link" (click)="findByIdEmployee(employe.id)"></a>
+        </div>
+    </div>
+</div>

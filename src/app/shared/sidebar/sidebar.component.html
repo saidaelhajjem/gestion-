@@ -1,0 +1,107 @@
+<!--<div class="sidebar-wrapper">
+</div>
+.sidebar-wrapper-->
+<div class="sidebar-area" [ngClass]="status ? '' : 'active'">
+    <div class="sidebar-area_top">
+        <nav>
+            <a class="nav-link" routerLinkActive="nav-link-active" routerLink="home" (click)="homeFilter()">
+                <span class="nav-link-icon home"></span>
+                <span class="nav-link-txt">Tableau de bord</span>
+            </a>
+            <a class="nav-link" routerLinkActive="nav-link-active" routerLink="/projets-en-cours" (click)="projetsFilter()">
+                <span class="nav-link-icon employment-projects"></span>
+                <span class="nav-link-txt">Projets d’emploi</span>
+            </a>
+            <a class="nav-link" routerLinkActive="nav-link-active" routerLink="/gestion-des-modeles" (click)="gestionModelesFilter()">
+                <span class="nav-link-icon templates"></span>
+                <span class="nav-link-txt">Modèles</span>
+            </a>
+            <a class="nav-link" routerLinkActive="nav-link-active" routerLink="/fiches-employes" (click)="fichesEmployesFilter()">
+                <span class="nav-link-icon contacts"></span>
+                <span class="nav-link-txt">contacts</span>
+            </a>
+            <a class="nav-link" routerLinkActive="nav-link-active">
+                <span class="nav-link-icon archives"></span>
+                <span class="nav-link-txt">archives</span>
+            </a>
+        </nav>
+    </div>
+    <!--.sidebar-area_top-->
+    <!-- ///////////////////////////////////////////////////////// -->
+    <!-- ///////////////////////////////////////////////////////// -->
+    <div class="sidebar-area_bottom" (click)="clickEvent()">
+        <em class="pi pi-angle-right"></em>
+    </div>
+    <!--.sidebar-area_bottom-->
+</div>
+<!--.sidebar-area-->
+<!-- /////// sidebar-filter /////////// -->
+<div class="sidebar-filter">
+    <!-- //// sidebar filter //// -->
+    <div class="sidebar-filter-style gestion-des-modeles-filter" [ngClass]="statutFilter ? 'active' : ''">
+        <h3 class="sidebar-filter_title">Filtres</h3>
+        <a (click)="clearFilter()" class="filter-all-link">tous</a>
+        <nav>
+            <h4 class="nav-title">Type de document</h4>
+            <ul class="nav-list">
+                <li (click)="sendFilter('CDD')"><a>CDD</a></li>
+                <li (click)="sendFilter('CDI')"><a>CDI</a></li>
+                <!-- routerLink="/contrat-edit" -->
+                <li (click)="sendFilter('Contrat Extra')"><a>Contrat Extra</a></li>
+                <li (click)="sendFilter('Contrat temporaire')"><a>Contrat temporaire</a></li>
+                <li (click)="sendFilter('STC')"><a>STC</a></li>
+                <li (click)="sendFilter('Lettre')"><a>Lettre</a></li>
+            </ul>
+        </nav>
+    </div>
+    <!--.gestion-des-modeles-filter-->
+    <!-- //// Projets Statut Filter //// -->
+    <div class="sidebar-filter-style gestion-des-modeles-filter" [ngClass]="ProjetsStatutFilter ? 'active' : ''">
+        <h3 class="sidebar-filter_title">Projets</h3>
+        <a (click)="clearFilter()" class="filter-all-link">tous</a>
+        <nav>
+            <h4 class="nav-title">Filtres</h4>
+            <ul class="nav-list filtres-nav-list">
+                <li (click)="choiseFilter('byAdmin')"><a class="icon admin-icon">Crée par l’administrateur</a></li>
+                <li><a class="icon newly-created-icn">Nouvellement crées</a></li>
+                <li><a class="icon expire-prochainement-icn">Expire prochainement</a></li>
+            </ul>
+        </nav>
+        <nav>
+            <h4 class="nav-title">Etats</h4>
+            <ul class="nav-list">
+                <li (click)="sendFilter('Brouillon')"><a class="color-polo-blue">Brouillon</a></li>
+                <li (click)="sendFilter('En cours')"><a class="color-havelock-blue">En cours</a></li>
+                <li (click)="sendFilter('Pour signature')"><a class="color-java-green">Pour signature</a></li>
+                <li (click)="sendFilter('A renouveler')"><a class="color-texas-yellow">A renouveler</a></li>
+                <li (click)="sendFilter('Expiré')"><a class="color-sunset-orange">Expiré</a></li>
+                <li (click)="sendFilter('Archivé')"><a class="color-mystic">Archivé</a></li>
+            </ul>
+        </nav>
+    </div>
+    <!--.gestion-des-modeles-filter-->
+    <!-- //// Fiches Employes Statut Filter //// -->
+    <div class="sidebar-filter-style gestion-des-modeles-filter fiches-employes-filter" [ngClass]="EmployesFilter ? 'active' : ''">
+        <h3 class="sidebar-filter_title">Filtres</h3>
+        <a class="filter-all-link" (click)="sendFilter('all')">tous</a>
+        <nav>
+            <h4 class="nav-title">FICHES</h4>
+            <ul class="nav-list filtres-nav-list">
+                <li><a class="icon employeur-icon" routerLinkActive="nav-link-active" (click)="sendTitle('Employeurs')" routerLink="/fiches-employes/fiche-employeur">Employeur</a></li>
+                <li><a class="icon etablissement-icn" routerLinkActive="nav-link-active" (click)="sendTitle('Établissements')" routerLink="/fiches-employes/etablissement">Établissement</a></li>
+                <li><a class="icon employe-icn" routerLinkActive="nav-link-active" (click)="sendTitle('Employés')" routerLink="/fiches-employes/list-employe">Employé</a></li>
+                <li><a class="icon projet-icn" routerLinkActive="nav-link-active" (click)="sendTitle('Projets')" routerLink="/fiches-employes/projet">Projet</a></li>
+            </ul>
+        </nav>
+        <nav>
+            <h4 class="nav-title">Statut</h4>
+            <ul class="nav-list">
+                <li (click)="sendFilter(true)"><a class="color-java-green">Actif</a></li>
+                <li (click)="sendFilter(false)"><a class="color-polo-blue">Non actif</a></li>
+            </ul>
+        </nav>
+    </div>
+    <!--.gestion-des-modeles-filter-->
+</div>
+<!--.sidebar-filter-->
+<!-- /////// sidebar-filter /////////// -->

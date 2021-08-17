@@ -1,0 +1,18 @@
+.field {
+    display: flex;
+    input {
+        color: #3D5B82;
+        font-size: 12px;
+        line-height: 16px;
+        font-family: "Roboto", sans-serif;
+        font-weight: bold;
+        background-color: #fff;
+        border: 1px solid #E2E8EB;
+        transition: all 0.1s ease-in-out;
+        width: 92px;
+        height: 34px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}

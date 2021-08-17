@@ -1,0 +1,39 @@
+{
+    "data": [{
+            "id": "1",
+            "modele": "contrat",
+            "duree": "durée déterminée",
+            "type": "CDD",
+            "status": "Renouveler",
+            "receiver": "Restaurant A",
+            "temps": "temps partiel",
+            "createdAt": "15-01-2021",
+            "updatedAt": "15-01-2021",
+            "auteur": "Marc Latour"
+        },
+        {
+            "id": "2",
+            "modele": "la DUE",
+            "duree": "durée déterminée",
+            "type": "CDD",
+            "status": "Envoyer",
+            "receiver": "Restaurant B",
+            "temps": "temps partiel",
+            "createdAt": "15-01-2021",
+            "updatedAt": "15-01-2021",
+            "auteur": "Marc Latour"
+        },
+        {
+            "id": "3",
+            "modele": "la DUE",
+            "duree": "durée déterminée",
+            "type": "CDD",
+            "status": "Envoyer",
+            "receiver": "Restaurant A",
+            "temps": "temps partiel",
+            "createdAt": "15-01-2021",
+            "updatedAt": "15-01-2021",
+            "auteur": "Marc Latour"
+        }
+    ]
+}

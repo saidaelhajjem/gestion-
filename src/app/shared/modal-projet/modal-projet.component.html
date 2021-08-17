@@ -1,0 +1,59 @@
+<div class="modal">
+    <p-dialog header="{{title}}" [(visible)]="projectOpen" [modal]="true" [style]="{width: '636px'}" [baseZIndex]="10000" [draggable]="false" (onHide)="cancel()" [resizable]="true">
+        <div class="form-area">
+            <form action="" [formGroup]="projectForm">
+                <div class="form-style">
+                    <label for="">Titre du projet</label>
+                    <div class="p-input-icon-left" [ngClass]="{ 'is-invalid': f.nom.invalid && f.nom.touched  || NewFileSubmitted && f.nom.errors?.required}">
+                        <i class="pi modele-input-icon"></i>
+                        <div class="input-blc">
+                            <input type="text" pInputText placeholder="Saisissez le titre de votre projet…" formControlName="nom" />
+                        </div>
+                    </div>
+                    <span class="error" *ngIf="NewFileSubmitted && f.nom.errors?.required">
+                       nom est obligatoire </span>
+                </div>
+                <!--.form-style-->
+                <div class="form-style">
+                    <label for="">Qui peut accéder au projet ?</label>
+                    <div class="p-input-icon-left">
+                        <i class="pi account_circle"></i>
+                        <div class="select-blc">
+                            <select name="accessible_to_id" id="accessible_to_id" formControlName="accessible_to_id">
+                                <option value="">Seulement moi</option>
+                                <option value="">Option 1</option>
+                                <option value="">Option 2</option>
+                            </select>
+                        </div>
+                    </div>
+                    <!--.p-input-icon-left-->
+                </div>
+                <!--.form-style-->
+                <div class="form-style">
+                    <label for="">Voulez vous utiliser un modèle ?</label>
+                    <div class="p-input-icon-left">
+                        <em class="pi google-docs-dash"></em>
+                        <div class="select-blc">
+                            <select name="modele_id" id="modele_id" formControlName="modele_id">
+                                <option value="">Liste des modèles</option>
+                                <option value="">Option 1</option>
+                                <option value="">Option 2</option>
+                            </select>
+                        </div>
+                    </div>
+                    <!--.p-input-icon-left-->
+                    <div class="form-notif">
+                        <p> Vous pourrez en choisir un plus tard </p>
+                    </div>
+                </div>
+                <!--.form-style-->
+            </form>
+        </div>
+        <!--.form-area-->
+        <ng-template pTemplate="footer">
+            <p-button icon="pi" (click)="cancel()" label="Annuler" styleClass="p-button-text"></p-button>
+            <p-button icon="pi" label="{{button}}" (click)="submit()" styleClass="p-button-text btn-havelock-blue">
+            </p-button>
+        </ng-template>
+    </p-dialog>
+</div>

@@ -1,0 +1,100 @@
+<div class="modal modal-add-references">
+    <p-dialog header="Ajouter une référence" [(visible)]="modalRefernce" [modal]="true" [style]="{width: '636px'}" [baseZIndex]="10000" [draggable]="false" [resizable]="true" (onHide)="cancel()">
+        <div class="add-references-content">
+            <div class="form-area">
+                <form [formGroup]="addReferencesForm">
+                    <div class="form-style">
+                        <label for="">Titre de la référence</label>
+                        <div class="p-input-icon-left">
+                            <em class="pi modele-input-icon"></em>
+                            <div class="input-blc" [ngClass]="{ 'is-invalid': reference.titre.invalid && reference.titre.touched || addReferenceSubmitted && reference.titre.errors?.required }">
+                                <input type="text" pInputText placeholder="Niveau salarial" formControlName="titre" />
+                            </div>
+                        </div>
+                        <!--.p-input-icon-left-->
+                        <span class="error" *ngIf="reference.titre.invalid && reference.titre.touched"> Titre n'est pas
+                            valide </span>
+                        <span class="error" *ngIf="addReferenceSubmitted && reference.titre.errors?.required"> Titre
+                            obligatoir </span>
+                    </div>
+                    <!--.form-style-->
+                    <div class="form-style">
+                        <label for="">Quel est le format de cette référence</label>
+                        <!-- <div class="p-input-icon-left">
+                            <em class="pi format-ref"></em>
+                            <div class="select-blc" [ngClass]="{ 'is-invalid': reference.format_id.invalid && reference.format_id.touched || addReferenceSubmitted && reference.format_id.errors?.required }">
+                                <select name="" id="" formControlName="format_id">
+                                    <option value="">texte</option>
+                                    <option value="">Option 1</option>
+                                    <option value="">Option 2</option>
+                                </select>
+                            </div>
+                        </div> -->
+                        <!--.p-input-icon-left-->
+                        <div class="p-input-icon-left">
+                            <em class="pi smart-tags-associes"></em>
+                            <div class="autoComplete-blc" [ngClass]="{ 'invalid': reference.format_id.invalid && reference.format_id.touched  || addReferenceSubmitted && reference.format_id.errors?.required}">
+                                <p-autoComplete field="libelle" [suggestions]="listReferenceFormat" [dropdown]="true" (completeMethod)="filterFormat($event)" formControlName="format_id">
+
+                                </p-autoComplete>
+                            </div>
+                        </div>
+                        <span class="error" *ngIf="reference.format_id.invalid && reference.format_id.touched"> Format de
+                            cette référence n'est pas valide </span>
+                        <span class="error" *ngIf="addReferenceSubmitted && reference.format_id.errors?.required">
+                            Format de référence obligatoire </span>
+                    </div>
+                    <!--.form-style-->
+                    <div class="form-style">
+                        <label for="">Quelles sont les smart tags associés</label>
+                        <div class="p-input-icon-left">
+                            <em class="pi smart-tags-associes"></em>
+                            <div class="autoComplete-blc" [ngClass]="{ 'invalid': reference.smart_tags.invalid && reference.smart_tags.touched }">
+                                <p-autoComplete field="libelle" [multiple]="true" [suggestions]="listSmartTag" [dropdown]="true" (completeMethod)="filterUser($event)" [unique]="true" dataKey="id" formControlName="smart_tags">
+                                    <!--     <ng-template let-group pTemplate="group">
+                                        <div class="p-d-flex p-ai-center">
+                                            <img src="assets/showcase/images/demo/flag/flag_placeholder.png" [class]="'p-mr-2 flag flag-' + group.libelle" style="width: 20px" alt="description of flag_placeholder.png" />
+                                            <span>{{group.libelle}}</span>
+                                        </div>
+                                    </ng-template> -->
+                                </p-autoComplete>
+                            </div>
+                        </div>
+                        <span class="error" *ngIf="reference.smart_tags.invalid && reference.smart_tags.touched"> les smart tags
+                            associés n'est pas valide </span>
+
+                        <!--.p-input-icon-left-->
+                    </div>
+                    <!--.form-style-->
+                    <div class="form-style">
+                        <label for="">Quelles sont les références associées</label>
+                        <div class="p-input-icon-left">
+                            <em class="pi reference-icn-geyser"></em>
+                            <div class="autoComplete-blc" [ngClass]="{ 'invalid': reference.references_associees.invalid && reference.references_associees.touched }">
+                                <p-autoComplete field="titre" [multiple]="true" [suggestions]="listReference" [dropdown]="true" (completeMethod)="filterReference($event)" [unique]="true" formControlName="references_associees">
+                                    <!--     <ng-template let-group pTemplate="group">
+                                        <div class="p-d-flex p-ai-center">
+                                            <img src="assets/showcase/images/demo/flag/flag_placeholder.png" [class]="'p-mr-2 flag flag-' + group.value" style="width: 20px" alt="description flag of flag_placeholder.png" />
+                                            <span>{{group.label}}</span>
+                                        </div>
+                                    </ng-template> -->
+                                </p-autoComplete>
+                            </div>
+                        </div>
+                        <span class="error" *ngIf="reference.references_associees.invalid && reference.references_associees.touched"> les
+                            références associées n'est pas valide </span>
+
+                    </div>
+                    <!--.form-style-->
+                </form>
+            </div>
+            <!--.form-area-->
+        </div>
+        <!--.add-references-content-->
+        <ng-template pTemplate="footer">
+            <p-button icon="pi" (click)=" cancel()" label="Annuler" styleClass="p-button-text">
+            </p-button>
+            <p-button icon="pi" label="Créer" (click)="addReferencesSubmit()" styleClass="p-button-text btn-havelock-blue"></p-button>
+        </ng-template>
+    </p-dialog>
+</div><!--.modal-add-references-->

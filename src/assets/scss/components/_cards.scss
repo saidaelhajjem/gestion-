@@ -1,0 +1,197 @@
+/* # Cards ::
+------------------------------------*/
+
+::ng-deep {
+    /* -- Box -- */
+    .overview-box {
+        padding: 16px;
+        height: 180px;
+        position: relative;
+        &.blue {
+            background-color: $color-havelock-blue;
+        }
+        &.sunset-orange {
+            background-color: $color-sunset-orange;
+        }
+        &.java-green {
+            background-color: $color-java-green;
+        }
+        &.texas-yellow {
+            background-color: $color-texas-yellow;
+        }
+        .pi-arrow-up {
+            color: $color-white;
+            font-size: 23px;
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            transform: rotate(45deg);
+        }
+        .overview-box_title {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 13px;
+            line-height: 13px;
+            font-family: 'Montserrat', sans-serif;
+            margin: 0 0 25px;
+            text-transform: uppercase;
+            display: inline-block;
+        }
+        .overview-box_desc {
+            color: $color-white;
+            font-size: 12px;
+            line-height: 12px;
+            font-family: 'Montserrat', sans-serif;
+            margin: 0 0 40px;
+            .overview-box_desc-number {
+                display: inline-block;
+                font-size: 48px;
+                line-height: 48px;
+                margin: 0 8px 0 0;
+                font-family: 'Montserrat-Bold', sans-serif;
+            }
+        }
+        .overview-box_link {
+            color: $color-white;
+            font-size: 13px;
+            line-height: 13px;
+            font-family: 'Montserrat', sans-serif;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+    }
+    /* -- Panels -- */
+    .panel-area {
+        .p-panel {
+            box-shadow: 0px 8px 16px #0000000f;
+            .p-panel-header {
+                background-color: $color-polo-blue;
+                height: 60px;
+                .p-panel-title {
+                    color: $color-white;
+                    font-size: 16px;
+                    line-height: 16px;
+                    font-family: 'Montserrat', sans-serif;
+                    text-transform: uppercase;
+                    .p-panel-header-icon {
+                        color: $color-white;
+                    }
+                }
+                .p-panel-header-icon {
+                    color: $color-white;
+                }
+            }
+            .p-panel-content {
+                padding: 0;
+                min-height: 246px;
+            }
+            .panel-list {
+                .panel-list_item {
+                    padding: 1rem;
+                    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+                    /*display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    */
+                    display: grid;
+                    grid-template-columns: 1fr 80px;
+                    grid-column-gap: 10px;
+                    
+                    .panel-list_item-text {
+                        color: $color-bluewood;
+                        font-size: 14px;
+                        line-height: 18px;
+                        font-family: "Montserrat-Medium", sans-serif;
+                        &.alert-style {
+                            position: relative;
+                            &::before {
+                                content: '';
+                                display: inline-block;
+                                width: 8px;
+                                height: 8px;
+                                background-color: $color-jaffa-orange;
+                                margin: 0 8px 0 0;
+                                border-radius: 50%;
+                            }
+                        }
+                    }
+                    time {
+                        display: inline-block;
+                        color: $color-polo-blue;
+                        font-size: 12px;
+                        line-height: 12px;
+                        font-family: 'Montserrat', sans-serif;
+                        text-align: right;
+                        margin: 12px 0 0;
+                    }
+                    .modele-file-icn {
+                        background-image: url('../../img/modele-file-icn.png');
+                        background-size: 16px auto;
+                        background-repeat: no-repeat;
+                        background-position: center;
+                        background-color: transparent;
+                        width: 16px;
+                        height: 20px;
+                        display: inline-block;
+                        border: 0;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+/* # $Mobile ::
+------------------------------------*/
+
+@media (max-width: 1280px) {
+     ::ng-deep {
+        /* -- Panels -- */
+        .panel-area {
+            .p-panel {
+                .p-panel-header {
+                    height: 45px;
+                    .p-panel-title {
+                        font-size: 12px;
+                        line-height: 12px;
+                    }
+                }
+                .panel-list {
+                    .panel-list_item {
+                        .panel-list_item-text {
+                            font-size: 10px;
+                            line-height: 14px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 900px) {
+     ::ng-deep {
+        /* -- Box -- */
+        .overview-box {
+            padding: 10px;
+            height: 160px;
+            .pi-arrow-up {
+                top: 10px;
+                right: 10px;
+            }
+            .overview-box_title {
+                font-size: 11px;
+                line-height: 11px;
+            }
+            .overview-box_desc {
+                margin: 0 0 30px;
+                font-size: 10px;
+                line-height: 10px;
+                .overview-box_desc-number {
+                    font-size: 38px;
+                    line-height: 38px;
+                }
+            }
+        }
+    }
+}

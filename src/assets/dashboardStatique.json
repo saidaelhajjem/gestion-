@@ -1,0 +1,9 @@
+{
+    "data": {
+        "id": 1,
+        "countProgress": 5,
+        "countExpired": 6,
+        "countSignature": 7,
+        "countRenouveled": 8
+    }
+}

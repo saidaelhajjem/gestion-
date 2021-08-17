@@ -1,0 +1,404 @@
+/* # Buttons ::
+------------------------------------*/
+
+::ng-deep {
+    .btns-group {
+        &.two-btns {
+            display: flex;
+            .btn {
+                &:nth-child(1) {
+                    margin: 0 8px 0 0;
+                }
+            }
+        }
+        .btn {
+            &.btn-blue {
+                background-color: $color-havelock-blue;
+                height: 34px;
+                color: $color-white;
+                font-size: 14px;
+                line-height: 14px;
+                font-family: 'Montserrat-Medium', sans-serif;
+                border-radius: 2px;
+                &.blue-style-2 {
+                    background-color: $color-white;
+                    color: $color-havelock-blue;
+                    height: 34px;
+                    border: 2px solid $color-havelock-blue !important;
+                }
+                &.blue-style-3 {
+                    background-color: transparent;
+                    color: $color-polo-blue;
+                    height: 34px;
+                    border: 2px solid $color-polo-blue !important;
+                }
+            }
+            &.btn-java-green {
+                background-color: $color-java-green-2;
+                letter-spacing: 0.42px;
+                border-radius: 2px;
+                height: 34px;
+                color: $color-white;
+                font-size: 14px;
+                line-height: 14px;
+                font-family: 'Roboto', sans-serif;
+                &.style-2 {
+                    background-color: $color-java-green;
+                    min-width: 153px;
+                }
+            }
+            &.btn-link-water {
+                background-color: $color-link-water;
+                letter-spacing: 0.42px;
+                border-radius: 2px;
+                height: 34px;
+                color: $color-polo-blue;
+                font-size: 14px;
+                line-height: 14px;
+                font-family: 'Roboto';
+            }
+            &.btn-polo-blue {
+                background-color: $color-polo-blue-2;
+                border-radius: 2px;
+                height: 34px;
+                letter-spacing: 0.42px;
+                color: $color-white;
+                font-size: 14px;
+                line-height: 14px;
+                font-family: 'Roboto', sans-serif;
+                &.icons {
+                    background-image: url('../../img/svg/create-white.svg'), url('../../img/svg/arrow-down-black.svg');
+                    background-position: 10px center, 92% center;
+                    background-repeat: no-repeat;
+                    background-size: 15px auto, 8px auto;
+                    padding-right: 30px;
+                    padding-left: 35px;
+                }
+            }
+            &.btn-register {
+                background-image: url('../../img/svg/register-icn.svg');
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: 24px auto;
+                background-color: $color-polo-blue;
+                width: 42px;
+                height: 35px;
+                border: 2px solid $color-polo-blue;
+                border-radius: 2px;
+                cursor: pointer;
+            }
+            &.btn-list {
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: 24px auto;
+                background-color: $color-white;
+                width: 42px;
+                height: 35px;
+                border: 2px solid $color-polo-blue;
+                border-radius: 2px;
+                cursor: pointer;
+                &.register-icn {
+                    background-image: url('../../img/svg/register-icn.svg');
+                }
+                &.list-icn {
+                    background-image: url('../../img/svg/list-icn.svg');
+                    transition: all 0.3s;
+                }
+            }
+        }
+        &.two-btns {
+            &.active {
+                .btn-list {
+                    &.list-icn {
+                        background-color: $color-polo-blue;
+                        background-image: url('../../img/svg/list-icn-active.svg');
+                    }
+                }
+            }
+        }
+        .btn-importer {
+            position: relative;
+            margin: 0 8px 0 0;
+            &.bluewood-style {
+                margin: 0;
+                padding: 1.563rem 1rem 1rem;
+            }
+            .label {
+                display: flex;
+                align-items: center;
+                padding: 5px 15px 5px 38px;
+                position: relative;
+                z-index: 0;
+                background-color: transparent;
+                height: 34px;
+                color: $color-white;
+                font-size: 14px;
+                line-height: 14px;
+                font-family: 'Montserrat-Medium', sans-serif;
+                border-radius: 2px;
+                background-image: url('../../img/svg/file-upload-white.svg');
+                background-repeat: no-repeat;
+                background-position: 12px center;
+                background-size: 14px auto;
+                &.havelock-blue {
+                    background-color: $color-havelock-blue;
+                    border: 0;
+                    cursor: pointer;
+                }
+                &.bluewood {
+                    border: 2px solid $color-bluewood;
+                    background-image: none;
+                    padding: 5px;
+                    font-size: 16px;
+                    line-height: 16px;
+                    color: $color-bluewood;
+                    font-family: 'Montserrat-Bold', sans-serif;
+                    text-align: center;
+                    justify-content: center;
+                    width: 100%;
+                    height: 40px;
+                }
+            }
+            .upload-box {
+                display: inline-block;
+                position: absolute;
+                z-index: 1;
+                width: 100%;
+                height: 100%;
+                top: 0;
+                left: 0;
+                opacity: 0;
+                cursor: pointer;
+            }
+            .p-button-icon {
+                &::before {
+                    content: '';
+                    width: 14px;
+                    height: 17px;
+                    display: inline-block;
+                    background-image: url('../../img/svg/file-upload-white.svg');
+                    background-repeat: no-repeat;
+                    background-position: center;
+                    background-size: 14px auto;
+                }
+            }
+        }
+    }
+    .more-link {
+        position: relative;
+        .p-button {
+            background-color: transparent;
+            color: $color-bluewood;
+            padding: 0;
+            &:hover,
+            &:focus,
+            &:active {
+                background-color: transparent;
+                color: $color-bluewood;
+            }
+            .p-button-icon {
+                font-size: 1.25rem;
+            }
+        }
+        .p-menu {
+            top: 22px !important;
+            left: initial !important;
+            right: 0 !important;
+            width: 203px;
+            .p-submenu-header {
+                display: none;
+            }
+            .p-menuitem-link {
+                color: #00000099;
+                font-size: 12px;
+                line-height: 12px;
+                font-family: 'Roboto', sans-serif;
+                height: 35px;
+                padding: 0.75rem;
+            }
+            .menuitem {
+                &:hover {
+                    background-color: #91a9c929;
+                }
+            }
+        }
+        /**/
+        .btn-more {
+            background-image: url('../../img/svg/more.svg');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: 16px auto;
+            background-color: transparent;
+            width: 27px;
+            height: 18px;
+            border: 0;
+            margin: 0 0 0 10px;
+            display: block;
+            cursor: pointer;
+        }
+    }
+    .switch-field {
+        display: flex;
+        input {
+            position: absolute;
+            clip: rect(0, 0, 0, 0);
+            height: 1px;
+            width: 1px;
+            border: 0;
+            overflow: hidden;
+            &:checked+label {
+                background-color: $color-caribbean-green;
+                color: $color-white;
+            }
+        }
+        label {
+            color: $color-east-bay;
+            font-size: 12px;
+            line-height: 16px;
+            font-family: 'Roboto', sans-serif;
+            font-weight: bold;
+            background-color: $color-white;
+            border: 1px solid $color-mystic;
+            transition: all 0.1s ease-in-out;
+            width: 92px;
+            height: 34px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            &:hover {
+                cursor: pointer;
+            }
+            &:first-of-type {
+                border-radius: 4px 0 0 4px;
+            }
+            &:last-of-type {
+                border-radius: 0 4px 4px 0;
+            }
+        }
+    }
+    /* -- btn statut -- */
+    .btn-statut {
+        border: 1px solid $color-dove-gray;
+        color: $color-dove-gray;
+        background-color: $color-white;
+        height: 21px;
+        border-radius: 2px;
+        font-size: 10px;
+        line-height: 13px;
+        font-family: 'Roboto-Bold', sans-serif;
+        text-transform: uppercase;
+        min-width: 100px;
+        &.style-2 {
+            min-width: 120px;
+            height: 32px;
+        }
+        &.style-3 {
+            min-width: 120px;
+            height: 32px;
+            border-radius: 4px;
+        }
+        &.style-4 {
+            min-width: 100px;
+            height: 32px;
+            border-radius: 4px;
+        }
+        &.pour-signature,
+        &.actif,
+        &.true,
+        &.poursignature {
+            color: $color-java-green;
+            border-color: $color-java-green;
+            &[type='date']::-webkit-calendar-picker-indicator {
+                color: $color-java-green;
+            }
+        }
+        &.a-renouveler,
+        &.arenouveler {
+            color: $color-texas-yellow;
+            border-color: $color-texas-yellow;
+        }
+        &.a-renouveler-2 {
+            color: $color-peel-orange;
+            border-color: $color-peel-orange;
+        }
+        &.expire,
+        &.expiré {
+            color: $color-sunset-orange;
+            border-color: $color-sunset-orange;
+        }
+        &.en-cours,
+        &.encours {
+            color: $color-havelock-blue;
+            border-color: $color-havelock-blue;
+        }
+        &.non-actif,
+        &.false {
+            color: $color-polo-blue;
+            border-color: $color-polo-blue;
+        }
+    }
+    /* -- watch link -- */
+    .watch-link {
+        width: 15px;
+        height: 10px;
+        display: inline-block;
+        background-image: url('../../img/svg/eye.svg');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 15px auto;
+        cursor: pointer;
+    }
+    /* -- create link -- */
+    .create-link {
+        width: 16px;
+        height: 16px;
+        display: inline-block;
+        background-image: url('../../img/svg/create.svg');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 16px auto;
+        cursor: pointer;
+    }
+}
+
+
+/* # $Mobile ::
+------------------------------------*/
+
+@media (max-width: 1280px) {
+    ::ng-deep {
+        .btns-group {
+            .btn-importer {
+                .label {
+                    &.bluewood {
+                        font-size: 10px;
+                        line-height: 10px;
+                    }
+                }
+            }
+            .btn {
+                &.btn-java-green {
+                    &.style-2 {
+                        min-width: 120px;
+                        font-size: 12px;
+                        line-height: 12px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 1024px) {
+    ::ng-deep {
+        .btns-group {
+            .btn  {
+                &.btn-polo-blue,
+                &.btn-java-green {
+                    font-size: 12px;
+                    line-height: 12px;
+                }
+            }
+        }
+    }
+}

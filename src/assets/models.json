@@ -1,0 +1,33 @@
+{
+    "data": [{
+            "id": "1",
+            "modele": "contrat",
+            "duree": "durée déterminée",
+            "type": "CDD",
+            "temps": "temps partiel",
+            "createdAt": "15-01-2021",
+            "updatedAt": "15-01-2021",
+            "auteur": "Marc Latour"
+        },
+        {
+            "id": "2",
+            "modele": "contrat",
+            "duree": "durée déterminée",
+            "type": "CDD",
+            "temps": "temps complet",
+            "createdAt": "15-01-2021",
+            "updatedAt": "15-01-2021",
+            "auteur": "Lourant tork"
+        },
+        {
+            "id": "3",
+            "modele": "contrat",
+            "duree": "durée indéterminée",
+            "type": "CDI",
+            "temps": null,
+            "createdAt": "15-01-2021",
+            "updatedAt": "15-01-2021",
+            "auteur": "Farhad Latour"
+        }
+    ]
+}

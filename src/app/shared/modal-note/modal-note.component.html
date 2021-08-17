@@ -1,0 +1,38 @@
+<div class="modal">
+    <p-dialog header="Création de note" [(visible)]="openNote" [modal]="true" [style]="{width: '636px'}" [baseZIndex]="10000" [draggable]="false" [resizable]="true" (onHide)="cancel()">
+        <div class="create-note-content">
+            <div class="form-area">
+                <form [formGroup]="createNoteForm">
+                    <div class="form-style textarea-blc" [ngClass]="{ 'is-invalid': note.commentaire.invalid && note.commentaire.touched || createNoteSubmitted && note.commentaire.errors?.required }">
+                        <label for="">Saisir un commentaire</label>
+                        <textarea formControlName="commentaire"></textarea>
+                        <span class="error" *ngIf="note.commentaire.invalid && note.commentaire.touched"> Commentaire
+                            n'est pas valide </span>
+                        <span class="error" *ngIf="createNoteSubmitted && note.commentaire.errors?.required">
+                            Commentaire est obligatoire </span>
+                    </div>
+                    <!--.form-style-->
+                    <div class="three-state-switch">
+                        <p> Définir son type d’affichage </p>
+                        <div class="switch-field">
+                            <input type="radio" id="radio-four" name="type_affichage" value="infobulle" formControlName="type_affichage" checked />
+                            <label for="radio-four">Infobulle</label>
+                            <input type="radio" id="radio-five" name="type_affichage" value="alerte" formControlName="type_affichage" />
+                            <label for="radio-five">Alerte</label>
+                        </div>
+                        <span class="error" *ngIf="createNoteSubmitted && note.type_affichage.errors?.required">
+                            Veuillez sélectionner l'une ou l'autre des valeurs </span>
+                    </div>
+                    <!--.three-state-switch-->
+                </form>
+            </div>
+            <!--.form-area-->
+        </div>
+        <!--.create-note-content-->
+        <ng-template pTemplate="footer">
+            <p-button icon="pi" (click)="cancel()" label="Annuler" styleClass="p-button-text">
+            </p-button>
+            <p-button icon="pi" label="Ajouter" (click)="createNoteSubmit()" styleClass="p-button-text btn-havelock-blue"></p-button>
+        </ng-template>
+    </p-dialog>
+</div>

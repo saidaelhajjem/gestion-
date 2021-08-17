@@ -1,0 +1,165 @@
+<div class="dashboard-area">
+    <div class="introduction-area p-d-flex p-jc-between">
+        <h1 class="big-title"> Tableau de bord </h1>
+        <div class="btns-group two-btns">
+            <!--    <div class="btn-importer" (click)="importModal()">
+                <span class="label havelock-blue"> Importer un contrat </span>
+            </div> -->
+            <button class="btn btn-blue" pButton pRipple label="Ajouter" (click)="ajouterModele()" icon="pi pi-plus"></button>
+        </div>
+        <!--.btns-group-->
+    </div>
+    <!--.introduction-area-->
+    <div class="dashboard-content">
+        <div class="filter-area">
+            <span class="account_circle"></span>
+            <div class="filter-input-blc input-autocomplete-blc ">
+                <!-- <input placeholder="Filtrer par utilisateur…" /> -->
+                <p-autoComplete placeholder="Filtrer par utilisateur…" [(ngModel)]="selected" [suggestions]="listUser" (completeMethod)="filterUser($event)" field="firstname" [minLength]="1" [dropdown]="true">
+                    <ng-template let-listUser pTemplate="item">
+                        <div>{{listUser.firstname }} {{listUser.lastname }}</div>
+                    </ng-template>
+                </p-autoComplete>
+            </div>
+            <!--  <button class="btn-arrow"><em class="pi pi-angle-down"></em></button> -->
+        </div>
+        <!--.filter-area-->
+        <div class="tabs-area">
+            <p-tabView>
+                <div class="filterBlc">
+                    <button (click)="getDay('-7 days')" class="btn " [class.active]="filterDay === '-7 days'">Une
+                        semaine</button>
+                    <button (click)="getDay('-21 days')" class="btn" [class.active]="filterDay === '-21 days'">3
+                        semaines</button>
+                    <button (click)="getDay('-30 days')" class="btn" [class.active]="filterDay === '-30 days'">1
+                        mois</button>
+                </div>
+                <div class="grid gtc-4 gcg-1 gmb-1">
+                    <div class="grid-blc">
+                        <div class="overview-box blue">
+                            <em class="pi pi-arrow-up"></em>
+                            <span class="overview-box_title">en cours</span>
+                            <div class="overview-box_desc">
+                                <span class="overview-box_desc-number">{{listStatique?.en_cours}}</span> Documents
+                            </div>
+                            <!--.overview-box_desc-->
+                            <a class="overview-box_link">Voir les contrats</a>
+                        </div>
+                        <!--.overview-box-->
+                    </div>
+                    <div class="grid-blc">
+                        <div class="overview-box sunset-orange">
+                            <em class="pi pi-arrow-up"></em>
+                            <span class="overview-box_title">expiré</span>
+                            <div class="overview-box_desc">
+                                <span class="overview-box_desc-number">{{listStatique?.expire}}</span> Documents
+                            </div>
+                            <!--.overview-box_desc-->
+                            <a class="overview-box_link">Voir les contrats</a>
+                        </div>
+                        <!--.overview-box-->
+                    </div>
+                    <div class="grid-blc">
+                        <div class="overview-box java-green">
+                            <em class="pi pi-arrow-up"></em>
+                            <span class="overview-box_title">pour signature</span>
+                            <div class="overview-box_desc">
+                                <span class="overview-box_desc-number">{{listStatique?.pour_signature}}</span> Documents
+                            </div>
+                            <!--.overview-box_desc-->
+                            <a class="overview-box_link">Voir les contrats</a>
+                        </div>
+                        <!--.overview-box-->
+                    </div>
+                    <div class="grid-blc">
+                        <div class="overview-box texas-yellow">
+                            <em class="pi pi-arrow-up"></em>
+                            <span class="overview-box_title">a renouveler</span>
+                            <div class="overview-box_desc">
+                                <span class="overview-box_desc-number">{{listStatique?.a_renouvler}}</span> Documents
+                            </div>
+                            <!--.overview-box_desc-->
+                            <a class="overview-box_link">Voir les contrats</a>
+                        </div>
+                        <!--.overview-box-->
+                    </div>
+                </div>
+                <!--.grid-->
+                <div class="grid gtc-3 gcg-2">
+                    <div class="grid-blc">
+                        <div class="panel-area">
+                            <p-panel header="Alertes">
+                                <ng-template pTemplate="icons">
+                                    <button pButton class="p-panel-header-icon p-link" icon="pi pi-ellipsis-h" (click)="menu.toggle($event)">
+                                    </button>
+                                    <p-menu #menu id="config_menu" [model]="item" [popup]="true" appendToBody="true"></p-menu>
+                                </ng-template>
+                                <div class="panel-list">
+                                    <div class="panel-list_item" *ngFor="let notif of notifications">
+                                        <div class="panel-list_item-text alert-style"> {{notif.status}} {{notif.modele}} de {{notif.auteur}} - {{notif.receiver}} </div>
+                                        <time>{{notif.createdAt}}</time>
+                                    </div>
+                                </div>
+                                <!--.panel-list-->
+                            </p-panel>
+                        </div>
+                        <!--.panel-area-->
+                    </div>
+                    <div class="grid-blc">
+                        <div class="panel-area">
+                            <p-panel header="Modèles">
+                                <ng-template pTemplate="icons">
+                                    <button pButton class="p-panel-header-icon p-link" icon="pi pi-ellipsis-h" (click)="menu.toggle($event)">
+                                    </button>
+                                    <p-menu #menu id="config_menu" [model]="item" [popup]="true"></p-menu>
+                                </ng-template>
+                                <div class="panel-list">
+                                    <div class="panel-list_item" *ngFor="let modele of listModele">
+                                        <div class="panel-list_item-text"> {{modele.nom}} </div>
+                                        <button class="modele-file-icn"></button>
+                                    </div>
+                                </div>
+                                <!--.panel-list-->
+                                <div class="btns-group">
+                                    <div class="btn-importer bluewood-style" (click)="ajouterModele()">
+                                        <span class="label bluewood"> Importer un nouveau modèle </span>
+                                        <!-- 
+                                        <input type="file" name="upload" class="upload-box" placeholder="Upload File"> -->
+                                    </div>
+                                </div>
+                                <!--.btns-group-->
+                            </p-panel>
+                        </div>
+                        <!--.panel-area-->
+                    </div>
+                    <div class="grid-blc">
+                        <div class="panel-area">
+                            <p-panel header="Derniers documents vus">
+                                <ng-template pTemplate="icons">
+                                    <button pButton class="p-panel-header-icon p-link" icon="pi pi-ellipsis-h" (click)="menu.toggle($event)">
+                                    </button>
+                                    <p-menu #menu id="config_menu" [model]="item" [popup]="true"></p-menu>
+                                </ng-template>
+                                <div class="panel-list">
+                                    <div class="panel-list_item" *ngFor="let document of listDocument">
+                                        <div class="panel-list_item-text"> {{document.modele_nom}} - {{document.project_nom}} -{{document.employe_prenom}} {{document.employe_nom}} </div>
+                                        <button class="modele-file-icn"></button>
+                                    </div>
+                                </div>
+                                <!--.panel-list-->
+                            </p-panel>
+                        </div>
+                        <!--.panel-area-->
+                    </div>
+                </div>
+                <!--.grid-->
+                <!--  header="3 semaines" header="1 mois" -->
+            </p-tabView>
+        </div>
+        <!--.tabs-area-->
+    </div>
+    <!--.dashboard-content-->
+    <app-import-modal (closeModal)="close()" *ngIf="importDisplayModal"></app-import-modal>
+    <app-modal-modele [modeleOpen]="displayModal" [redirectTo]="direction" (closeModal)="closeModal($event)"></app-modal-modele>
+</div>
+<!--.dashboard-area-->

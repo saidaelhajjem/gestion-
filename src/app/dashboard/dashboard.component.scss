@@ -1,0 +1,82 @@
+/* # Dashboard ::
+------------------------------------*/
+
+.filterBlc {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 18px;
+    .btn {
+        background-color: transparent;
+        border: none;
+        margin: 0;
+        padding: 0;
+        font-size: 16px;
+        line-height: 19px;
+        font-family: 'Montserrat-Medium', sans-serif;
+        color: #91A9C9;
+        cursor: pointer;
+        &:not(:last-child) {
+            margin: 0 30px 0 0;
+        }
+    }
+    .btn:active,
+    .btn.active,
+    .btn:focus {
+        border-bottom: 2px solid #3f51b5;
+        color: #3d5b82;
+    }
+}
+
+::ng-deep .p-autocomplete {
+    .p-button {
+        color: #607d8b;
+        background: transparent;
+    }
+    .p-button:enabled:hover {
+        background-color: transparent;
+        color: #607d8b;
+    }
+    .p-inputtext:enabled:focus {
+        box-shadow: none;
+    }
+    .p-autocomplete-dd {
+        height: 30px !important;
+    }
+    input {
+        font-size: 14px;
+    }
+}
+
+::ng-deep {
+    span {
+        &.p-autocomplete {
+            &.p-component {
+                &.p-autocomplete-dd {
+                    height: 30px !important;
+                }
+            }
+        }
+    }
+}
+
+/* # $Mobile ::
+------------------------------------*/
+
+@media (max-width: 680px) {
+    .filterBlc {
+        justify-content: center;
+        .btn {
+            font-size: 12px;
+            line-height: 16px;
+            &:not(:last-child) {
+                margin: 0 15px 0 0;
+            }
+        }
+    }
+}
+/*
+.tabs-area {
+    .p-tabview-panels {
+        
+    }
+}*/

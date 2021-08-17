@@ -1,0 +1,406 @@
+/* # Buttons ::
+------------------------------------*/
+
+::ng-deep {
+
+    .accordion-area {
+        .p-accordion {
+            .p-accordion-tab {
+                box-shadow: none;
+                margin-bottom: 17px;
+                .p-accordion-header {
+                    .p-accordion-header-link {
+                        height: 63px;
+                        padding: 1.5rem 1.5rem 1.5rem 3rem;
+                        position: relative;
+
+                        &:hover,
+                        &:focus {
+                            background-color: $color-white;
+                        }
+                        .p-accordion-toggle-icon {
+                            position: absolute;
+                            left: 20px;
+                            font-size: .8rem;
+                        }
+                        .p-accordion-header-text {
+                            color: $color-polo-blue;
+                            font-family: 'Roboto-Bold', sans-serif;
+                            font-size: 16px;
+                            line-height: 16px;
+                        }
+                        .accordion_add-btn-blc {
+                            display: flex;
+                            align-items: center;
+                            .doc-counter {
+                                color: $color-polo-blue;
+                                font-size: 12px;
+                                line-height: 16px;
+                                font-family: 'Roboto-Medium', sans-serif;
+                                display: inline-block;
+                                margin: 0 16px 0 0;
+                            }
+                        }
+                        p-header {
+                            width: 100%;
+                            display: flex;
+                            justify-content: space-between;
+                            align-items: center;
+                        }
+                    }
+                }
+                .p-accordion-content {
+                    padding: 0;
+                    .accordion-body {
+                        padding: 14px 15px 16px 50px;
+                        min-height: 150px;
+                        .accordion-body_title {
+                            color: $color-east-bay;
+                            font-size: 13px;
+                            line-height: 18px;
+                            font-family: 'Roboto', sans-serif;
+                            margin: 0 0 8px;
+                        }
+                        .accordion-form-grid {
+                            margin: 0 0 27px;
+                        }
+                        .accordion-form_title-blc {
+                            margin: 0 0 18px;
+                        }
+                        .accordion-form_title {
+                            color: $color-east-bay;
+                            font-size: 13px;
+                            line-height: 18px;
+                            font-family: 'Roboto-Medium';
+                            margin: 0;
+                        }
+                        .docs-edit-list {
+                            .docs-edit-list_item {
+                                padding: 9px 0;
+                                &:not(:last-child) {
+                                    border-bottom: 1px solid $color-mercury;
+                                }
+                            }
+                        }
+                        .contrat-type-blc {
+                            display: flex;
+                            justify-content: flex-start;
+                            align-items: center;
+                            margin: 0 0 0 -30px;
+                            .contrat-type_text {
+                                color: $color-east-bay;
+                                font-size: 14px;
+                                line-height: 14px;
+                                font-family: 'Roboto-Medium', sans-serif;
+                                padding: 3px 0 3px 32px;
+                                margin: 0 8px 0 0;
+                                background-image: url('../../img/svg/insert-drive.svg');
+                                background-repeat: no-repeat;
+                                background-size: 24px auto;
+                                background-position: left center;
+                            }
+                            .contrat-type_edit {
+                                color: $color-havelock-blue;
+                                font-size: 12px;
+                                line-height: 12px;
+                                font-family: 'Roboto', sans-serif;
+                                background-image: url('../../img/svg/create.svg');
+                                background-repeat: no-repeat;
+                                background-size: 16px auto;
+                                background-position: left center;
+                                display: flex;
+                                align-items: center;
+                                padding: 0;
+                            }
+                        }
+                        .action-name {
+                            color: $color-bluewood;
+                            font-size: 13px;
+                            line-height: 13px;
+                            font-family: 'Roboto', sans-serif;
+                            margin: 0;
+                        }
+                        .modele-description {
+                            color: $color-bluewood;
+                            font-size: 13px;
+                            line-height: 13px;
+                            font-family: 'Roboto-Medium', sans-serif;
+                            margin: 0;
+                        }
+                    }
+                }
+                &.p-accordion-tab-active {
+                    .p-accordion-header {
+                        .p-accordion-header-link {
+                            background-color: rgba(145, 169, 201, 0.6);
+                            .p-accordion-header-text {
+                                color: $color-white;
+                            }
+                            .accordion_add-btn-blc {
+                                .doc-counter {
+                                    color: $color-white;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .big-accordion-area {
+
+        .p-accordion {
+            .p-accordion-tab {
+                &.p-accordion-tab-active {
+                    .p-accordion-header {
+                        .p-accordion-header-link {
+                            background-color: $color-havelock-blue;
+                        }
+                    }
+                }
+            }
+        }
+
+        /* -- sub-accordion area -- */
+        .sub-accordion-area {
+            padding: 20px 16px;
+            background-color: $color-zumthor;
+            border: 1px solid $color-havelock-blue;
+
+            .p-accordion {
+                .p-accordion-tab {
+                    .p-accordion-header {
+                        .p-accordion-header-link {
+                            background-color: $color-white;
+                            .p-accordion-header-text {
+                                color: $color-polo-blue;
+                            }
+                            .accordion_add-btn-blc {
+                                .doc-counter {
+                                    color: $color-polo-blue;
+                                }
+                            }
+                        }
+                    }
+                    &.p-accordion-tab-active {
+                        .p-accordion-header {
+                            .p-accordion-header-link {
+                                background-color: rgba(145, 169, 201, 0.6);
+                                .p-accordion-header-text {
+                                    color: $color-white;
+                                }
+                                .accordion_add-btn-blc {
+                                    .doc-counter {
+                                        color: $color-white;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .btns-group {
+            &.p-jc-end {
+                margin: 40px 0 0;
+            }
+        }
+    }
+
+    .questions-list {
+        margin: 0 0 15px;
+        .questions-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px;
+            border-left: 2px solid transparent;
+            transition: all 0.3s;
+            .questions-item_txt {
+                color: $color-bluewood;
+                font-size: 13px;
+                line-height: 18px;
+                font-family: 'Roboto', sans-serif;
+                margin: 0;
+                padding: 2px 0 2px 26px;
+                background-repeat: no-repeat;
+                background-position: left center;
+                &.drag {
+                    background-image: url('../../img/svg/drag.svg');
+                    background-size: 22px auto;
+                }
+                &.point {
+                    display: flex;
+                    align-items: center;
+                    padding: 2px 0;
+                    &::before {
+                        content: '';
+                        display: inline-block;
+                        width: 4px;
+                        height: 4px;
+                        background-color: $color-hit-gray;
+                        border-radius: 50%;
+                        margin: 0 4px 0 0;
+                    }
+                }
+                &.checked {
+                    &::after {
+                        content: '';
+                        background-image: url('../../img/svg/checked-green.svg');
+                        background-size: 22px auto;
+                        background-repeat: no-repeat;
+                        background-position: left center;
+                        width: 23px;
+                        height: 18px;
+                        display: inline-block;
+                        margin: 0 0 0 30px;
+                    }
+
+
+                }
+
+
+            }
+
+            .more-link,
+            .watch-link {
+                visibility: hidden;
+            }
+            &:hover {
+                background-color: $color-link-water;
+                border-color: $color-texas-yellow;
+                .more-link,
+                .watch-link {
+                    visibility: visible;
+                }
+            }
+        }
+    }
+}
+
+
+/* # $Mobile ::
+------------------------------------*/
+@media (max-width: 1200px) {
+    ::ng-deep {
+        .accordion-area {
+            .p-accordion {
+                .p-accordion-tab {
+                    .p-accordion-content {
+                        .accordion-body {
+                            padding: 15px;
+                            .contrat-type-blc {
+                                margin: 0;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+@media (max-width: 767px) {
+     ::ng-deep {
+        .accordion-area {
+            .p-accordion {
+                .p-accordion-tab {
+                    .p-accordion-header {
+                        .p-accordion-header-link {
+                            padding: 1rem .5rem 1rem 1.5rem;
+                            .accordion_add-btn-blc {
+                                .doc-counter {
+                                    font-size: 10px;
+                                    line-height: 10px;
+                                    margin: 0 10px 0 0;
+                                }
+                                .btn {
+                                    font-size: 10px;
+                                    line-height: 10px;
+                                    .p-button-icon {
+                                        font-size: .7rem;
+                                    }
+                                }
+                            }
+                            .p-accordion-header-text {
+                                font-size: 11px;
+                                line-height: 11px;
+                            }
+                            .p-accordion-toggle-icon {
+                                left: 5px;
+                                font-size: 0.7rem;
+                            }
+                        }
+                    }
+                    .p-accordion-content {
+                        .accordion-body {
+                            .docs-edit-list {
+                                .docs-edit-list_item {
+                                    grid-template-columns: 120px 1fr 50px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .big-accordion-area {
+            .btns-group {
+                &.p-jc-end {
+                    margin: 25px 0 0;
+                }
+            }
+            .sub-accordion-area {
+                padding: 10px;
+            }
+        }
+    }
+}
+
+@media (max-width: 560px) {
+     ::ng-deep {
+        .accordion-area {
+            .p-accordion {
+                p-accordiontab {
+                    &:nth-child(1) {
+                        .p-accordion-tab {
+                            .p-accordion-content {
+                                .accordion-body {
+                                    .docs-edit-list {
+                                        .docs-edit-list_item {
+                                            &:nth-child(3),
+                                            &:nth-child(4),
+                                            &:nth-child(5) {
+                                                display: block;
+                                                position: relative;
+                                                .action-name {
+                                                    margin: 0 0 15px;
+                                                }
+                                                .grid-blc {
+                                                    &:nth-child(3) {
+                                                        position: absolute;
+                                                        top: 8px;
+                                                        right: 0;
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    &:nth-child(2) {
+                        .p-accordion-tab {
+                            .p-accordion-content {
+                                .accordion-body {
+                                    padding: 15px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

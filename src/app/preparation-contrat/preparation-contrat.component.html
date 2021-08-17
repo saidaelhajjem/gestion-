@@ -1,0 +1,392 @@
+<div class="preparation-contrat-area">
+    <div class="introduction-area p-d-flex p-jc-between">
+        <h1 class="big-title"> Questions : Cuisinier - Restaurant A </h1>
+    </div>
+    <!--.introduction-area-->
+    <div class="steps-area">
+        <div class="steps-header">
+            <h2 class="steps-header_title">Contrat de travail à durée déterminée - temps partiel</h2>
+            <div class="steps-progress-bar step-1"></div>
+            <!--.steps-progress-bar-->
+        </div>
+        <!--.steps-header-->
+        <div class="steps-body">
+            <div class="sections step-section-area">
+                <div class="section step-section_step-1 active ">
+                    <h3 class="step-section_title">Identités des parties</h3>
+                    <form [formGroup]="employeurForm">
+                        <div class="step-form-area">
+                            <div class="step-form_title-blc p-d-flex">
+                                <h2 class="step-form_title">Employeur</h2>
+                                <div class="more-link">
+                                    <button pButton class="p-panel-header-icon p-link" icon="pi pi-ellipsis-h" (click)="modeEmployeur.toggle($event)">
+                                    </button>
+                                    <p-menu #modeEmployeur id="config_menu" [model]="items" [popup]="true"></p-menu>
+                                </div>
+                                <!--.more-link-->
+                            </div>
+                            <!--.accordion-form_title-blc-->
+                            <div class="step-form-grid grid accordion-form-grid-1 gg-2">
+                                <div class="grid-blc">
+                                    <div class="has-float-label">
+                                        <input id="RaisonSocialeEmp" type="text" placeholder="Raison sociale" formControlName="raison_sociale" required />
+                                        <label for="RaisonSocialeEmp">Raison sociale</label>
+                                    </div>
+                                </div>
+                                <div class="grid-blc">
+                                    <div class="has-float-label">
+                                        <input id="SIREn" type="number" placeholder="0000" formControlName="siren" required />
+                                        <label for="SIREn">SIREn</label>
+                                    </div>
+                                </div>
+                                <div class="grid-blc">
+                                    <div class="has-float-label">
+                                        <input id="NomDirigeantEmp" type="text" placeholder="Nom du dirigeant" formControlName="nom_dirigeant" required />
+                                        <label for="NomDirigeantEmp">Nom du dirigeant</label>
+                                    </div>
+                                </div>
+                                <div class="grid-blc">
+                                    <div class="has-float-label">
+                                        <input id="PrenomDirigeantEmp" type="text" placeholder="Prénom du dirigeant" formControlName="prenom_dirigeant" required />
+                                        <label for="PrenomDirigeantEmp">Prénom du dirigeant</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--.step-form-grid-->
+                            <div class="step-form-grid grid accordion-form-grid-2 gg-2">
+                                <div class="grid-blc">
+                                    <div class="has-float-label">
+                                        <input id="NVoieEmp" type="text" placeholder="000" formControlName="adresse_num_voie" required />
+                                        <label for="NVoieEmp">N° de voie</label>
+                                    </div>
+                                </div>
+                                <div class="grid-blc">
+                                    <div class="has-float-label">
+                                        <input id="TypeVoieEmp" type="text" placeholder="Type de voie" formControlName="adresse_type_voie" required />
+                                        <label for="TypeVoieEmp">Type de voie</label>
+                                    </div>
+                                </div>
+                                <div class="grid-blc">
+                                    <div class="has-float-label">
+                                        <input id="NomVoieEmp" type="text" placeholder="Nom de la voie" formControlName="adresse_nom_voie" required />
+                                        <label for="NomVoieEmp">Nom de la voie</label>
+                                    </div>
+                                </div>
+                                <div class="grid-blc">
+                                    <div class="has-float-label">
+                                        <input id="ComplementAdresseEmp" type="text" placeholder="-" formControlName="adresse_complement" required />
+                                        <label for="ComplementAdresseEmp">Complément adresse</label>
+                                    </div>
+                                </div>
+                                <div class="grid-blc">
+                                    <div class="has-float-label">
+                                        <input id="CodePostalEmp" type="text" placeholder="00000" formControlName="adresse_code_postal" required />
+                                        <label for="CodePostalEmp">Code postal</label>
+                                    </div>
+                                </div>
+                                <div class="grid-blc">
+                                    <div class="has-float-label">
+                                        <input id="VilleEmp" type="text" placeholder="Ville" formControlName="adresse_ville" required />
+                                        <label for="VilleEmp">Ville</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--.step-form-grid-->
+                        </div>
+                    </form>
+                    <!--.step-form-area-->
+                    <form [formGroup]="employeeForm">
+                        <div class="step-form-area">
+                            <div class="step-form_title-blc p-d-flex">
+                                <h2 class="step-form_title">Employé</h2>
+                                <div class="more-link">
+                                    <button pButton class="p-panel-header-icon p-link" icon="pi pi-ellipsis-h" (click)="modeEmploye.toggle($event)">
+                                    </button>
+                                    <p-menu #modeEmploye id="config_menu" [model]="itemEmploye" [popup]="true"></p-menu>
+                                </div>
+                                <!--.more-link-->
+                            </div>
+                            <!--.accordion-form_title-blc-->
+                            <div class="step-form-grid grid accordion-form-grid-3 gg-2">
+                                <div class="grid-blc">
+                                    <div class="has-float-label">
+                                        <input id="Nom" type="text" placeholder="Nom" formControlName="nom" required />
+                                        <label for="Nom">Nom</label>
+                                    </div>
+                                </div>
+                                <div class="grid-blc">
+                                    <div class="has-float-label">
+                                        <input id="Prenom" type="text" placeholder="Prénom" formControlName="prenom" required />
+                                        <label for="Prenom">Prénom</label>
+                                    </div>
+                                </div>
+                                <div class="grid-blc">
+                                    <div class="has-float-label">
+                                        <input id="DateNaissance" type="date" placeholder="Date de naissance" formControlName="date_naissance" required />
+                                        <label for="DateNaissance">Date de naissance</label>
+                                    </div>
+                                </div>
+                                <div class="grid-blc">
+                                    <div class="has-float-label">
+                                        <input id="LieuNaissance" type="text" placeholder="Lieu de naissance" formControlName="lieu_naissance" required />
+                                        <label for="LieuNaissance">Lieu de naissance</label>
+                                    </div>
+                                </div>
+                                <div class="grid-blc">
+                                    <div class="has-float-label">
+                                        <input id="NumeroSecuriteSociale" type="text" placeholder="000" formControlName="num_securite_sociale" required />
+                                        <label for="NumeroSecuriteSociale">Numéro de sécurité sociale</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--.step-form-grid-->
+                            <div class="step-form-grid grid accordion-form-grid-2 gg-2">
+                                <div class="grid-blc">
+                                    <div class="has-float-label">
+                                        <input id="NVoie" type="text" placeholder="000" formControlName="adresse_num_voie" required />
+                                        <label for="NVoie">N° de voie</label>
+                                    </div>
+                                </div>
+                                <div class="grid-blc">
+                                    <div class="has-float-label">
+                                        <input id="TypeVoie" type="text" placeholder="Type de voie" formControlName="adresse_type_voie" required />
+                                        <label for="TypeVoie">Type de voie</label>
+                                    </div>
+                                </div>
+                                <div class="grid-blc">
+                                    <div class="has-float-label">
+                                        <input id="NomVoie" type="text" placeholder="Nom de la voie" formControlName="adresse_nom_voie" required />
+                                        <label for="NomVoie">Nom de la voie</label>
+                                    </div>
+                                </div>
+                                <div class="grid-blc">
+                                    <div class="has-float-label">
+                                        <input id="ComplementAdresse" type="text" placeholder="-" formControlName="adresse_complement" required />
+                                        <label for="ComplementAdresse">Complément adresse</label>
+                                    </div>
+                                </div>
+                                <div class="grid-blc">
+                                    <div class="has-float-label">
+                                        <input id="CodePostal" type="text" placeholder="00000" formControlName="adresse_code_postal" required />
+                                        <label for="CodePostal">Code postal</label>
+                                    </div>
+                                </div>
+                                <div class="grid-blc">
+                                    <div class="has-float-label">
+                                        <input id="Ville" type="text" placeholder="Ville" formControlName="adresse_ville" required />
+                                        <label for="Ville">Ville</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--.step-form-grid-->
+                        </div>
+                    </form>
+                    <!--.step-form-area-->
+                </div>
+                <!--.section / .step-section_step-1-->
+                <div class="section step-section_step-2 bg-white">
+                    <h3 class="step-section_title">Informations générales</h3>
+                    <div class="step-form-area style-2">
+                        <div class="radio-btns-area">
+                            <div class="radio-btns-title p-d-flex">
+                                <span>Quelle est la durée du contrat ?</span>
+                                <a class="create-link"></a>
+                            </div>
+                            <div class="radio-items_inline-blc style-2">
+                                <div class="radio-item">
+                                    <label>
+                                        <input id="unMois" type="radio" name="dureeContrat">
+                                        <span class="label-item">Un (1) mois</span>
+                                    </label>
+                                </div>
+                                <div class="radio-item">
+                                    <label>
+                                        <input id="TroisMois" type="radio" name="dureeContrat">
+                                        <span class="label-item">Trois (3) mois</span>
+                                    </label>
+                                </div>
+                                <div class="radio-item">
+                                    <label>
+                                        <input id="SixMois" type="radio" name="dureeContrat">
+                                        <span class="label-item">Six (6) mois</span>
+                                    </label>
+                                </div>
+                                <div class="radio-item">
+                                    <label>
+                                        <input id="DouzeMois" type="radio" name="dureeContrat">
+                                        <span class="label-item">Douze (12) mois</span>
+                                    </label>
+                                </div>
+                            </div>
+                            <!--.radio-items_inline-blc-->
+                        </div>
+                        <!--.radio-btns-area-->
+                        <div class="form-area">
+                            <div class="form-style">
+                                <label for="">Veuillez indiquer l’intitulé du poste</label>
+                                <div class="p-input-icon-left">
+                                    <em class="pi post-icon"></em>
+                                    <div class="input-blc">
+                                        <input type="text" pInputText placeholder="Exemple Cuisinier, serveur" />
+                                    </div>
+                                </div>
+                            </div>
+                            <!--.form-style-->
+                            <div class="form-style">
+                                <label for="">Quelle est la date d’embauche ?</label>
+                                <div class="p-input-icon-left">
+                                    <em class="pi hiring-icon"></em>
+                                    <div class="input-blc">
+                                        <input type="date" pInputText placeholder=".. /.. / …." />
+                                    </div>
+                                </div>
+                            </div>
+                            <!--.form-style-->
+                        </div>
+                        <!--.form-area-->
+                    </div>
+                    <!--.step-form-area-->
+                </div>
+                <!--.section / .step-section_step-2-->
+                <div class="section step-section_step-3 bg-white">
+                    <h3 class="step-section_title">Clauses Spécifiques</h3>
+                    <div class="step-form-area style-2">
+                        <div class="radio-btns-area">
+                            <div class="radio-btns-title p-d-flex">
+                                <span>Choisir une option de période d’essai</span>
+                            </div>
+                            <div class="radio-items_inline-blc style-2">
+                                <div class="radio-item">
+                                    <label>
+                                        <input id="SansPeriodeEssai" type="radio" name="periodeEssai">
+                                        <span class="label-item">Sans période d’essai</span>
+                                    </label>
+                                </div>
+                                <div class="radio-item">
+                                    <label>
+                                        <input id="AvecPeriodeEssai" type="radio" name="periodeEssai">
+                                        <span class="label-item">Avec période d’essai</span>
+                                    </label>
+                                </div>
+                            </div>
+                            <!--.radio-items_inline-blc-->
+                        </div>
+                        <!--.radio-btns-area-->
+                        <div class="radio-btns-area">
+                            <div class="radio-btns-title p-d-flex">
+                                <span>Préciser la durée de période d’essai</span>
+                            </div>
+                            <div class="radio-items_inline-blc style-2">
+                                <div class="radio-item">
+                                    <label>
+                                        <input id="DeuxSemaines" type="radio" name="PreciserPeriodeEssai">
+                                        <span class="label-item">Deux (2) semaines</span>
+                                    </label>
+                                </div>
+                                <div class="radio-item">
+                                    <label>
+                                        <input id="UnMois" type="radio" name="PreciserPeriodeEssai">
+                                        <span class="label-item">Un (1) mois</span>
+                                    </label>
+                                </div>
+                                <div class="radio-item">
+                                    <label>
+                                        <input id="DeuxMois" type="radio" name="PreciserPeriodeEssai">
+                                        <span class="label-item">Deux (2) mois</span>
+                                    </label>
+                                </div>
+                                <div class="radio-item">
+                                    <label>
+                                        <input id="TroisMois" type="radio" name="PreciserPeriodeEssai">
+                                        <span class="label-item">Trois (3) mois</span>
+                                    </label>
+                                </div>
+                            </div>
+                            <!--.radio-items_inline-blc-->
+                        </div>
+                        <!--.radio-btns-area-->
+                    </div>
+                    <!--.step-form-area-->
+                    <div class="to-note-section">
+                        <h4 class="to-note_title">A noter</h4>
+                        <div class="to-note_desc-blc">
+                            <p> La durée de la période d’essai est la suivante : <br> - 2 mois pour les salariés Niveaux I à III <br> - 3 mois pour les salariés Niveau IV <br> - 4 mois pour les salariés Niveau V </p>
+                            <p> Sauf pour les salariés Niveau 1, Echelon 1, elle est renouvelable (si le contrat le prévoit), dans la limite des durées suivantes : <br> - 2 mois pour les salariés Niveau 1 échelon 2 à Niveau III <br> - 3 mois pour les salariés
+                                Niveau IV <br> - 4 mois pour les salariés Niveau V </p>
+                        </div>
+                        <!--.to-note_desc-blc-->
+                    </div>
+                    <!--.to-note-section-->
+                </div>
+                <!--.section / .step-section_step-3-->
+                <div class="section step-section_step-4 bg-white">
+                    <h3 class="step-section_title">Rémunération</h3>
+                    <div class="step-form-area style-2">
+                        <div class="form-area">
+                            <div class="form-style">
+                                <label for="">Quel est la rémunération de l’employé</label>
+                                <div class="p-input-icon-left">
+                                    <em class="pi post-icon"></em>
+                                    <div class="input-blc">
+                                        <input type="text" pInputText placeholder="Sasissez le montant" />
+                                    </div>
+                                </div>
+                            </div>
+                            <!--.form-style-->
+                        </div>
+                        <!--.form-area-->
+                    </div>
+                    <!--.step-form-area-->
+                </div>
+                <!--.section / .step-section_step-4-->
+                <div class="section step-section_step-5">
+                </div>
+                <!--.section / .step-section_step-4-->
+            </div>
+            <!--.sections / .step-section-area-->
+            <div class="steps-body_btns-group p-d-flex p-jc-between">
+                <div class="btns-group">
+                    <button class="btn btn-blue blue-style-3 prev" pButton pRipple label="Retour" (click)="prevStepsFct($event)"></button>
+                </div>
+                <!--.btns-group-->
+                <div class="btns-group two-btns p-jc-end">
+                    <button class="btn btn-link-water " pButton pRipple label="Quitter" (click)="documentGenerationModalFct()"></button>
+                    <button class="btn btn-java-green style-2 next" pButton pRipple label="Suivant" (click)="nextStepsFct($event)"></button>
+                </div>
+                <!--.btns-group-->
+            </div>
+            <!--.steps-body_btns-group-->
+        </div>
+        <!--.steps-body-->
+    </div>
+    <!--.steps-area-->
+</div>
+<!--.preparation-contrat-area-->
+<!-- document generation  -->
+<div class="modal document-generation-modal">
+    <p-dialog header="" [(visible)]="documentGenerationModal" [modal]="true" [style]="{width: '636px'}" [baseZIndex]="10000" [draggable]="false" [resizable]="true">
+        <div class="document-generation-content">
+            <div class="document-generated document-generated-being">
+                <p> Document en cours de génération </p>
+            </div>
+            <!--
+            <div class="document-generated document-generated-ok ">
+                <p>
+                    Votre document est généré
+                </p>
+            </div>
+            -->
+        </div>
+        <!--.document-generation-content-->
+        <ng-template pTemplate="footer">
+            <p-button icon="pi" (click)="documentGenerationModal=false" label="Fermer" styleClass="p-button-text">
+            </p-button>
+        </ng-template>
+    </p-dialog>
+</div>
+<!--.modal-->
+<!-- [itemCategory]="currentItemCategory" -->
+<app-modal-employeur *ngIf="isCreateNewEmployer" [employeur]="employId" Title="{{title}}" button="{{button}}" (closeModal)="close($event)" [modalOpen]="isCreateNewEmployer" (refresh)="actualiserEmployer($event)">
+</app-modal-employeur>
+<app-fiche *ngIf="isCreateNewEmployee" [employee]="emploInfo" Title="{{title}}" button="{{button}}" (modalClosed)="closeModal($event)" [openModal]="isCreateNewEmployee" (refreshList)="actualiserEmployee($event)">
+</app-fiche>

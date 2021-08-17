@@ -1,0 +1,61 @@
+<div class="modal">
+    <p-dialog header="Ajouter un nouveau MODELE" [(visible)]="modeleOpen" [modal]="true" [style]="{width: '636px'}" [baseZIndex]="10000" [draggable]="false" (onHide)="cancel()" [resizable]="true">
+        <div class="form-area">
+            <form action="" [formGroup]="modalForm">
+                <div class="form-style">
+                    <label for="">Titre du modèle</label>
+                    <div class="p-input-icon-left" [ngClass]="{ 'invalid': f.nom.invalid && f.nom.touched  }">
+                        <em class="pi modele-input-icon"></em>
+                        <div class="input-blc">
+                            <input type="text" pInputText placeholder="Saisissez le titre de votre modèle…" formControlName="nom" />
+                        </div>
+                    </div>
+
+                </div>
+                <!--.form-style-->
+                <div class="form-style">
+                    <label for="">Qui peut accéder au projet ?</label>
+                    <div class="p-input-icon-left">
+                        <em class="pi account_circle"></em>
+                        <div class="select-blc">
+                            <select name="" id="" formControlName="accessible_to_id">
+                                <option value="">Seulement moi</option>
+                                <option value="">Option 1</option>
+                                <option value="">Option 2</option>
+                            </select>
+                        </div>
+                    </div>
+                    <!--.p-input-icon-left-->
+                </div>
+                <!--.form-style-->
+                <div class="form-style">
+                    <label for="">Voulez vous importer un document ?</label>
+                    <div class="import-file-area" [ngClass]="{ 'invalid': f.fichier.invalid && f.fichier.touched  || NewFileSubmitted && f.fichier.errors?.required}">
+                        <div class="btns-group import-file-blc">
+                            <div class="import-file-value"> {{nameFile}}</div>
+                            <!--.import-file-value-->
+                            <div class="btn-importer">
+                                <span class="label havelock-blue"> Importer </span>
+                                <input #File type="file" name="upload" accept=".doc, .docx, .txt, .rtf" class="upload-box" (change)="upload($event)" placeholder="Upload File" />
+                            </div>
+                            <span class="error" *ngIf="NewFileSubmitted && f.fichier.errors?.required">
+                    fichier obligatoire
+                </span>
+                            <!--.btn-importer-->
+                        </div>
+                        <!--.btns-group-->
+                        <span class="import-notif">Vous pourrez importer plus tard</span>
+                    </div>
+                    <!--.import-file-area-->
+                </div>
+
+                <!--.form-style-->
+            </form>
+        </div>
+        <!--.form-area-->
+        <ng-template pTemplate="footer">
+            <p-button icon="pi" (click)="cancel()" label="Annuler" styleClass="p-button-text"></p-button>
+            <p-button icon="pi" label="Créer" (click)="create()" styleClass="p-button-text btn-havelock-blue"></p-button>
+        </ng-template>
+    </p-dialog>
+</div>

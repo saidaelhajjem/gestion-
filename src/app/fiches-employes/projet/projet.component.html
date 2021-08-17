@@ -1,0 +1,77 @@
+<div class="fiche-employeur-area">
+    <div class="table-area">
+        <p-table [value]="documents" [paginator]="false" [rows]="10" [showCurrentPageReport]="true" currentPageReportTemplate="Showing {first} to {last} of {{totalRecords}} entries" [rowsPerPageOptions]="[10,25,50]" styleClass="p-datatable-responsive-demo">
+            <ng-template pTemplate="caption">
+                <div class="p-d-flex p-jc-between">
+                    <h2>LIste des PROJETS</h2>
+                    <a class="link-action"></a>
+                </div>
+            </ng-template>
+            <ng-template pTemplate="header">
+                <tr>
+                    <th id="nom" (click)="filterby('orderby_project_name')" class="p-text-center">Nom
+                        <p-sortIcon></p-sortIcon>
+                    </th>
+                    <th id="employe" (click)="filterby('orderby_employe_prenom')">Employé
+                        <p-sortIcon>
+                        </p-sortIcon>
+                    </th>
+                    <th id="employeur" (click)="filterby('orderby_employeur_raison_social')">Employeur
+                        <p-sortIcon>
+                        </p-sortIcon>
+                    </th>
+                    <th id="etablissement" (click)="filterby('orderby_etablissement_raison_sociale')">Etablissement
+                        <p-sortIcon>
+                        </p-sortIcon>
+                    </th>
+                    <th id="statut" (click)="filterby('orderby_statut_project_label')" class="p-text-center">Statut
+                        <p-sortIcon></p-sortIcon>
+                    </th>
+                    <th id="modele" (click)="filterby('orderby_modele_name')">Modèle
+                        <p-sortIcon></p-sortIcon>
+                    </th>
+                    <th id="date_modification" (click)="filterby('orderby_updated_at')">Date de modification
+                        <p-sortIcon></p-sortIcon>
+                    </th>
+                    <th id="action" pSortableColumn="Actions"></th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-document>
+                <tr>
+                    <td>
+                        <div class="document-name-blc project-name-icn"> {{document.project_nom}} </div>
+                    </td>
+                    <td>{{document.employe_prenom}} {{document.employe_nom}}</td>
+                    <td>{{document.employeur_raison_sociale}}</td>
+                    <td>{{document.etablissement_raison_sociale}}</td>
+                    <td>
+                        <div class="p-text-center">
+                            <button [class]="'btn-statut ' + document.class"> {{document.statut_project_libelle}}
+                            </button>
+                        </div>
+                    </td>
+                    <td>{{document.modele_nom}}</td>
+                    <td>{{document.updatedat |date:'MM/dd/yyyy'}}</td>
+                    <td>
+                        <div class="more-link">
+                            <button pButton class="p-panel-header-icon p-link" icon="pi pi-ellipsis-h" (click)="selectedItem = document;menu.toggle($event)"></button>
+                            <!-- routerLink="/preparation-contrat" -->
+                            <p-menu #menu id="config_menu" [model]="items" [popup]="true"></p-menu>
+                        </div>
+                        <!--.more-link-->
+                    </td>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="emptymessage" let-columns>
+                <tr>
+                    <td colspan="8">
+                        <div class="p-text-center">Aucun projet</div>
+                    </td>
+                </tr>
+            </ng-template>
+        </p-table>
+        <p-paginator [showCurrentPageReport]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [rows]="10" [totalRecords]="totalRecords" [alwaysShow]="true" (onPageChange)="paginate($event)" [rowsPerPageOptions]="[10,25,50]"></p-paginator>
+    </div>
+</div>
+<!--.fiche-employeur-area-->
+<app-modal-projet *ngIf="isNewProject" [projectOpen]="isNewProject" [title]="title" [button]="button" [project]="projectId" (closeModalProject)="close($event)"></app-modal-projet>

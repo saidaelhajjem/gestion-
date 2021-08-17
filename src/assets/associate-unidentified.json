@@ -1,0 +1,32 @@
+{
+    "data": [
+        {
+            "name": "Numéro SIRET",
+            "ref": "01"
+        },
+        {
+            "name": "Numéro SIREN",
+            "ref": "02"
+        },
+        {
+            "name": "Numéro Sécurité sociale",
+            "ref": "03"
+        },
+        {
+            "name": "Nom",
+            "ref": "04"
+        },
+        {
+            "name": "Prénom",
+            "ref": "05"
+        },
+        {
+            "name": "Adresse",
+            "ref": "06"
+        },
+        {
+            "name": "Dénomination sociale",
+            "ref": "07"
+        }
+    ]
+}

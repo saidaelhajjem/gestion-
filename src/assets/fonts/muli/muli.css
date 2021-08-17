@@ -1,0 +1,52 @@
+@font-face {
+    font-family: 'Muli-Light';
+    src: url('Muli-Light.eot');
+    src: url('Muli-Light.eot?#iefix') format('embedded-opentype'),
+        url('Muli-Light.woff2') format('woff2'),
+        url('Muli-Light.woff') format('woff'),
+        url('Muli-Light.ttf') format('truetype'),
+        url('Muli-Light.svg#Muli-Light') format('svg');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Muli-SemiBold';
+    src: url('Muli-SemiBold.eot');
+    src: url('Muli-SemiBold.eot?#iefix') format('embedded-opentype'),
+        url('Muli-SemiBold.woff2') format('woff2'),
+        url('Muli-SemiBold.woff') format('woff'),
+        url('Muli-SemiBold.ttf') format('truetype'),
+        url('Muli-SemiBold.svg#Muli-SemiBold') format('svg');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Muli-Bold';
+    src: url('Muli-Bold.eot');
+    src: url('Muli-Bold.eot?#iefix') format('embedded-opentype'),
+        url('Muli-Bold.woff2') format('woff2'),
+        url('Muli-Bold.woff') format('woff'),
+        url('Muli-Bold.ttf') format('truetype'),
+        url('Muli-Bold.svg#Muli-Bold') format('svg');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Muli';
+    src: url('Muli.eot');
+    src: url('Muli.eot?#iefix') format('embedded-opentype'),
+        url('Muli.woff2') format('woff2'),
+        url('Muli.woff') format('woff'),
+        url('Muli.ttf') format('truetype'),
+        url('Muli.svg#Muli') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+

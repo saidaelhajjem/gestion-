@@ -1,0 +1,119 @@
+image: node:14-alpine
+
+stages:
+  - Packages Vulnerability Check
+  - Packages Install
+  - Build Process
+  - Staging Deploy
+  - Packages Outdated Check
+  - Coding Standards Checker
+  - Sonar Analyze
+
+security:check:
+  stage: Packages Vulnerability Check
+  only:
+    - master
+  script:
+    - yarn --color audit --level high 2> /dev/null | less -R
+  allow_failure: true
+
+packages:install:
+  stage: Packages Install
+  only:
+    - master
+  cache:
+    - key: yarn.lock
+      paths:    
+        - .yarn
+      policy: pull-push
+    - key: ${CI_COMMIT_REF_SLUG}
+      paths:    
+        - node_modules
+      policy: pull-push
+  script:
+    - yarn --color install --no-progress --cache-folder .yarn | less -R
+  allow_failure: false
+  needs: ["security:check"]
+
+outdated:checker:
+  stage: Packages Outdated Check
+  only:
+    - master
+  cache:
+    key: ${CI_COMMIT_REF_SLUG}
+    paths:    
+      - node_modules
+    policy: pull
+  script:
+    - yarn --color outdated | less -R
+  allow_failure: true
+  needs: ["packages:install"]
+
+lint:checker:
+  stage: Coding Standards Checker
+  only:
+    - master
+  cache:
+    key: ${CI_COMMIT_REF_SLUG}
+    paths:    
+      - node_modules
+    policy: pull
+  script:
+    - yarn --color ng lint | less -R
+  allow_failure: false
+  needs: ["build"]
+
+build:
+  stage: Build Process
+  only:
+    - master
+  cache:
+    key: ${CI_COMMIT_REF_SLUG}
+    paths:    
+      - node_modules
+    policy: pull
+  artifacts:
+    paths:
+      - dist
+    expire_in: 1 hour
+  script:
+    - yarn --color ng build --prod --outputHashing=all --build-optimizer --aot --vendor-chunk --named-chunks=true --deploy-url /front/ | less -R
+  allow_failure: false
+  needs: ["packages:install"]
+
+staging:deploy:
+  stage: Staging Deploy
+  image:
+    name: rdemendoza/tools
+  only:
+    - master
+  before_script:
+    - eval $(ssh-agent -s)
+    - mkdir -p ~/.ssh
+    - echo -e "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
+    - chmod 600 ~/.ssh/id_rsa
+    - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
+  script:
+    - ssh alea@10.255.3.104 'rm -rf /srv/www/rh.rdmc.dev/angular/*'
+    - scp -r ./dist/alea/* alea@10.255.3.104:/srv/www/rh.rdmc.dev/angular/
+  allow_failure: false
+  needs: ["build"]
+
+sonarqube:check:
+  stage: Sonar Analyze
+  only:
+    - master
+  image:
+    name: sonarsource/sonar-scanner-cli
+    entrypoint: [""]
+  variables:
+    SONAR_USER_HOME: "${CI_PROJECT_DIR}/.sonar"
+  cache:
+    key: "${CI_JOB_NAME}"
+    paths:
+      - .sonar/cache
+    policy: pull-push
+  script:
+    - sonar-scanner -Dsonar.projectVersion=${CI_COMMIT_SHORT_SHA}
+  allow_failure: false
+  needs: ["build"]

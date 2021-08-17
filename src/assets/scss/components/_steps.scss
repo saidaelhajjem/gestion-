@@ -1,0 +1,257 @@
+/* # Steps ::
+------------------------------------*/
+
+::ng-deep {
+    .steps-area {
+        .steps-header {
+            margin: 0 0 16px;
+            .steps-header_title {
+                font-size: 24px;
+                line-height: 32px;
+                color: rgba(47, 69, 92, 0.6);
+                font-family: 'Roboto-Bold', sans-serif;
+                height: 32px;
+                margin: 0 0 16px;
+            }
+            .steps-progress-bar {
+                border-radius: 4px;
+                background-color: $color-white;
+                width: 100%;
+                height: 8px;
+                position: relative;
+
+                &::after {
+                    content: '';
+                    display: inline-block;
+                    background-color: $color-java-green;
+                    border-radius: 4px;
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    bottom: 0;
+                    height: 8px;
+                    transition: all 0.3s;
+                }
+                &.step-1 {
+                    &::after {
+                        width: 20%;
+                    }
+                }
+                &.step-2 {
+                    &::after {
+                        width: 40%;
+                    }
+                }
+                &.step-3 {
+                    &::after {
+                        width: 60%;
+                    }
+                }
+                &.step-4 {
+                    &::after {
+                        width: 80%;
+                    }
+                }
+                &.step-5 {
+                    &::after {
+                        width: 100%;
+                    }
+                }
+            }
+        }
+        .steps-body {
+            .step-section-area {
+                &.sections {
+                    min-height: 65vh;
+                    .section {
+                        display: none;
+                        width: 100%;
+
+                        &.active {
+                            display: block;
+                        }
+                        &.bg-white {
+                            background-color: $color-white;
+                            padding: 12px 9px;
+                        }
+                    }
+                }
+                .step-section_title {
+                    color: $color-polo-blue;
+                    font-size: 16px;
+                    line-height: 21px;
+                    font-family: 'Roboto-Bold', sans-serif;
+                    margin: 0 0 16px;
+                }
+                .step-form-area {
+                    padding: 20px 15px 15px;
+                    background-color: $color-white;
+                    &.style-2 {
+                        padding: 0;
+                    }
+                    &:not(:last-child) {
+                        margin: 0 0 25px;
+                    }
+                    .step-form-grid {
+                        &:not(:last-child) {
+                            margin: 0 0 20px;
+                        }
+                    }
+                    .step-form_title-blc {
+                        margin: 0 0 18px;
+                        .step-form_title {
+                            color: $color-east-bay;
+                            font-size: 13px;
+                            line-height: 18px;
+                            font-family: "Roboto-Medium";
+                            margin: 0;
+                        }
+                    }
+                    .radio-btns-title {
+                        align-items: center;
+                        .create-link {
+                            margin: 0 0 0 16px;
+                        }
+                    }
+                    .form-area {
+                        width: 490px;
+                        .form-style {
+                            .p-input-icon-left {
+                                .input-blc {
+                                    input {
+                                        color: rgba(166, 184, 192, 0.6);
+                                        &::-webkit-input-placeholder {
+                                            color: rgba(166, 184, 192, 0.6);
+                                        }
+                                        &::-moz-placeholder {
+                                            color: rgba(166, 184, 192, 0.6);
+                                        }
+                                        &:-ms-input-placeholder {
+                                            color: rgba(166, 184, 192, 0.6);
+                                        }
+                                        &:-moz-placeholder {
+                                            color: rgba(166, 184, 192, 0.6);
+                                        }
+                                    }
+                                }
+                            } 
+                        }
+                    }
+                }
+                .step-section_step-3 {
+                    position: relative;
+                }
+                .to-note-section {
+                    position: absolute;
+                    top: 23px;
+                    right: 19px;
+                    width: 335px;
+                    background-color: rgba(226, 232, 235, 0.4);
+                    border-radius: 4px;
+                    padding: 24px;
+                    .to-note_title {
+                        color: $color-east-bay;
+                        font-size: 14px;
+                        line-height: 35px;
+                        font-family: 'Roboto-Bold', sans-serif;
+                        letter-spacing: 0.42px;
+                        margin: 0 0 12px;
+                        text-transform: uppercase;
+                        text-align: center;
+                    }
+                    .to-note_desc-blc {
+                        p {
+                            color: rgba(61, 91, 130, 0.6);
+                            font-size: 14px;
+                            line-height: 19px;
+                            font-family: 'Roboto', sans-serif;
+                            margin: 0;
+
+                            &:not(:last-child) {
+                                margin: 0 0 20px;
+                            }
+                        }
+                    }
+                }
+            }
+            .steps-body_btns-group {
+                .btns-group {
+                    .btn {
+                        &.btn-java-green {
+                            min-width: auto;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+/* # $Mobile ::
+------------------------------------*/
+@media (max-width: 1200px) {
+    ::ng-deep {
+        .steps-area {
+            margin: 0;
+            .steps-header {
+                .steps-header_title {
+                    font-size: 16px;
+                    line-height: 20px;
+                    height: auto;
+                }
+            }
+        }
+    }
+}
+@media (max-width: 992px) {
+    ::ng-deep {
+        .steps-area {
+            .steps-body {
+                .steps-body_btns-group {
+                    margin: 20px 0;
+                }
+                .step-section-area {
+                    .to-note-section {
+                        position: static;
+                        width: 100%;
+                    }
+                }
+                .radio-btns-area {
+                    .radio-items_inline-blc {
+                        &.style-2 {
+                            .radio-item {
+                                width: 100%;
+                            }
+                        }
+                    }
+                }
+            } 
+        } 
+    }
+}
+@media (max-width: 767px) {
+    ::ng-deep {
+        .steps-area {
+            margin: 70px 0 0;
+            .steps-body {
+                .step-section-area {
+                    .step-form-area {
+                        .form-area {
+                            width: 100%;
+                        }
+                    } 
+                } 
+            }
+        }
+        .radio-btns-area {
+            .radio-items_inline-blc {
+                &.style-2 {
+                    .radio-item {
+                        width: 100%;
+                    }
+                }
+            }
+        }
+    }
+}

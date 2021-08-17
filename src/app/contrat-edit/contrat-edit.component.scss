@@ -1,0 +1,41 @@
+
+ .invalid {
+     border: 1px solid red !important;
+ }
+.ref-highlighted {
+  background-color: #fcc846;
+}
+ ::ng-deep {
+   quill-editor {
+     .ql-ref-bloc .references-item-btn{
+       color: #3D5B82;
+       font-family: "Roboto-Medium", sans-serif;
+       font-size: 11px;
+       line-height: 11px;
+       display: inline-block;
+       margin-top: -15px;
+       padding: 3px;
+       cursor: pointer;
+       vertical-align: middle;
+     }
+     .references-item .references-item_link {
+       margin-top:4px;
+     }
+   }
+
+ }
+
+/* # $Mobile ::
+------------------------------------*/
+
+@media (max-width: 767px) {
+  .contrat-edit-content {
+    margin: 70px 0 0;
+  }
+}
+@media (max-width: 680px) {
+  .contrat-edit-content {
+    margin: 170px 0 0;
+  }
+}
+

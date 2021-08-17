@@ -1,0 +1,36 @@
+<div class="modal">
+    <p-dialog header="Créer un nouveau smart tag" [(visible)]="modalTags" [modal]="true" [style]="{width: '636px'}" [baseZIndex]="10000" [draggable]="false" [resizable]="true" (onHide)="cancel()">
+        <div class="create-condition-content">
+            <div class="form-area">
+                <form [formGroup]="tagsForm">
+                    <div class="form-style">
+                        <label for="">Titre de la Tag</label>
+                        <div class="p-input-icon-left">
+                            <em class="pi modele-input-icon"></em>
+                            <div class="input-blc" [ngClass]="{ 'is-invalid': condition.libelle.invalid && condition.libelle.touched }">
+                                <input type="text" pInputText placeholder="Titre smart tag" formControlName="libelle" />
+                            </div>
+                        </div>
+                        <!--.p-input-icon-left-->
+                        <span class="error" *ngIf="condition.libelle.invalid && condition.libelle.touched "> Titre
+                            invalide </span>
+                        <span class="error" *ngIf="conditionSubmitted && condition.libelle.errors?.required"> Titre est
+                            obligatoir </span>
+                    </div>
+
+
+
+
+                </form>
+            </div>
+            <!--.form-area-->
+        </div>
+        <!--.create-condition-content-->
+        <ng-template pTemplate="footer">
+            <p-button icon="pi" (click)="cancel()" label="Annuler" styleClass="p-button-text">
+            </p-button>
+            <p-button icon="pi" label="Créer" (click)="conditionSubmit()" styleClass="p-button-text btn-havelock-blue">
+            </p-button>
+        </ng-template>
+    </p-dialog>
+</div>

@@ -1,0 +1,651 @@
+<div class="contrat-edit-area">
+    <div class="introduction-area style-2 p-d-flex p-jc-between">
+        <a class="big-title" [routerLink]="['/elements-modele']" [queryParams]="{'id':currentDocument?.modele_id}"> {{currentDocument && currentDocument.nom !== 'null' ? currentDocument?.nom : currentDocument?.modele_nom}} </a>
+        <div class="btns-group two-btns">
+            <button class="btn btn-java-green" pButton pRipple label="Enregistré"></button>
+            <button class="btn btn-polo-blue icons" pButton pRipple label="Mode édition" (click)="modeEdition.toggle($event)"></button>
+            <p-menu #modeEdition id="config_menu" [model]="items" [popup]="true"></p-menu>
+        </div>
+        <!--.btns-group-->
+    </div>
+    <!--.introduction-area / .introduction-elements -->
+    <div class="contrat-edit-content">
+        <div class="contrat-edit_header">
+            <div class="editor-menu-item"></div>
+            <!--.editor-menu-item-->
+            <div class="btns-group two-btns" [ngClass]="detectionAutomatiqueStatus ? 'active' : ''">
+                <button class="btn btn-list register-icn"></button>
+                <button class="btn btn-list list-icn" (click)="contratEditSidebar()"></button>
+            </div>
+            <!--.btns-group-->
+        </div>
+        <!--.contrat-edit_header-->
+        <div class="contrat-edit_body" [ngClass]="[detectionAutomatiqueStatus ? 'active' : '', addReferenceBlcStatus ? 'add-reference-active active' : '', addConditionBlcStatus ? 'add-condition-active active' : '']">
+
+            <div class="contrat-edit_sidebar">
+                <div [hidden]="!showPanelAutomaticDetection" class="panel-automatic-detection">
+                    <!-- /// panel-sidebar-style automatic-detection-blc /// -->
+                    <div class="panel-sidebar-style automatic-detection-blc">
+                        <button class="cancel-link" (click)="automaticDetectionFct()"></button>
+                        <h3 class="automatic-detection_title">Détection automatique</h3>
+                        <div class="tags-identified">
+                            <h4 class="tags-identified_title"> Balises identifiées </h4>
+                            <div class="tags-identified_list">
+
+                                <div class="references-item mr-1" *ngFor="let reference of referencesFound">
+                                    <span class="references-item_txt">{{reference.titre}}</span>
+                                    <a class="references-item_link" (click)="panelTagDetailStatusFct(reference)"></a>
+                                </div>
+                                <!--.references-item-->
+                            </div>
+                            <!--.tags-identified_list-->
+                            <div class="btns-group">
+                                <button class="btn btn-blue" (click)="replaceAllReferences()">Remplacer tout</button>
+                            </div>
+                            <!--.btns-group-->
+                        </div>
+                        <!--.tags-identified-->
+                        <div class="tags-identified">
+                            <h4 class="tags-identified_title"> Balises non identifiées </h4>
+                            <div class="tags-identified_list">
+                                <div class="references-item mr-1" *ngFor="let reference of referencesUnknowns">
+                                    <span class="references-item_txt">{{reference}}</span>
+                                    <a class="references-item_link"></a>
+                                </div>
+                                <!--.references-item-->
+                            </div>
+                            <!--.tags-identified_list-->
+                            <div class="btns-group">
+                                <button class="btn btn-blue blue-style-2" (click)="associateUnidentifiedTagsModalFct()">Associer</button>
+                            </div>
+                            <!--.btns-group-->
+                        </div>
+                        <!--.tags-identified-->
+                    </div>
+                    <!--.panel-sidebar-style / .automatic-detection-blc-->
+                    <!-- /// panel-sidebar-style add-reference-blc /// -->
+                    <div class="panel-sidebar-style add-reference-blc">
+                        <button class="cancel-link" (click)="addReferenceBlcDeleteFct()"></button>
+                        <h3 class="automatic-detection_title">Références</h3>
+                        <div class="add-reference_desc">
+                            <p> Glissez et déposez un contact pour le placer </p>
+                        </div>
+                        <!--.add-reference_desc-->
+                        <div class="tags-identified_list">
+                            <div class="references-item mr-1" *ngFor="let ref of allReferences">
+                                <span class="references-item_txt">{{ref.titre}}</span>
+                                <a class="references-item_link"></a>
+                            </div>
+
+                        </div>
+                        <!--.tags-identified_list-->
+                        <div class="tags-identified_list">
+                            <div class="references-item mr-1">
+                                <span class="references-item_txt">Article 1</span>
+                                <a class="references-item_link"></a>
+                            </div>
+                            <!--.references-item-->
+                            <div class="references-item mr-1">
+                                <span class="references-item_txt">SIRET</span>
+                                <a class="references-item_link"></a>
+                            </div>
+                            <!--.references-item-->
+                        </div>
+                        <!--.tags-identified_list-->
+                        <div class="btns-group btns-group_position">
+                            <button class="btn btn-blue" pButton pRipple label="Ajouter une référence" icon="pi pi-plus" (click)="addReferencesModalFct()"></button>
+                        </div>
+                        <!--.btns-group-->
+                    </div>
+                    <!--.panel-sidebar-style / .add-reference-blc-->
+                    <!-- /// panel-sidebar-style add-conditions-blc /// -->
+                    <div class="panel-sidebar-style add-conditions-blc">
+                        <button class="cancel-link" (click)="addConditionBlcDeleteFct()"></button>
+                        <h3 class="automatic-detection_title">Conditions</h3>
+                        <div class="add-reference_desc">
+                            <p> Glissez et déposez une condition pour la placer dans le texte </p>
+                        </div>
+                        <!--.add-reference_desc-->
+                        <div class="tags-condition-list">
+                            <div class="condition-item mr-1">
+                                <div class="condition-item_txt">
+                                    <span>DUREE DU TRAVAIL</span>
+                                </div>
+                                <a class="condition-item_link"></a>
+                            </div>
+                            <!--.condition-item-->
+                            <div class="condition-item mr-1">
+                                <div class="condition-item_txt">
+                                    <span>HEURES COMPLEMENTAIRES</span>
+                                </div>
+                                <a class="condition-item_link"></a>
+                            </div>
+                            <!--.condition-item-->
+                            <div class="condition-item mr-1">
+                                <div class="condition-item_txt">
+                                    <span>RÉMUNERATION</span>
+                                </div>
+                                <a class="condition-item_link"></a>
+                            </div>
+                            <!--.condition-item-->
+                            <div class="condition-item mr-1">
+                                <div class="condition-item_txt">
+                                    <span>règlement intérieur</span>
+                                </div>
+                                <a class="condition-item_link"></a>
+                            </div>
+                            <!--.condition-item-->
+                        </div>
+                        <!--.tags-condition-list-->
+                        <div class="btns-group btns-group_position">
+                            <button class="btn btn-blue" pButton pRipple label="Créer une condition" icon="pi pi-plus" (click)="createConditionModalFct()"></button>
+                        </div>
+                        <!--.btns-group-->
+                    </div>
+                    <!--.panel-sidebar-style / .add-conditions-blc-->
+                    <!-- /// panel-tag-detail /// -->
+                    <div class="panel-tag-detail" [ngClass]="panelTagDetailStatus ? 'active' : ''">
+                        <div class="panel-tag-detail_content">
+                            <div class="panel-tag-detail_wrap">
+                                <div class="panel-tag-detail_list">
+                                    <div class="panel-tag-detail_list-title">
+                                        <span>{{panelReferenceDetails?.titre}}</span>
+                                        <a class="panel-tag-detail_list-link" (click)="panelTagDetailRemoveFct()"></a>
+                                    </div>
+                                    <!--.panel-tag-detail_list-title-->
+                                    <div class="questions-list">
+                                        <!--.questions-item-->
+                                        <div class="questions-item" *ngFor="let occurence of referenceDetailsOccurrences">
+                                            <div class="questions-item_txt point tooltip">
+                                                <span>{{ (occurence.text.length > 15) ? (occurence.text | slice:0:15) + '...' : occurence.text }}</span>
+                                                <a class="btn-check"></a>
+                                                <span class="tooltip-item"> {{occurence.text}} </span>
+                                            </div>
+                                        </div>
+                                        <!--.questions-item-->
+                                    </div>
+                                    <!--.questions-list-->
+                                    <div class="btns-group">
+                                        <button class="btn btn-blue">Remplacer</button>
+                                    </div>
+                                    <!--.btns-group-->
+                                </div>
+                                <!--.panel-tag-detail_list-->
+                            </div>
+                            <!--.panel-tag-detail_wrap-->
+                        </div>
+                        <!--.panel-tag-detail_content-->
+                    </div>
+                    <!--.panel-tag-detail-->
+                </div>
+                <!--.panel-automatic-detection-->
+                <div class="input-fields-nav">
+                    <div class="nav-blc">
+                        <h4 class="nav-blc_title">Champs de saisie</h4>
+                        <ul class="nav-blc_list">
+                            <li>
+                                <a class="nav-blc_list-item">
+                                    <span class="nav-blc_list-item-txt">Texte</span>
+                                    <span class="nav-blc_list-item-icon text-icn"></span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="nav-blc_list-item">
+                                    <span class="nav-blc_list-item-txt">Date</span>
+                                    <span class="nav-blc_list-item-icon date-icon"></span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="nav-blc_list-item">
+                                    <span class="nav-blc_list-item-txt">Bouton radio</span>
+                                    <span class="nav-blc_list-item-icon radio-icn"></span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="nav-blc_list-item">
+                                    <span class="nav-blc_list-item-txt">Signature</span>
+                                    <span class="nav-blc_list-item-icon signature-icn"></span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!--.nav-blc-->
+                    <div class="nav-blc">
+                        <h4 class="nav-blc_title">Variables</h4>
+                        <ul class="nav-blc_list">
+                            <li>
+                                <a class="nav-blc_list-item style-2 reference-icn-blc" (click)="addReferenceBlcFct()" [ngClass]="addReferenceBlcStatus ? 'active' : ''">
+                                    <span class="nav-blc_list-item-txt">Référence</span>
+                                    <span class="nav-blc_list-item-icon reference-icn"></span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="nav-blc_list-item style-2 condition-icn-blc" (click)="addConditionBlcFct()" [ngClass]="addConditionBlcStatus ? 'active' : ''">
+                                    <span class="nav-blc_list-item-txt">Condition</span>
+                                    <span class="nav-blc_list-item-icon condition-icn"></span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="nav-blc_list-item style-2">
+                                    <span class="nav-blc_list-item-txt">Formule</span>
+                                    <span class="nav-blc_list-item-icon formule-icn"></span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="nav-blc_list-item style-2" (click)="createNoteModalFct()">
+                                    <span class="nav-blc_list-item-txt">Note</span>
+                                    <span class="nav-blc_list-item-icon note-icn"></span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!--.nav-blc-->
+                    <div class="sidebar-area_bottom" (click)="contratEditSidebar()">
+                        <em class="pi pi-angle-right"></em>
+                    </div>
+                    <!--.sidebar-area_bottom-->
+                </div>
+                <!--.input-fields-nav-->
+            </div>
+            <!--.contrat-edit_sidebar-->
+
+            <quill-editor customToolbarPosition="bottom" [(ngModel)]="editorModel" [modules]="quillConfig" [trackChanges]="'all'" theme="snow" format="html" (onEditorCreated)="editorCreated($event)">
+            </quill-editor>
+
+        </div>
+        <!--.contrat-edit_body-->
+    </div>
+    <!--.contrat-edit-content-->
+</div>
+<!--.contrat-edit-area-->
+<!-- ////// Modals List ////// -->
+<div class="modal">
+    <p-dialog header="Associer les balises non identifiées" [(visible)]="associateUnidentifiedTagsModal" [modal]="true" [style]="{width: '636px'}" [baseZIndex]="10000" [draggable]="false" [resizable]="true">
+        <form action="" [formGroup]="refForm">
+            <div class="associate-unidentified-content">
+                <div class="associate-unidentified_header">
+                    <div class="grid gtc-41 gcg-3">
+                        <div class="grid-blc">
+                            <div class="associate-unidentified_header-title">Identification</div>
+                        </div>
+                        <div class="grid-blc">
+                            <div class="associate-unidentified_header-title">Liste des références</div>
+                        </div>
+                    </div>
+                    <!--.grid-->
+                </div>
+                <!--.associate-unidentified_header-->
+                <div class="associate-unidentified_body">
+                    <div class="grid gtc-41 gcg-3" *ngFor=" let ref of  referencesUnknowns">
+                        <div class="grid-blc">
+                            <div id="ref" class="associate-unidentified_body-desc"> {{ref}}
+                            </div>
+                        </div>
+                        <div class="grid-blc">
+                            <div class="autoComplete-item">
+                                <p-autoComplete field="titre" [(ngModel)]="selected" [ngModelOptions]="{standalone: true}" [suggestions]="allReferences" (completeMethod)="filterUser($event)" [minLength]="1"></p-autoComplete>
+                            </div>
+                            <!--.autoComplete-item-->
+                        </div>
+                        <div class="grid-blc">
+                            <div class="associate-unidentified_body-desc"> ou </div>
+                        </div>
+                        <div class="grid-blc">
+                            <a class="create-new-reference-link" (click)="newReference()">Créer une nouvelle référence</a>
+                        </div>
+                    </div>
+
+                </div>
+                <!--.associate-unidentified_body-->
+            </div>
+            <!--.associate-unidentified-content-->
+        </form>
+        <ng-template pTemplate="footer">
+            <p-button icon="pi" (click)="associateUnidentifiedTagsModal=false" label="Annuler" styleClass="p-button-text"></p-button>
+            <p-button icon="pi" label="Associer" styleClass="p-button-text btn-havelock-blue" (click)="CreationBaliseNonIdentifie()"></p-button>
+        </ng-template>
+    </p-dialog>
+</div>
+<app-modal-reference [modalRefernce]="addReferencesModal" (closeModalRef)="closeRef($event)" (refreshRefrence)="actualiseRef($event)"></app-modal-reference>
+<div class="modal">
+    <p-dialog header="Créer une condition" [(visible)]="createConditionModal" [modal]="true" [style]="{width: '636px'}" [baseZIndex]="10000" [draggable]="false" [resizable]="true">
+        <div class="create-condition-content">
+            <div class="form-area">
+                <form [formGroup]="createConditionForm">
+                    <div class="form-style">
+                        <label for="">Titre de la condition</label>
+                        <div class="p-input-icon-left">
+                            <em class="pi modele-input-icon"></em>
+                            <div class="input-blc" [ngClass]="{ 'is-invalid': condition.titre.invalid && condition.titre.touched }">
+                                <input type="text" pInputText placeholder="Titre de condition" formControlName="titre" />
+                            </div>
+                        </div>
+                        <!--.p-input-icon-left-->
+                        <span class="error" *ngIf="condition.titre.invalid && condition.titre.touched "> Titre
+                            invalide </span>
+                        <span class="error" *ngIf="conditionSubmitted && condition.titre.errors?.required"> Titre est
+                            obligatoir </span>
+                    </div>
+                    <!--.form-style-->
+                    <div class="radio-btns-area">
+                        <p class="radio-btns-title"> Faut il répondre à une question ? </p>
+                        <div class="radio-items_inline-blc">
+                            <div class="radio-item">
+                                <label>
+                                    <input id="oui" type="radio" name="reponse_obligatoire" value="true"
+                                        formControlName="reponse_obligatoire">
+                                    <span class="label-item">Oui</span>
+                                </label>
+                            </div>
+                            <div class="radio-item">
+                                <label>
+                                    <input id="non" type="radio" name="reponse_obligatoire" value="false"
+                                        formControlName="reponse_obligatoire">
+                                    <span class="label-item">Non</span>
+                                </label>
+                            </div>
+                        </div>
+                        <!--.radio-items_inline-blc-->
+                    </div>
+                    <span class="error" *ngIf="conditionSubmitted && condition.reponse_obligatoire.errors?.required">
+                        Veuillez sélectionner une option </span>
+                    <!--.radio-btns-area-->
+                    <div class="radio-btns-area">
+                        <p class="radio-btns-title"> Type de réponse </p>
+                        <div class="radio-items">
+                            <div class="radio-item">
+                                <label>
+                                    <input id="unique" type="radio" name="reponse_multiple" value="false"
+                                        formControlName="reponse_multiple">
+                                    <span class="label-item">Unique</span>
+                                </label>
+                            </div>
+                            <div class="radio-item">
+                                <label>
+                                    <input id="multiple" type="radio" name="reponse_multiple" value="true"
+                                        formControlName="reponse_multiple">
+                                    <span class="label-item">Multiple</span>
+                                </label>
+                            </div>
+                        </div>
+                        <span class="error" *ngIf="conditionSubmitted && condition.reponse_multiple.errors?.required">
+                            Veuillez sélectionner une option </span>
+                        <!--.radio-items-->
+                    </div>
+                    <!--.radio-btns-area-->
+                </form>
+            </div>
+            <!--.form-area-->
+        </div>
+        <!--.create-condition-content-->
+        <ng-template pTemplate="footer">
+            <p-button icon="pi" (click)="createConditionModal=false" label="Annuler" styleClass="p-button-text">
+            </p-button>
+            <p-button icon="pi" label="Créer" (click)="conditionSubmit()" styleClass="p-button-text btn-havelock-blue">
+            </p-button>
+        </ng-template>
+    </p-dialog>
+</div>
+<!--.modal-->
+<!-- Ajouter une Note  -->
+<app-modal-note [openNote]="createNoteModal" (closeModalNote)="onCloseModalNote($event)"></app-modal-note>
+<app-fiche Title="Création d’une nouvelle fiche" button="Créer" (modalClosed)="closeModal($event)" [openModal]="createNewFileModal"></app-fiche>
+<!-- Edition de la fiche Christian Laporte  -->
+<div class="modal">
+    <p-dialog header="Edition de la fiche Christian Laporte" [(visible)]="EditionFileModal" [modal]="true" [style]="{width: '636px'}" [baseZIndex]="10000" [draggable]="false" [resizable]="true">
+        <div class="create-new-file-content">
+            <div class="form-area">
+                <form>
+                    <div class="grid gtc-2 gcg-3">
+                        <div class="grid-blc">
+                            <div class="has-float-label">
+                                <input id="Nom" type="text" placeholder="Nom" />
+                                <label for="Nom">Nom</label>
+                            </div>
+                        </div>
+                        <div class="grid-blc">
+                            <div class="has-float-label">
+                                <input id="Prenom" type="text" placeholder="Prénom" />
+                                <label for="Prenom">Prénom</label>
+                            </div>
+                        </div>
+                    </div>
+                    <!--.grid-->
+                    <div class="grid gtc-3 gcg-3 gg-1">
+                        <div class="grid-blc">
+                            <div class="has-float-label">
+                                <input id="DateNaissance" type="date" placeholder="Date de naissance" />
+                                <label for="DateNaissance">Date de naissance</label>
+                            </div>
+                        </div>
+                        <div class="grid-blc">
+                            <div class="has-float-label">
+                                <input id="LieuNaissance" type="text" placeholder="LIEU de naissance" />
+                                <label for="LieuNaissance">LIEU de naissance</label>
+                            </div>
+                        </div>
+                        <div class="grid-blc">
+                            <div class="has-float-label">
+                                <input id="NumeroSecuriteSociale" type="number" placeholder="Numéro de sécurité sociale" />
+                                <label for="NumeroSecuriteSociale">Numéro de sécurité sociale</label>
+                            </div>
+                        </div>
+                        <div class="grid-blc">
+                            <div class="has-float-label">
+                                <input id="nVoie" type="number" placeholder="N° de voie" />
+                                <label for="nVoie">N° de voie</label>
+                            </div>
+                        </div>
+                        <div class="grid-blc">
+                            <div class="has-float-label">
+                                <input id="TypeVoie" type="text" placeholder="Type de voie" />
+                                <label for="TypeVoie">Type de voie</label>
+                            </div>
+                        </div>
+                        <div class="grid-blc">
+                            <div class="has-float-label">
+                                <input id="NomVoie" type="text" placeholder="Nom de la voie" />
+                                <label for="NomVoie">Nom de la voie</label>
+                            </div>
+                        </div>
+                        <div class="grid-blc">
+                            <div class="has-float-label">
+                                <input id="ComplementAdresse" type="text" placeholder="Complément adresse" />
+                                <label for="ComplementAdresse">Complément adresse</label>
+                            </div>
+                        </div>
+                        <div class="grid-blc">
+                            <div class="has-float-label">
+                                <input id="CodePostal" type="number" placeholder="Code postal" />
+                                <label for="CodePostal">Code postal</label>
+                            </div>
+                        </div>
+                        <div class="grid-blc">
+                            <div class="has-float-label">
+                                <input id="Ville" type="text" placeholder="Ville" />
+                                <label for="Ville">Ville</label>
+                            </div>
+                        </div>
+                    </div>
+                    <!--.grid-->
+                </form>
+            </div>
+            <!--.form-area-->
+        </div>
+        <!--.create-new-file-content-->
+        <ng-template pTemplate="footer">
+            <p-button icon="pi" (click)="EditionFileModal=false" label="Annuler" styleClass="p-button-text">
+            </p-button>
+            <p-button icon="pi" label="Mettre à jour" styleClass="p-button-text btn-havelock-blue"></p-button>
+        </ng-template>
+    </p-dialog>
+</div>
+<!--.modal-->
+
+
+
+<!-- ///////// Condition ///////////////////////////////////////////////////////////////////////////// -->
+
+<!--
+<div class="construction-inputs-area">
+    <div class="condition-item style-2">
+        <a class="condition-item_link"></a>
+        <div class="condition-item_txt">
+            <span>PERIODE D’ESSAI</span>
+        </div>
+    </div>
+    <div class="construction-inputs-body">
+        <div class="inputs-group with-tooltip">
+            <label>Libellé de la question</label>
+            <div class="inputs-item-blc">
+                <input type="text" placeholder="Choisir une option de période d’essai" />
+            </div>
+            <div class="tooltip-area">
+                <div class="tooltip-item">
+                    <button class="tooltip-btn" (click)="tooltipStatusFct()"></button>
+                    <div class="tooltip-blc" [ngClass]="tooltipStatus ? 'active' : ''">
+                        <p>
+                            La durée de la période d’essai est la suivante : <br>
+                            - 2 mois pour les salariés Niveaux I à III <br>
+                            - 3 mois pour les salariés Niveau IV <br>
+                            - 4 mois pour les salariés Niveau V
+                        </p>
+                        <p>
+                            Sauf pour les salariés Niveau 1, Echelon 1, elle est renouvelable
+                            (si le contrat le prévoit), dans la limite des durées suivantes : <br>
+                            - 2 mois pour les salariés Niveau 1 échelon 2 à Niveau III <br>
+                            - 3 mois pour les salariés Niveau IV <br>
+                            - 4 mois pour les salariés Niveau V
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="construction-answer-area">
+            <div class="check-item">
+                <input type="radio" id="" name="">
+            </div>
+            <div class="construction-answer-blc">
+                <div class="inputs-group">
+                    <label>Libellé de la réponse :</label>
+                    <div class="inputs-item-blc">
+                        <input type="text" placeholder="Votre réponse" />
+                    </div>
+                </div>
+                <textarea class="construction-textarea" placeholder="Le présent contrat est conclu sans période d’essai"></textarea>
+            </div>
+        </div>
+
+        <div class="construction-answer-area">
+            <div class="check-item">
+                <input type="radio" id="" name="">
+            </div>
+            <div class="construction-answer-blc">
+                <div class="inputs-group">
+                    <label>Libellé de la réponse :</label>
+                    <div class="inputs-item-blc">
+                        <input type="text" placeholder="Avec période d’essai" />
+                    </div>
+                </div>
+                <div class="construction-editor">
+
+                    <div class="construction-editor-blc">
+                        Le présent contrat ne deviendra ferme qu’à l’issue d’une période d’essai de
+                        <div class="references-item mr-1">
+                            <span class="references-item_txt">Durée période d’essai</span>
+                            <a class="references-item_link"></a>
+                        </div>
+                        de travail effectif au cours de laquelle chacune des parties pourra mettre fin au contrat à tout moment, sans indemnité.
+                    </div>
+
+                    <div class="condition-item style-2">
+                        <a class="condition-item_link"></a>
+                        <div class="condition-item_txt">
+                            <span>Période renouvelable</span>
+                        </div>
+                    </div>
+                    <div class="construction-answer-sub-body">
+                        <div class="sub-body_edit">
+                            <div class="sub-body_edit-item">
+                                <div class="references-item mr-1">
+                                    <select class="references-item_select">
+                                        <option value="Intitulé de poste">Intitulé de poste</option>
+                                        <option value="Option 1">Option 1</option>
+                                        <option value="Option 2">Option 2</option>
+                                    </select>
+                                    <a class="references-item_link"></a>
+                                </div>
+                                <select class="condition-select">
+                                    <option value="EST">EST</option>
+                                    <option value="Option 1">Option 1</option>
+                                    <option value="Option 2">Option 2</option>
+                                </select>
+                                <div class="references-item mr-1">
+                                    <select class="references-item_select">
+                                        <option value="Référence">Référence</option>
+                                        <option value="Option 1">Option 1</option>
+                                        <option value="Option 2">Option 2</option>
+                                    </select>
+                                    <a class="references-item_link"></a>
+                                </div>
+                            </div>
+                            <div class="sub-body_edit-item">
+                                <button class="minus-btn"></button>
+                                <button class="plus-btn"></button>
+                            </div>
+                        </div>
+
+
+                        <textarea class="construction-textarea" placeholder="Cette période d’essai est renouvelable"></textarea>
+                    </div>
+
+                    <div class="construction-editor-blc">
+                        En cas de rupture de la période d’essai par la société
+                        <div class="references-item mr-1">
+                            <span class="references-item_txt">Dénomination sociale</span>
+                            <a class="references-item_link"></a>
+                        </div>
+
+                        , cette dernière devra respecter un délai de préavis fixé à :
+
+                        - 24 heures en deçà de 8 jours de présence ;
+                        - 48 heures entre 8 jours et 1 mois de présence ;
+                        - 2 semaines après un mois de présence ;
+                        - 1 mois après 3 mois de présence.
+
+                        En cas de rupture de la période d’essai à l’initiative de
+                        <div class="references-item mr-1">
+                            <span class="references-item_txt">Genre</span>
+                            <a class="references-item_link"></a>
+                        </div>
+                        <div class="references-item mr-1">
+                            <span class="references-item_txt">Prénom - Employé</span>
+                            <a class="references-item_link"></a>
+                        </div>
+                        <div class="references-item mr-1">
+                            <span class="references-item_txt">Nom - Employé</span>
+                            <a class="references-item_link"></a>
+                        </div>
+                        , ce dernier devra respecter un délai de
+
+                        prévenance de 48 heures. Ce délai est ramené à 24 heures si la durée de présence de M<> est inférieure à 8 jours.
+                        En cas de suspension du contrat de travail quelle qu’en soit la cause, la période d’essai est prolongée du temps de cette suspension.
+                        Toute rupture de la période d’essai, quel qu’en soit l’auteur, sera notifiée par lettre remise en main propre contre récépissé ou adressée en
+                        recommandé avec demande d’avis de réception.
+
+                    </div>
+                </div>
+
+                <button class="add-reply-btn">
+                    Ajouter une réponse
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+-->
+
+
+
+<br><br><br><br><br><br><br><br>

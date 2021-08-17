@@ -1,0 +1,79 @@
+<div class="modal">
+    <p-dialog header="Créer une condition" [(visible)]="modalCondition" [modal]="true" [style]="{width: '636px'}" [baseZIndex]="10000" [draggable]="false" [resizable]="true" (onHide)="cancel()">
+        <div class="create-condition-content">
+            <div class="form-area">
+                <form [formGroup]="createConditionForm">
+                    <div class="form-style">
+                        <label for="">Titre de la condition</label>
+                        <div class="p-input-icon-left">
+                            <em class="pi modele-input-icon"></em>
+                            <div class="input-blc" [ngClass]="{ 'is-invalid': condition.titre.invalid && condition.titre.touched }">
+                                <input type="text" pInputText placeholder="Titre de condition" formControlName="titre" />
+                            </div>
+                        </div>
+                        <!--.p-input-icon-left-->
+                        <span class="error" *ngIf="condition.titre.invalid && condition.titre.touched "> Titre
+                            invalide </span>
+                        <span class="error" *ngIf="conditionSubmitted && condition.titre.errors?.required"> Titre est
+                            obligatoir </span>
+                    </div>
+                    <!--.form-style-->
+                    <div class="radio-btns-area">
+                        <p class="radio-btns-title"> Faut il répondre à une question ? </p>
+                        <div class="radio-items_inline-blc">
+                            <div class="radio-item">
+                                <label>
+                                    <input id="oui" type="radio" name="reponse_obligatoire" value="true"
+                                        formControlName="reponse_obligatoire">
+                                    <span class="label-item">Oui</span>
+                                </label>
+                            </div>
+                            <div class="radio-item">
+                                <label>
+                                    <input id="non" type="radio" name="reponse_obligatoire" value="false"
+                                        formControlName="reponse_obligatoire">
+                                    <span class="label-item">Non</span>
+                                </label>
+                            </div>
+                        </div>
+                        <!--.radio-items_inline-blc-->
+                    </div>
+                    <span class="error" *ngIf="conditionSubmitted && condition.reponse_obligatoire.errors?.required">
+                        Veuillez sélectionner une option </span>
+                    <!--.radio-btns-area-->
+                    <div class="radio-btns-area">
+                        <p class="radio-btns-title"> Type de réponse </p>
+                        <div class="radio-items">
+                            <div class="radio-item">
+                                <label>
+                                    <input id="unique" type="radio" name="reponse_multiple" value="false"
+                                        formControlName="reponse_multiple">
+                                    <span class="label-item">Unique</span>
+                                </label>
+                            </div>
+                            <div class="radio-item">
+                                <label>
+                                    <input id="multiple" type="radio" name="reponse_multiple" value="true"
+                                        formControlName="reponse_multiple">
+                                    <span class="label-item">Multiple</span>
+                                </label>
+                            </div>
+                        </div>
+                        <span class="error" *ngIf="conditionSubmitted && condition.reponse_multiple.errors?.required">
+                            Veuillez sélectionner une option </span>
+                        <!--.radio-items-->
+                    </div>
+                    <!--.radio-btns-area-->
+                </form>
+            </div>
+            <!--.form-area-->
+        </div>
+        <!--.create-condition-content-->
+        <ng-template pTemplate="footer">
+            <p-button icon="pi" (click)="cancel()" label="Annuler" styleClass="p-button-text">
+            </p-button>
+            <p-button icon="pi" label="Créer" (click)="conditionSubmit()" styleClass="p-button-text btn-havelock-blue">
+            </p-button>
+        </ng-template>
+    </p-dialog>
+</div>

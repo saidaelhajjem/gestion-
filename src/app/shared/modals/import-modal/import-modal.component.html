@@ -1,0 +1,150 @@
+<!--.modal-->
+
+<div class="modal">
+    <form [formGroup]="importerDocumentForm">
+        <p-dialog header="IMPORTER UN document" [(visible)]="openImportation" [modal]="true" [style]="{width: '636px'}" [baseZIndex]="10000" [draggable]="false" [resizable]="true" (onHide)="annuler()">
+            <div class="import-area">
+
+                <div class="dropzone-area">
+                    <ngx-dropzone (change)="upload($event)">
+                        <ngx-dropzone-label>Glisser et déposer ici</ngx-dropzone-label>
+                        <ngx-dropzone-preview [removable]="true" [maxFileSize]="1" (removed)="onRemove()" *ngFor="let file of files">
+                            <ngx-dropzone-label>{{ file.name }}</ngx-dropzone-label>
+                        </ngx-dropzone-preview>
+                    </ngx-dropzone>
+                </div>
+                <!--.dropzone-area-->
+
+                <div class="import-area-desc">
+                    ou
+                </div>
+
+                <div class="browse-files-area btns-group">
+                    <div class="btn-importer">
+                        <span class="label havelock-blue">
+                            Changer de document
+                        </span>
+                        <input type="file" #File name="upload" accept=".doc, .docx, .txt, .rtf" class="upload-box" placeholder="Upload File" (change)="upload($event)">
+                    </div>
+                    <span class="error" *ngIf="importerDocumentSubmitted && importerDocument.fichier.errors?.required">
+                        fichier obligatoire
+                    </span>
+                </div>
+                <!--.browse-files-area-->
+
+                <div class="import-area-desc style-2">
+                    Formats acceptés : .doc, .docx, .txt, .rtf
+                </div>
+            </div>
+            <!--.import-area-->
+
+            <ng-template pTemplate="footer">
+                <p-button icon="pi" (click)="annuler()" label="Annuler" styleClass="p-button-text">
+                </p-button>
+                <p-button icon="pi" label="Suivant" styleClass="p-button-text btn-havelock-blue" (click)="detectReferencesModalFct()"></p-button>
+            </ng-template>
+        </p-dialog>
+
+
+        <p-dialog header="Détecter les références" [(visible)]="detectReferencesModal" [modal]="true" [style]="{width: '636px'}" [baseZIndex]="10000" [draggable]="false" [resizable]="true">
+
+            <div class="detect-references-content">
+                <div class="modal-description mb-1">
+                    <p>
+                        Cette phase optionnelle vous permet d’identifier des balises dans le document importé relatives aux textes à remplir
+                    </p>
+                </div>
+                <!--.modal-description-->
+
+                <div class="three-state-switch">
+                    <p>
+                        Utiliser une balise prédéfinie :
+                    </p>
+
+                    <div class="switch-field">
+                        <input type="radio" id="radio-one" [(ngModel)]="balisePredf" [ngModelOptions]="{standalone: true}" name="balisePredefinie" value="[ ]" checked />
+                        <label for="radio-one">
+                    []
+                        </label>
+                        <input type="radio" id="radio-two" [(ngModel)]="balisePredf" [ngModelOptions]="{standalone: true}" name="balisePredefinie" value="«  »" />
+                        <label for="radio-two">«  »</label>
+                        <input type="radio" id="radio-three" [(ngModel)]="balisePredf" [ngModelOptions]="{standalone: true}" name="balisePredefinie" value="surlignage" />
+                        <label for="radio-three">surlignage</label>
+                    </div>
+                </div>
+
+                <div class="import-area-desc">
+                    ou
+                </div>
+
+                <div class="three-state-switch">
+                    <p>
+                        Définir des balises personnalisées :
+                    </p>
+                    <!-- class="switch-field" -->
+                    <div class="field">
+                        <input type="text" name="balise_reference_ouvrante" formControlName="balise_reference_ouvrante" />
+                        <!-- <label for="radio-four">
+
+                        </label> -->
+                        <input type="text" name="balise_reference_fermante" formControlName="balise_reference_fermante" />
+                        <!-- <label for="radio-five"></label> -->
+                    </div>
+                </div>
+                <!--.three-state-switch-->
+            </div>
+            <!--.detect-references-content-->
+
+            <ng-template pTemplate="footer">
+                <p-button icon="pi" (click)="annuler()" label="Annuler" styleClass="p-button-text">
+                </p-button>
+                <p-button icon="pi" label="Importer" (click)="importDocument()" styleClass="p-button-text btn-havelock-blue"></p-button>
+            </ng-template>
+        </p-dialog>
+    </form>
+
+</div>
+<!--.modal-->
+
+
+
+
+<!-- <p-dialog style="display:none" header="Détecter les références" [(visible)]="nextModal" [modal]="true" [style]="{width: '636px'}" [baseZIndex]="10000" [draggable]="false" [resizable]="true">
+
+    <div class="detect-references-content">
+        <div class="modal-description mb-1">
+            <p>
+                Cette phase vous permet d’identifier le nom et le type du document
+            </p>
+        </div>
+
+
+        <div class="grid " style="margin-bottom: '20px'">
+            <div class="grid-blc">
+                <div class="has-float-label">
+                    <input id="nom_File" type="text" placeholder="Nom" required formControlName="nom" />
+                    <label for="nom_File">Nom </label>
+                </div>
+            </div>
+
+
+
+        </div>
+        <div class="grid ">
+            <div class="grid-blc">
+                <div class="has-float-label">
+                    <input id="nom_File" type="text" placeholder="document" required formControlName="type_document_id" />
+                    <label for="nom_File">document</label>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+    <ng-template pTemplate="footer">
+        <p-button icon="pi" (click)="annuler()" label="Annuler" styleClass="p-button-text">
+        </p-button>
+        <p-button icon="pi" label="Suivant" (click)="detectReferencesModalFct()" styleClass="p-button-text btn-havelock-blue"></p-button>
+    </ng-template>
+</p-dialog> -->

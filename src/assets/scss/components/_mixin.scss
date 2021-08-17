@@ -1,0 +1,9 @@
+/* # Mixin ::
+------------------------------------*/
+
+@mixin reset-font {
+    color: $color-white;
+    font-size: 12px;
+    line-height: 12px;
+    font-family: 'Montserrat', sans-serif;
+}

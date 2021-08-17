@@ -1,0 +1,360 @@
+<div class="elements-modele-area">
+    <div class="introduction-area introduction-elements p-d-flex p-jc-between" (click)="back()">
+        <a class="big-title">
+          {{currentModele?.nom}}
+        </a>
+    </div>
+    <!--.introduction-area / .introduction-elements -->
+
+    <div class="modele-contrat-search">
+        <span class="docs-dash-icn"></span>
+        <div class="filter-input-blc">
+            <input type="search" placeholder="Mon modèle de contrat" />
+        </div>
+        <div class="btn-bloc">
+            <button class="btn btn-valide"></button>
+            <button class="btn btn-delete"></button>
+        </div>
+    </div>
+    <!--.modele-contrat-search-->
+
+    <div class="accordion-area">
+        <p-accordion>
+            <p-accordionTab header="Documents">
+                <p-header>
+                    <span class="p-accordion-header-text">Documents</span>
+                    <div class="btns-group accordion_add-btn-blc">
+                        <span class="doc-counter">{{currentModele.documents?.length}} document(s)</span>
+                        <button class="btn btn-blue" pButton pRipple label="Document" icon="pi pi-plus" (click)="addDoc()" (onClick)="$event.stopPropagation()"></button>
+                    </div>
+                    <!--.btns-group / .accordion_add-btn-blc -->
+                </p-header>
+
+                <div class="accordion-body accordion-body_documents">
+                    <div class="docs-edit-list">
+                        <div class="docs-edit-list_item">
+                            <div class="contrat-type-blc">
+                                <div class="contrat-type_text">
+                                    {{document?.type_document_libelle}}
+                                </div>
+                                <!--.contrat-type_text-->
+                                <p-button label="Éditer" styleClass="p-button-link contrat-type_edit" (click)="editerDocument()"></p-button>
+                            </div>
+                            <!--.contrat-type-blc-->
+                        </div>
+                        <!--.docs-edit-list_item-->
+                        <div class="docs-edit-list_item grid gtc-1 gcg-3">
+                            <div class="grid-blc">
+                                <p class="action-name">
+                                    Nom du modèle
+                                </p>
+                            </div>
+                            <div class="grid-blc">
+                                <p class="modele-description">
+                                    {{document?.nom}}
+                                </p>
+                            </div>
+                            <div class="grid-blc">
+                                <div class="more-link">
+                                    <button pButton class="p-panel-header-icon p-link" icon="pi pi-ellipsis-h" (click)="menu.toggle($event)">
+                                    </button>
+                                    <p-menu #menu id="config_menu" [model]="items" [popup]="true"></p-menu>
+                                </div>
+                                <!--.more-link-->
+                            </div>
+                        </div>
+                        <!--.docs-edit-list_item-->
+                        <div class="docs-edit-list_item grid gtc-1 gcg-3">
+                            <div class="grid-blc">
+                                <p class="action-name">
+                                    Smart tags
+                                </p>
+                            </div>
+                            <div class="grid-blc">
+                                <div class="smart-tag-item" *ngFor="let smart of document?.smart_tags">
+                                    <span class="smart-tag_txt">{{smart.libelle}}</span>
+                                    <a class="smart-tag_link" (click)="RemoveElementFromTagsArray(smart.id)"></a>
+                                </div>
+
+                            </div>
+                            <div class="grid-blc">
+                                <div class="more-link">
+                                    <button pButton class="p-panel-header-icon p-link" icon="pi pi-ellipsis-h" (click)="sideBarSmartTagsClickEvent()">
+                                    </button>
+
+                                </div>
+                                <!--.more-link-->
+                            </div>
+                        </div>
+                        <!--.docs-edit-list_item-->
+                        <div class="docs-edit-list_item grid gtc-1 gcg-3">
+                            <div class="grid-blc">
+                                <p class="action-name">
+                                    Références
+                                </p>
+                            </div>
+                            <div class="grid-blc">
+                                <div class="references-item mr-1" *ngFor="let ref of document?.references">
+                                    <span class="references-item_txt">{{ref.titre}}</span>
+                                    <a class="references-item_link" (click)="RemoveElementFromReferenceArray(ref.id)"></a>
+                                </div>
+
+                            </div>
+                            <div class="grid-blc">
+                                <div class="more-link">
+                                    <button pButton class="p-panel-header-icon p-link" icon="pi pi-ellipsis-h" (click)="sideBarReferenceClickEvent()">
+                                    </button>
+                                    <p-menu #menu id="config_menu-3" [model]="items" [popup]="true"></p-menu>
+                                </div>
+                                <!--.more-link-->
+                            </div>
+                        </div>
+                        <!--.docs-edit-list_item-->
+                        <div class="docs-edit-list_item grid gtc-1 gcg-3">
+                            <div class="grid-blc">
+                                <p class="action-name">
+                                    Conditions
+                                </p>
+                            </div>
+                            <div class="grid-blc">
+                                <div class="condition-item mr-1" *ngFor="let condition of document?.conditions">
+                                    <div class="condition-item_txt">
+                                        <span>{{condition.titre}}</span>
+                                    </div>
+                                    <a class="condition-item_link" (click)="RemoveElementFromConditionArray(condition.id)"></a>
+                                </div>
+
+                            </div>
+                            <div class="grid-blc">
+                                <div class="more-link">
+                                    <button pButton class="p-panel-header-icon p-link" icon="pi pi-ellipsis-h" (click)="sideBarConditionClickEvent()">
+                                    </button>
+                                </div>
+                                <!--.more-link-->
+                            </div>
+                        </div>
+                        <!--.docs-edit-list_item-->
+                    </div>
+                    <!--.documents-edit-list-->
+                </div>
+                <!--.accordion-body-->
+            </p-accordionTab>
+            <p-accordionTab header="Questions">
+                <p-header>
+                    <span class="p-accordion-header-text">Questions</span>
+                    <div class="btns-group accordion_add-btn-blc">
+                        <button class="btn btn-blue" pButton pRipple label="Nouvelle question" icon="pi pi-plus" (onClick)="$event.stopPropagation();"></button>
+                    </div>
+                    <!--.btns-group / .accordion_add-btn-blc -->
+                </p-header>
+                <div class="accordion-body">
+                    <h2 class="accordion-body_title">Informations générales</h2>
+
+                    <div class="questions-list">
+                        <div class="questions-item">
+                            <p class="questions-item_txt drag">
+                                PAGE 1 | Quelle est la durée du contrat ?
+                            </p>
+                            <div class="more-link">
+                                <button pButton class="p-panel-header-icon p-link" icon="pi pi-ellipsis-h" (click)="sideBarSmartTagsClickEvent()">
+                                </button>
+                            </div>
+                            <!--.more-link-->
+                        </div>
+                        <!--.questions-item-->
+                        <div class="questions-item">
+                            <p class="questions-item_txt drag">
+                                PAGE 2 | Veuillez indiquer l’intitulé du poste
+                            </p>
+                            <div class="more-link">
+                                <button pButton class="p-panel-header-icon p-link" icon="pi pi-ellipsis-h" (click)="menu.toggle($event)">
+                                </button>
+                                <p-menu #menu id="config_menu" [model]="items" [popup]="true"></p-menu>
+                            </div>
+                            <!--.more-link-->
+                        </div>
+                        <!--.questions-item-->
+                        <div class="questions-item">
+                            <p class="questions-item_txt drag">
+                                PAGE 2 | Quelle est la date d’embauche ?
+                            </p>
+                            <div class="more-link">
+                                <button pButton class="p-panel-header-icon p-link" icon="pi pi-ellipsis-h" (click)="menu.toggle($event)">
+                                </button>
+                                <p-menu #menu id="config_menu" [model]="items" [popup]="true"></p-menu>
+                            </div>
+                            <!--.more-link-->
+                        </div>
+                        <!--.questions-item-->
+
+                    </div>
+                    <!--.questions-list-->
+
+                    <h2 class="accordion-body_title">Clauses Spécifiques</h2>
+
+                    <div class="questions-list">
+                        <div class="questions-item">
+                            <p class="questions-item_txt drag">
+                                PAGE 4 | Choisir une option de période d’essai
+                            </p>
+                            <div class="more-link">
+                                <button pButton class="p-panel-header-icon p-link" icon="pi pi-ellipsis-h" (click)="menu.toggle($event)">
+                                </button>
+                                <p-menu #menu id="config_menu" [model]="items" [popup]="true"></p-menu>
+                            </div>
+                            <!--.more-link-->
+                        </div>
+                        <!--.questions-item-->
+                        <div class="questions-item">
+                            <p class="questions-item_txt drag">
+                                PAGE 5 | Préciser la retraite complémentaire et l’organise de prévoyance
+                            </p>
+                            <div class="more-link">
+                                <button pButton class="p-panel-header-icon p-link" icon="pi pi-ellipsis-h" (click)="menu.toggle($event)">
+                                </button>
+                                <p-menu #menu id="config_menu" [model]="items" [popup]="true"></p-menu>
+                            </div>
+                            <!--.more-link-->
+                        </div>
+                        <!--.questions-item-->
+
+                    </div>
+                    <!--.questions-list-->
+
+                </div>
+                <!--.accordion-body-->
+            </p-accordionTab>
+            <p-accordionTab header="Procédure">
+                <p-header>
+                    <span class="p-accordion-header-text">Procédure</span>
+                    <div class="btns-group accordion_add-btn-blc">
+                        <button class="btn btn-blue" pButton pRipple label="Procédure" icon="pi pi-plus" (onClick)="$event.stopPropagation();"></button>
+                    </div>
+                    <!--.btns-group / .accordion_add-btn-blc -->
+                </p-header>
+
+                <div class="accordion-body">
+                    Procédure 3
+                </div><!--.accordion-body-->
+
+                
+            </p-accordionTab>
+            <p-accordionTab header="Signature">
+                <p-header>
+                    <span class="p-accordion-header-text">Signature</span>
+                    <div class="btns-group accordion_add-btn-blc">
+                        <button class="btn btn-blue" pButton pRipple label="Signature" icon="pi pi-plus" (onClick)="$event.stopPropagation();"></button>
+                    </div>
+                    <!--.btns-group / .accordion_add-btn-blc -->
+                </p-header>
+                <div class="accordion-body">
+                    Signature 4
+                </div><!--.accordion-body-->
+                
+            </p-accordionTab>
+        </p-accordion>
+    </div>
+    <!--.accordion-area-->
+    <app-import-modal [openImportation]="importDisplayModal" [modeleId]="currentModele.id" (closeImporDocument)="onFinish($event)"></app-import-modal>
+
+    <!-- // SideBar Smart Tags  // -->
+    <!---->
+    <div class="sideBar-smart-tags" [ngClass]="status ? 'active' : ''">
+        <div class="sideBar-smart-tags_content">
+            <button class="btn-close" (click)="sideBarSmartTagsRemove()"></button>
+            <h3 class="title">
+                Smart tags
+            </h3>
+            <div class="search-tags-area">
+                <input type="search" placeholder="Chercher un tag" [(ngModel)]="term">
+            </div>
+            <div class="tags-list-area">
+                <div class="tags-list-item" *ngFor="let tag of listTags|filter:term">
+                    <span class="tags-list-item_txt">{{tag.libelle}}</span>
+                    <a class="tags-list-item_link" (click)="addElementFromTagsArray(tag.id)"></a>
+                </div>
+
+            </div>
+
+            <div class="btns-group btns-group_position">
+                <button class="btn btn-blue" pButton pRipple label="Créer un smart tag" icon="pi pi-plus" (click)="addNewtags()"></button>
+            </div>
+            <!--.btns-group-->
+
+        </div>
+        <!--.sideBar-smart-tags_content-->
+    </div>
+    <!--.sideBar-smart-tags-->
+
+    <!-- panel conditin  -->
+    <div class="panel-sidebar-style condition-panel-sidebar" [ngClass]="condition ? 'active' : ''">
+        <button class="cancel-link" (click)="sideBarConditionRemove()"></button>
+        <div class="condition-panel-sidebar_content">
+            <h3 class="automatic-detection_title">Conditions</h3>
+            <div class="add-reference_desc">
+                <p> Glissez et déposez une condition pour la placer dans le texte </p>
+            </div>
+            <!--.add-reference_desc-->
+            <div class="tags-condition-list">
+
+
+                <!--.condition-item-->
+                <div class="condition-item mr-1" *ngFor="let condition of listCondition">
+                    <div class="condition-item_txt">
+                        <span>{{condition.titre}}</span>
+                    </div>
+                    <a class="condition-item_link" (click)="addElementFromConditionArray(condition.id)"></a>
+                </div>
+                <!--.condition-item-->
+            </div>
+            <!--.tags-condition-list-->
+            <div class="btns-group btns-group_position">
+                <button class="btn btn-blue" pButton pRipple label="Créer une condition" icon="pi pi-plus" (click)="addNewCondition()"></button>
+            </div>
+            <!--.btns-group-->
+        </div>
+        <!--.condition-panel-sidebar_content-->
+    </div>
+    <!-- panel conditin  -->
+
+    <!-- panel reference  -->
+    <div class="panel-sidebar-style reference-panel-sidebar" [ngClass]="reference ? 'active' : ''">
+        <button class="cancel-link" (click)="sideBarReferenceRemove()"></button>
+        <h3 class="automatic-detection_title">Références</h3>
+        <div class="add-reference_desc">
+            <p> Glissez et déposez un contact pour le placer </p>
+        </div>
+        <!--.add-reference_desc-->
+        <div class="tags-identified_list">
+            <div class="references-item mr-1" *ngFor="let ref of allReferences">
+                <span class="references-item_txt">{{ref.titre}}</span>
+                <a class="references-item_link" (click)="addElementFromReferenceArray(ref.id)"></a>
+            </div>
+
+        </div>
+        <!--.tags-identified_list-->
+        <div class="tags-identified_list">
+            <div class="references-item mr-1">
+                <span class="references-item_txt">Article 1</span>
+                <a class="references-item_link"></a>
+            </div>
+            <!--.references-item-->
+            <div class="references-item mr-1">
+                <span class="references-item_txt">SIRET</span>
+                <a class="references-item_link"></a>
+            </div>
+            <!--.references-item-->
+        </div>
+        <!--.tags-identified_list-->
+        <div class="btns-group btns-group_position">
+            <button class="btn btn-blue" pButton pRipple label="Ajouter une référence" icon="pi pi-plus" (click)="addNewReference()"></button>
+        </div>
+        <!--.btns-group-->
+    </div>
+    <!-- panel reference  -->
+
+    <app-modal-reference [modalRefernce]="addReferencesModal" (closeModalRef)="closeRef($event)" (refreshRefrence)="actualiseRef($event)"></app-modal-reference>
+    <app-modal-condition [modalCondition]="addConditionModal" (closeModalCondition)="closeCondition($event)" (refreshCondition)="actualiseCondition($event)"></app-modal-condition>
+    <app-modal-tags [modalTags]="addtagsModal" (closeModalTags)="closeModalTag($event)" (refreshTag)="actualiseModalTag($event)"></app-modal-tags>
+</div>
+<!--.elements-modele-area-->

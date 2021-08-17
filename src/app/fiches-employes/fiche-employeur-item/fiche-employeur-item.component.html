@@ -1,0 +1,191 @@
+<div class="fiche-employeur-item-area">
+
+    <div class="information-grid-area">
+        <div class="grid info-gct-1 info-gcg-1">
+            <div class="grid-blc">
+                <div class="information-title">
+                    Raison sociale
+                </div>
+                <!--.information-title-->
+                <div class="information-desc">
+                    {{employeurInfo?.raison_sociale}}
+                </div>
+                <!--.information-desc-->
+            </div>
+            <div class="grid-blc">
+                <div class="information-title">
+                    Statut
+                </div>
+                <!--.information-title-->
+                <div class="information-desc">
+                    SARL
+                </div>
+                <!--.information-desc-->
+            </div>
+            <div class="grid-blc">
+                <div class="information-title">
+                    SIREN
+                </div>
+                <!--.information-title-->
+                <div class="information-desc">
+                    {{employeurInfo?.siren}}
+                </div>
+                <!--.information-desc-->
+            </div>
+            <div class="grid-blc">
+                <div class="information-title">
+                    Activité principale
+                </div>
+                <!--.information-title-->
+                <div class="information-desc">
+                    62.02A - Conseil en systèmes et logiciels informatiques
+                </div>
+                <!--.information-desc-->
+            </div>
+            <div class="grid-blc">
+                <div class="information-title">
+                    nbr. salariés
+                </div>
+                <!--.information-title-->
+                <div class="information-desc">
+                    {{employeurInfo?.nombre_employes}}
+                </div>
+                <!--.information-desc-->
+            </div>
+        </div>
+        <!--.grid-->
+        <div class="grid info-gct-5 info-gcg-1 info-mr-1">
+            <div class="grid-blc">
+                <div class="information-title">
+                    N° de voie
+                </div>
+                <!--.information-title-->
+                <div class="information-desc">
+                    {{employeurInfo?.adresse_num_voie}}
+                </div>
+                <!--.information-desc-->
+            </div>
+            <div class="grid-blc">
+                <div class="information-title">
+                    Type de voie
+                </div>
+                <!--.information-title-->
+                <div class="information-desc">
+                    {{employeurInfo?.adresse_type_voie}}
+                </div>
+                <!--.information-desc-->
+            </div>
+            <div class="grid-blc">
+                <div class="information-title">
+                    Nom de la voie
+                </div>
+                <!--.information-title-->
+                <div class="information-desc">
+                    {{employeurInfo?.adresse_nom_voie}}
+                </div>
+                <!--.information-desc-->
+            </div>
+            <div class="grid-blc">
+                <div class="information-title">
+                    Code postal
+                </div>
+                <!--.information-title-->
+                <div class="information-desc">
+                    {{employeurInfo?.adresse_code_postal}}
+                </div>
+                <!--.information-desc-->
+            </div>
+            <div class="grid-blc">
+                <div class="information-title">
+                    Ville
+                </div>
+                <!--.information-title-->
+                <div class="information-desc">
+                    {{employeurInfo?.adresse_ville}}
+                </div>
+                <!--.information-desc-->
+            </div>
+        </div>
+        <!--.grid-->
+    </div>
+    <!--.information-grid-area-->
+
+    <div class="table-area">
+        <p-table #dt1 [value]="listEmployer" [paginator]="false" [rows]="10" [showCurrentPageReport]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [rowsPerPageOptions]="[10,25,50]" styleClass="p-datatable-responsive-demo"
+            [globalFilterFields]="['prenom_dirigeant','nom_dirigeant','adresse_num_voie','adresse_type_voie','adresse_nom_voie','adresse_code_postal','adresse_ville','nombre_employes','poste_vacant','auteur_firstname','auteur_lastname']">
+            <ng-template pTemplate="caption">
+                <div class="p-d-flex p-jc-between p-ai-center">
+                    <div class="p-input-icon-left">
+                        <em class="pi search-icon"></em>
+                        <div class="input-blc style-2">
+                            <input type="text" (input)="dt1.filterGlobal($event.target.value, 'contains')" pInputText placeholder="Recherche…" />
+                        </div>
+                    </div>
+                    <a class="link-action"></a>
+                </div>
+            </ng-template>
+            <ng-template pTemplate="header">
+                <tr>
+                    <th id="nom" pSortableColumn="raison_sociale">Nom
+                        <p-sortIcon field="raison_sociale"></p-sortIcon>
+                    </th>
+                    <th id="type_document" pSortableColumn="Adresse du siège social">Adresse du siège social
+                        <p-sortIcon field="Adresse du siège social">
+                        </p-sortIcon>
+                    </th>
+                    <th id="date_creation" pSortableColumn="nombre_employes">Nombre Employés
+                        <p-sortIcon field="nombre_employes">
+                        </p-sortIcon>
+                    </th>
+                    <th id="date_modification" pSortableColumn="poste_vacant">Poste vacant
+                        <p-sortIcon field="poste_vacant">
+                        </p-sortIcon>
+                    </th>
+                    <th id="auteur" pSortableColumn="created_at">Date de modification
+                        <p-sortIcon field="created_at">
+                        </p-sortIcon>
+                    </th>
+                    <th id="commentaire" pSortableColumn="auteur_firstname" pSortableColumn="auteur_lastname">Auteur
+                        <p-sortIcon field="auteur_firstname" field="auteur_lastname"></p-sortIcon>
+                    </th>
+                    <th id="actions" pSortableColumn="Actions">Actions
+                        <p-sortIcon field="Actions"></p-sortIcon>
+                    </th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-document>
+                <tr>
+                    <td> {{document.prenom_dirigeant}} {{document.nom_dirigeant}} </td>
+                    <td>{{document.adresse_num_voie}} {{document.adresse_type_voie}} de {{document.adresse_nom_voie}} - {{document.adresse_code_postal}} {{document.adresse_ville}} </td>
+                    <td>
+                        <span class="number-style center">{{document.nombre_employes}}</span>
+                    </td>
+                    <td>
+                        <span class="number-style center">{{document.poste_vacant}}</span>
+                    </td>
+                    <td>{{document.created_at |date:'MM/dd/yyyy'}}</td>
+                    <td>{{document.auteur_firstname}} {{document.auteur_lastname}}</td>
+                    <td>
+                        <div class="more-link">
+                            <button pButton class="p-panel-header-icon p-link" icon="pi pi-ellipsis-h" (click)="selectedItem = document;menu.toggle($event)">
+                            </button>
+                            <p-menu #menu id="config_menu" [model]="items" [popup]="true"></p-menu>
+                        </div>
+                        <!--.more-link-->
+                    </td>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="emptymessage" let-columns>
+                <tr>
+                    <td colspan="7">
+                        <div class="p-text-center">Aucun employeur</div>
+                    </td>
+                </tr>
+            </ng-template>
+        </p-table>
+        <p-paginator [showCurrentPageReport]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [rows]="10" [totalRecords]="totalRecords" [alwaysShow]="true" (onPageChange)="paginate($event)" [rowsPerPageOptions]="[10,25,50]"></p-paginator>
+    </div>
+
+</div>
+<app-modal-employeur *ngIf="createEmployeurFileModal" Title="{{title}}" button="{{button}}" [employeur]="employId" (closeModal)="close($event)" (refresh)="actualiserEmployeur($event)" [modalOpen]="createEmployeurFileModal"></app-modal-employeur>
+<!--.fiche-employeur-item-area-->

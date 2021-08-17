@@ -1,0 +1,456 @@
+<div class="nouveau-projet-area">
+    <div class="introduction-area introduction-elements p-d-flex p-jc-between">
+        <a class="big-title"> Cuisinier - Restaurant A </a>
+        <!--
+        <div class="btns-group two-btns">
+            <button class="btn btn-java-green" pButton pRipple label="Enregistré"></button>
+        </div>
+        .btns-group-->
+    </div>
+    <!--.introduction-area / .introduction-elements -->
+    <div class="modele-contrat-search">
+        <span class="docs-dash-icn"></span>
+        <div class="filter-input-blc">
+            <input type="search" placeholder="Cuisinier - Restaurant A" />
+        </div>
+        <div class="btn-bloc">
+            <button class="btn btn-valide"></button>
+            <button class="btn btn-delete"></button>
+        </div>
+    </div>
+    <!--.modele-contrat-search-->
+    <div class="big-accordion-area accordion-area">
+        <p-accordion>
+            <p-accordionTab header="CONTRAT 1">
+                <p-header>
+                    <span class="p-accordion-header-text">CONTRAT 1</span>
+                </p-header>
+                <div class="sub-accordion-area">
+                    <p-accordion>
+                        <p-accordionTab header="Documents">
+                            <p-header>
+                                <span class="p-accordion-header-text">Documents</span>
+                                <div class="btns-group accordion_add-btn-blc">
+                                    <span class="doc-counter">1 document(s)</span>
+                                    <button class="btn btn-blue" pButton pRipple label="Document" icon="pi pi-plus" (onClick)="$event.stopPropagation();"></button>
+                                </div>
+                                <!--.btns-group / .accordion_add-btn-blc -->
+                            </p-header>
+                            <div class="accordion-body accordion-body_documents">
+                                <div class="docs-edit-list">
+                                    <div class="docs-edit-list_item">
+                                        <div class="contrat-type-blc">
+                                            <div class="contrat-type_text"> Contrat CDI temps partiel </div>
+                                            <!--.contrat-type_text-->
+                                            <p-button label="Éditer" styleClass="p-button-link contrat-type_edit">
+                                            </p-button>
+                                        </div>
+                                        <!--.contrat-type-blc-->
+                                    </div>
+                                    <!--.docs-edit-list_item-->
+                                    <div class="docs-edit-list_item grid gtc-1 gcg-3">
+                                        <div class="grid-blc">
+                                            <p class="action-name"> Nom du modèle </p>
+                                        </div>
+                                        <div class="grid-blc">
+                                            <p class="modele-description"> CDI </p>
+                                        </div>
+                                        <div class="grid-blc">
+                                            <div class="more-link">
+                                                <button pButton class="p-panel-header-icon p-link" icon="pi pi-ellipsis-h" (click)="menu.toggle($event)">
+                                                </button>
+                                                <p-menu #menu id="config_menu" [model]="items" [popup]="true"></p-menu>
+                                            </div>
+                                            <!--.more-link-->
+                                        </div>
+                                    </div>
+                                    <!--.docs-edit-list_item-->
+                                    <div class="docs-edit-list_item grid gtc-1 gcg-3">
+                                        <div class="grid-blc">
+                                            <p class="action-name"> Smart tags </p>
+                                        </div>
+                                        <div class="grid-blc">
+                                            <div class="smart-tag-item">
+                                                <span class="smart-tag_txt">Non cadre</span>
+                                                <a class="smart-tag_link"></a>
+                                            </div>
+                                            <div class="smart-tag-item">
+                                                <span class="smart-tag_txt">Temps partiel</span>
+                                                <a class="smart-tag_link"></a>
+                                            </div>
+                                            <div class="smart-tag-item">
+                                                <span class="smart-tag_txt">Cuisinier</span>
+                                                <a class="smart-tag_link"></a>
+                                            </div>
+                                        </div>
+                                        <div class="grid-blc">
+                                            <div class="more-link">
+                                                <button pButton class="p-panel-header-icon p-link" icon="pi pi-ellipsis-h" (click)="menu.toggle($event)">
+                                                </button>
+                                                <p-menu #menu id="config_menu-2" [model]="items" [popup]="true">
+                                                </p-menu>
+                                            </div>
+                                            <!--.more-link-->
+                                        </div>
+                                    </div>
+                                    <!--.docs-edit-list_item-->
+                                    <div class="docs-edit-list_item grid gtc-1 gcg-3">
+                                        <div class="grid-blc">
+                                            <p class="action-name"> Références </p>
+                                        </div>
+                                        <div class="grid-blc">
+                                            <div class="references-item mr-1">
+                                                <span class="references-item_txt">Dénomination sociale</span>
+                                                <a class="references-item_link"></a>
+                                            </div>
+                                            <!--.references-item-->
+                                            <div class="references-item mr-1">
+                                                <span class="references-item_txt">RCS</span>
+                                                <a class="references-item_link"></a>
+                                            </div>
+                                            <!--.references-item-->
+                                            <div class="references-item mr-1">
+                                                <span class="references-item_txt">SIRET</span>
+                                                <a class="references-item_link"></a>
+                                            </div>
+                                            <div class="references-item mr-1">
+                                                <span class="references-item_txt">Durée période d’essai</span>
+                                                <a class="references-item_link"></a>
+                                            </div>
+                                            <!--.references-item-->
+                                            <div class="references-item mr-1">
+                                                <span class="references-item_txt">Prénom - Employé</span>
+                                                <a class="references-item_link"></a>
+                                            </div>
+                                            <!--.references-item-->
+                                            <div class="references-item mr-1">
+                                                <span class="references-item_txt">Nom - Employé</span>
+                                                <a class="references-item_link"></a>
+                                            </div>
+                                            <!--.references-item-->
+                                        </div>
+                                        <div class="grid-blc">
+                                            <div class="more-link">
+                                                <button pButton class="p-panel-header-icon p-link" icon="pi pi-ellipsis-h" (click)="menu.toggle($event)">
+                                                </button>
+                                                <p-menu #menu id="config_menu-3" [model]="items" [popup]="true">
+                                                </p-menu>
+                                            </div>
+                                            <!--.more-link-->
+                                        </div>
+                                    </div>
+                                    <!--.docs-edit-list_item-->
+                                    <div class="docs-edit-list_item grid gtc-1 gcg-3">
+                                        <div class="grid-blc">
+                                            <p class="action-name"> Conditions </p>
+                                        </div>
+                                        <div class="grid-blc">
+                                            <div class="condition-item mr-1">
+                                                <div class="condition-item_txt">
+                                                    <span>Période d’essai</span>
+                                                </div>
+                                                <a class="condition-item_link"></a>
+                                            </div>
+                                            <!--.condition-item-->
+                                            <div class="condition-item mr-1">
+                                                <div class="condition-item_txt">
+                                                    <span>HEURES COMPLEMENTAIRES</span>
+                                                </div>
+                                                <a class="condition-item_link"></a>
+                                            </div>
+                                            <!--.condition-item-->
+                                        </div>
+                                        <div class="grid-blc">
+                                            <div class="more-link">
+                                                <button pButton class="p-panel-header-icon p-link" icon="pi pi-ellipsis-h" (click)="menu.toggle($event)">
+                                                </button>
+                                                <p-menu #menu id="config_menu-4" [model]="items" [popup]="true">
+                                                </p-menu>
+                                            </div>
+                                            <!--.more-link-->
+                                        </div>
+                                    </div>
+                                    <!--.docs-edit-list_item-->
+                                    <div class="btns-group two-btns p-jc-end">
+                                        <button class="btn btn-blue blue-style-2">Éditer</button>
+                                    </div>
+                                </div>
+                                <!--.documents-edit-list-->
+                            </div>
+                            <!--.accordion-body-->
+                        </p-accordionTab>
+                        <p-accordionTab header="Identités des parties">
+                            <p-header>
+                                <span class="p-accordion-header-text">Identités des parties</span>
+                                <div class="btns-group accordion_add-btn-blc">
+                                    <button class="btn btn-blue" pButton pRipple label="Éditer" (onClick)="$event.stopPropagation();"></button>
+                                </div>
+                                <!--.btns-group / .accordion_add-btn-blc -->
+                            </p-header>
+                            <div class="accordion-body">
+                                <form [formGroup]="employeurForm">
+                                    <div class="accordion-form-area">
+                                        <div class="accordion-form_title-blc p-d-flex">
+                                            <h2 class="accordion-form_title">Employeur</h2>
+                                            <div class="more-link">
+                                                <button pButton class="p-panel-header-icon p-link" icon="pi pi-ellipsis-h" (click)="sideBarSmartTagsClick($event)">
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="accordion-form-grid grid accordion-form-grid-1 gg-2">
+                                            <div class="grid-blc">
+                                                <div class="has-float-label">
+                                                    <input id="RaisonSociale" type="text" placeholder="Raison sociale" formControlName="raison_sociale" required />
+                                                    <label for="RaisonSociale">Raison sociale</label>
+                                                </div>
+                                            </div>
+                                            <div class="grid-blc">
+                                                <div class="has-float-label">
+                                                    <input id="SIREn" type="number" placeholder="0000" formControlName="siren" required />
+                                                    <label for="SIREn">SIREn</label>
+                                                </div>
+                                            </div>
+                                            <div class="grid-blc">
+                                                <div class="has-float-label">
+                                                    <input id="NomDirigeant" type="text" placeholder="Nom du dirigeant" formControlName="nom_dirigeant" required />
+                                                    <label for="NomDirigeant">Nom du dirigeant</label>
+                                                </div>
+                                            </div>
+                                            <div class="grid-blc">
+                                                <div class="has-float-label">
+                                                    <input id="PrenomDirigeant" type="text" placeholder="Prénom du dirigeant" formControlName="prenom_dirigeant" required />
+                                                    <label for="PrenomDirigeant">Prénom du dirigeant</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="accordion-form-grid grid accordion-form-grid-2 gg-2">
+                                            <div class="grid-blc">
+                                                <div class="has-float-label">
+                                                    <input id="NVoie" type="text" placeholder="000" formControlName="adresse_num_voie" required />
+                                                    <label for="NVoie">N° de voie</label>
+                                                </div>
+                                            </div>
+                                            <div class="grid-blc">
+                                                <div class="has-float-label">
+                                                    <input id="TypeVoie" type="text" placeholder="Type de voie" formControlName="adresse_type_voie" required />
+                                                    <label for="TypeVoie">Type de voie</label>
+                                                </div>
+                                            </div>
+                                            <div class="grid-blc">
+                                                <div class="has-float-label">
+                                                    <input id="NomVoie" type="text" placeholder="Nom de la voie" formControlName="adresse_nom_voie" required />
+                                                    <label for="NomVoie">Nom de la voie</label>
+                                                </div>
+                                            </div>
+                                            <div class="grid-blc">
+                                                <div class="has-float-label">
+                                                    <input id="ComplementAdresse" type="text" placeholder="-" formControlName="adresse_complement" required />
+                                                    <label for="ComplementAdresse">Complément adresse</label>
+                                                </div>
+                                            </div>
+                                            <div class="grid-blc">
+                                                <div class="has-float-label">
+                                                    <input id="CodePostal" type="text" placeholder="00000" formControlName="adresse_code_postal" required />
+                                                    <label for="CodePostal">Code postal</label>
+                                                </div>
+                                            </div>
+                                            <div class="grid-blc">
+                                                <div class="has-float-label">
+                                                    <input id="Ville" type="text" placeholder="Ville" formControlName="adresse_ville" required />
+                                                    <label for="Ville">Ville</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                                <form [formGroup]="employeeForm">
+                                    <div class="accordion-form-area">
+                                        <div class="accordion-form_title-blc p-d-flex">
+                                            <h2 class="accordion-form_title">Employé</h2>
+                                            <div class="more-link">
+                                                <button pButton class="p-panel-header-icon p-link" icon="pi pi-ellipsis-h" (click)="sideBarSmartTagsClick($event)">
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="accordion-form-grid grid accordion-form-grid-3 gg-2">
+                                            <div class="grid-blc">
+                                                <div class="has-float-label">
+                                                    <input id="Nom" type="text" placeholder="Nom" formControlName="nom" required />
+                                                    <label for="Nom">Nom</label>
+                                                </div>
+                                            </div>
+                                            <div class="grid-blc">
+                                                <div class="has-float-label">
+                                                    <input id="Prenom" type="text" placeholder="Prénom" formControlName="prenom" required />
+                                                    <label for="Prenom">Prénom</label>
+                                                </div>
+                                            </div>
+                                            <div class="grid-blc">
+                                                <div class="has-float-label">
+                                                    <input id="DateNaissance" type="date" placeholder="Date de naissance" formControlName="date_naissance" required />
+                                                    <label for="DateNaissance">Date de naissance</label>
+                                                </div>
+                                            </div>
+                                            <div class="grid-blc">
+                                                <div class="has-float-label">
+                                                    <input id="LieuNaissance" type="text"
+                                                        placeholder="Lieu de naissance" formControlName="lieu_naissance"
+                                                        required />
+                                                    <label for="LieuNaissance">Lieu de naissance</label>
+                                                </div>
+                                            </div>
+                                            <div class="grid-blc">
+                                                <div class="has-float-label">
+                                                    <input id="NumeroSecuriteSociale" type="text" placeholder="000" formControlName="num_securite_sociale" required />
+                                                    <label for="NumeroSecuriteSociale">Numéro de sécurité
+                                                        sociale</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="accordion-form-grid grid accordion-form-grid-2 gg-2">
+                                            <div class="grid-blc">
+                                                <div class="has-float-label">
+                                                    <input id="NVoieTwo" type="text" placeholder="000" formControlName="adresse_num_voie" required />
+                                                    <label for="NVoieTwo">N° de voie</label>
+                                                </div>
+                                            </div>
+                                            <div class="grid-blc">
+                                                <div class="has-float-label">
+                                                    <input id="TypeVoieTwo" type="text" placeholder="Type de voie" formControlName="adresse_type_voie" required />
+                                                    <label for="TypeVoieTwo">Type de voie</label>
+                                                </div>
+                                            </div>
+                                            <div class="grid-blc">
+                                                <div class="has-float-label">
+                                                    <input id="NomVoieTwo" type="text" placeholder="Nom de la voie" formControlName="adresse_nom_voie" required />
+                                                    <label for="NomVoieTwo">Nom de la voie</label>
+                                                </div>
+                                            </div>
+                                            <div class="grid-blc">
+                                                <div class="has-float-label">
+                                                    <input id="ComplementAdresseTwo" type="text" placeholder="-" formControlName="adresse_complement" required />
+                                                    <label for="ComplementAdresseTwo">Complément adresse</label>
+                                                </div>
+                                            </div>
+                                            <div class="grid-blc">
+                                                <div class="has-float-label">
+                                                    <input id="CodePostalTwo" type="text" placeholder="00000" formControlName="adresse_code_postal" required />
+                                                    <label for="CodePostalTwo">Code postal</label>
+                                                </div>
+                                            </div>
+                                            <div class="grid-blc">
+                                                <div class="has-float-label">
+                                                    <input id="VilleTwo" type="text" placeholder="Ville" formControlName="adresse_ville" required />
+                                                    <label for="VilleTwo">Ville</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <!--.accordion-body-->
+                        </p-accordionTab>
+                        <p-accordionTab header="Questions">
+                            <p-header>
+                                <span class="p-accordion-header-text">Questions</span>
+                                <div class="btns-group accordion_add-btn-blc">
+                                    <button class="btn btn-blue" pButton pRipple label="Répondre aux questions" (onClick)="$event.stopPropagation();"></button>
+                                </div>
+                                <!--.btns-group / .accordion_add-btn-blc -->
+                            </p-header>
+                            <div class="accordion-body">
+                                <h2 class="accordion-body_title">Informations générales</h2>
+                                <div class="questions-list">
+                                    <div class="questions-item">
+                                        <p class="questions-item_txt drag checked"> PAGE 1 | Quelle est la durée du contrat ? </p>
+                                        <a class="watch-link"></a>
+                                    </div>
+                                    <!--.questions-item-->
+                                    <div class="questions-item">
+                                        <p class="questions-item_txt drag checked"> PAGE 2 | Veuillez indiquer l’intitulé du poste </p>
+                                        <a class="watch-link"></a>
+                                    </div>
+                                    <!--.questions-item-->
+                                    <div class="questions-item">
+                                        <p class="questions-item_txt drag"> PAGE 2 | Quelle est la date d’embauche ?
+                                        </p>
+                                        <a class="watch-link"></a>
+                                    </div>
+                                    <!--.questions-item-->
+                                </div>
+                                <!--.questions-list-->
+                                <h2 class="accordion-body_title">Clauses Spécifiques</h2>
+                                <div class="questions-list">
+                                    <div class="questions-item">
+                                        <p class="questions-item_txt drag"> PAGE 4 | Choisir une option de période d’essai </p>
+                                        <a class="watch-link"></a>
+                                    </div>
+                                    <!--.questions-item-->
+                                    <div class="questions-item">
+                                        <p class="questions-item_txt drag"> PAGE 5 | Préciser la retraite complémentaire et l’organise de prévoyance </p>
+                                        <a class="watch-link"></a>
+                                    </div>
+                                    <!--.questions-item-->
+                                </div>
+                                <!--.questions-list-->
+                            </div>
+                            <!--.accordion-body-->
+                        </p-accordionTab>
+                        <p-accordionTab header="Signatures">
+                            <p-header>
+                                <span class="p-accordion-header-text">Signatures</span>
+                                <div class="btns-group accordion_add-btn-blc">
+                                    <button class="btn btn-blue" pButton pRipple label="Signataire" icon="pi pi-plus" (onClick)="$event.stopPropagation();"></button>
+                                </div>
+                                <!--.btns-group / .accordion_add-btn-blc -->
+                            </p-header> Signature 4
+                        </p-accordionTab>
+                    </p-accordion>
+                </div>
+                <!--.sub-accordion-area-->
+            </p-accordionTab>
+            <p-accordionTab header="CONTRAT 2">
+                <p-header>
+                    <span class="p-accordion-header-text">CONTRAT 2</span>
+                </p-header> CONTRAT 2 body
+            </p-accordionTab>
+            <p-accordionTab header="CONTRAT 3">
+                <p-header>
+                    <span class="p-accordion-header-text">CONTRAT 3</span>
+                </p-header> CONTRAT 3 body
+            </p-accordionTab>
+        </p-accordion>
+        <div class="btns-group two-btns p-jc-end">
+            <button class="btn btn-link-water" pButton pRipple label="Annuler"></button>
+            <button class="btn btn-java-green style-2" pButton pRipple label="Enregistré"></button>
+        </div>
+        <!--.btns-group-->
+    </div>
+    <!--.accordion-area-->
+</div>
+<!--.nouveau-projet-area-->
+<!-- // SideBar Smart Tags  // -->
+<!---->
+<div class="sideBar-smart-tags sideBar-smart-tags_new-project" [ngClass]="status ? 'active' : ''">
+    <div class="sideBar-smart-tags_content">
+        <button class="btn-close" (click)="sideBarSmartTagsRemove()"></button>
+        <h3 class="title"> Contacts </h3>
+        <div class="add-reference_desc">
+            <p> Glissez et déposez un contact pour le placer </p>
+        </div>
+        <app-employeur-employe (OpnedModal)="EmployeurModal($event)" (employeur)="employeurInfo($event)" allTitle="employeur" [childEmployeur]="listEmployer" *ngIf="status">
+        </app-employeur-employe>
+        <app-employeur-employe (modalOpned)="openModal($event)" (employee)="employeeInfo($event)" allTitle="employé" [childEmployeur]="listEmployee" *ngIf="status">
+        </app-employeur-employe>
+
+        <div class="btns-group btns-group_position">
+            <button class="btn btn-blue" pButton pRipple label="Ajouter" icon="pi pi-plus"></button>
+        </div>
+        <!--.btns-group-->
+
+    </div>
+    <!--.sideBar-smart-tags_content-->
+</div>
+<!--.sideBar-smart-tags-->
+<app-fiche Title="Création d’une nouvelle fiche" button="Créer" (modalClosed)="closeModal($event)" (refreshList)="actualiserEmployee($event)" [openModal]="createNewFileModal"></app-fiche>
+<app-modal-employeur Title="Création d’une nouvelle fiche" button="Créer" (closeModal)="close($event)" (refresh)="actualiserEmployeur($event)" [modalOpen]="createEmployeurFileModal"></app-modal-employeur>
